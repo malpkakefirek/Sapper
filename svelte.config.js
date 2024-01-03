@@ -10,6 +10,9 @@ const config = {
       pages: 'build',
       strict: true,
     }),
+    prerender: {
+      handleMissingId: 'warn'
+    }
 	},
 };
 
