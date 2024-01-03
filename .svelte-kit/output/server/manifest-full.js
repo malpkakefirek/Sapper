@@ -10,7 +10,7 @@ return {
 	assets: new Set(["favicon.png","robots.txt"]),
 	mimeTypes: {".png":"image/png",".txt":"text/plain"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.2c8992a3.js","app":"_app/immutable/entry/app.d36739f7.js","imports":["_app/immutable/entry/start.2c8992a3.js","_app/immutable/chunks/scheduler.3b48bc77.js","_app/immutable/chunks/singletons.9da193b5.js","_app/immutable/chunks/index.9991ffd9.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.d36739f7.js","_app/immutable/chunks/scheduler.3b48bc77.js","_app/immutable/chunks/index.e543c91d.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.cb4e65d3.js","app":"_app/immutable/entry/app.ef038470.js","imports":["_app/immutable/entry/start.cb4e65d3.js","_app/immutable/chunks/scheduler.3b48bc77.js","_app/immutable/chunks/singletons.da3230c8.js","_app/immutable/chunks/index.9991ffd9.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.ef038470.js","_app/immutable/chunks/scheduler.3b48bc77.js","_app/immutable/chunks/index.e543c91d.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
