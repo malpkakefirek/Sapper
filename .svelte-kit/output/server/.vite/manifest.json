@@ -1,0 +1,353 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "imports": [
+      "_internal.js"
+    ],
+    "isEntry": true,
+    "src": ".svelte-kit/generated/server/internal.js"
+  },
+  "_environment.js": {
+    "file": "chunks/environment.js",
+    "imports": [
+      "_prod-ssr.js"
+    ]
+  },
+  "_index.js": {
+    "file": "chunks/index.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_prod-ssr.js": {
+    "file": "chunks/prod-ssr.js"
+  },
+  "_ssr.js": {
+    "file": "chunks/ssr.js"
+  },
+  "_stores.js": {
+    "file": "chunks/stores.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_stores2.js": {
+    "file": "chunks/stores2.js",
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "_useForm.js": {
+    "file": "chunks/useForm.js",
+    "imports": [
+      "_ssr.js",
+      "_index.js"
+    ]
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-all-400-normal.woff": {
+    "file": "_app/immutable/assets/fira-mono-all-400-normal.1e3b098c.woff",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-all-400-normal.woff"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-cyrillic-400-normal.c7d433fd.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-cyrillic-ext-400-normal.3df7909e.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-ext-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-greek-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-greek-400-normal.a8be01ce.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-greek-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-greek-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-greek-ext-400-normal.9e2fe623.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-greek-ext-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-latin-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-latin-400-normal.e43b3538.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-latin-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-latin-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-latin-ext-400-normal.6bfabd30.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-latin-ext-400-normal.woff2"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "imports": [
+      "_prod-ssr.js",
+      "_internal.js",
+      "_index.js"
+    ],
+    "isEntry": true,
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js"
+  },
+  "src/lib/images/github.svg": {
+    "file": "_app/immutable/assets/github.1ea8d62e.svg",
+    "src": "src/lib/images/github.svg"
+  },
+  "src/lib/images/svelte-logo.svg": {
+    "file": "_app/immutable/assets/svelte-logo.87df40b8.svg",
+    "src": "src/lib/images/svelte-logo.svg"
+  },
+  "src/lib/images/svelte-welcome.png": {
+    "file": "_app/immutable/assets/svelte-welcome.6c300099.png",
+    "src": "src/lib/images/svelte-welcome.png"
+  },
+  "src/lib/images/svelte-welcome.webp": {
+    "file": "_app/immutable/assets/svelte-welcome.c18bcf5a.webp",
+    "src": "src/lib/images/svelte-welcome.webp"
+  },
+  "src/routes/+layout.css": {
+    "file": "_app/immutable/assets/_layout.b15e9013.css",
+    "src": "src/routes/+layout.css"
+  },
+  "src/routes/+layout.svelte": {
+    "assets": [
+      "_app/immutable/assets/fira-mono-cyrillic-ext-400-normal.3df7909e.woff2",
+      "_app/immutable/assets/fira-mono-all-400-normal.1e3b098c.woff",
+      "_app/immutable/assets/fira-mono-cyrillic-400-normal.c7d433fd.woff2",
+      "_app/immutable/assets/fira-mono-greek-ext-400-normal.9e2fe623.woff2",
+      "_app/immutable/assets/fira-mono-greek-400-normal.a8be01ce.woff2",
+      "_app/immutable/assets/fira-mono-latin-ext-400-normal.6bfabd30.woff2",
+      "_app/immutable/assets/fira-mono-latin-400-normal.e43b3538.woff2"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.b15e9013.css"
+    ],
+    "file": "entries/pages/_layout.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js",
+      "_stores2.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+layout.svelte"
+  },
+  "src/routes/+page.css": {
+    "file": "_app/immutable/assets/_page.265a38f0.css",
+    "src": "src/routes/+page.css"
+  },
+  "src/routes/+page.js": {
+    "file": "entries/pages/_page.js",
+    "isEntry": true,
+    "src": "src/routes/+page.js"
+  },
+  "src/routes/+page.svelte": {
+    "assets": [
+      "_app/immutable/assets/svelte-welcome.c18bcf5a.webp",
+      "_app/immutable/assets/svelte-welcome.6c300099.png"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.265a38f0.css"
+    ],
+    "file": "entries/pages/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_index.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+page.svelte"
+  },
+  "src/routes/about/+page.js": {
+    "file": "entries/pages/about/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/about/+page.js"
+  },
+  "src/routes/about/+page.svelte": {
+    "file": "entries/pages/about/_page.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/about/+page.svelte"
+  },
+  "src/routes/friends/+page.css": {
+    "file": "_app/immutable/assets/_page.23d8e8f9.css",
+    "src": "src/routes/settings/+page.css"
+  },
+  "src/routes/friends/+page.js": {
+    "file": "entries/pages/friends/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/friends/+page.js"
+  },
+  "src/routes/friends/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.23d8e8f9.css"
+    ],
+    "file": "entries/pages/friends/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_index.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/friends/+page.svelte"
+  },
+  "src/routes/game/+page.css": {
+    "file": "_app/immutable/assets/_page.4a1afbcf.css",
+    "src": "src/routes/game/+page.css"
+  },
+  "src/routes/game/+page.js": {
+    "file": "entries/pages/game/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/game/+page.js"
+  },
+  "src/routes/game/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.4a1afbcf.css"
+    ],
+    "file": "entries/pages/game/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores2.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/game/+page.svelte"
+  },
+  "src/routes/login/+page.css": {
+    "file": "_app/immutable/assets/_page.7f289a16.css",
+    "src": "src/routes/register/+page.css"
+  },
+  "src/routes/login/+page.js": {
+    "file": "entries/pages/login/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/login/+page.js"
+  },
+  "src/routes/login/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.7f289a16.css"
+    ],
+    "file": "entries/pages/login/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_useForm.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/login/+page.svelte"
+  },
+  "src/routes/logout/+page.css": {
+    "file": "_app/immutable/assets/_page.06886043.css",
+    "src": "src/routes/logout/+page.css"
+  },
+  "src/routes/logout/+page.js": {
+    "file": "entries/pages/logout/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/logout/+page.js"
+  },
+  "src/routes/logout/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.06886043.css"
+    ],
+    "file": "entries/pages/logout/_page.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/logout/+page.svelte"
+  },
+  "src/routes/register/+page.css": {
+    "file": "_app/immutable/assets/_page.7f289a16.css",
+    "src": "src/routes/register/+page.css"
+  },
+  "src/routes/register/+page.js": {
+    "file": "entries/pages/register/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/register/+page.js"
+  },
+  "src/routes/register/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.7f289a16.css"
+    ],
+    "file": "entries/pages/register/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_useForm.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/register/+page.svelte"
+  },
+  "src/routes/settings/+page.css": {
+    "file": "_app/immutable/assets/_page.23d8e8f9.css",
+    "src": "src/routes/settings/+page.css"
+  },
+  "src/routes/settings/+page.js": {
+    "file": "entries/pages/settings/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/settings/+page.js"
+  },
+  "src/routes/settings/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.23d8e8f9.css"
+    ],
+    "file": "entries/pages/settings/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_index.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/settings/+page.svelte"
+  },
+  "src/routes/shop/+page.css": {
+    "file": "_app/immutable/assets/_page.6cf3cf06.css",
+    "src": "src/routes/shop/+page.css"
+  },
+  "src/routes/shop/+page.js": {
+    "file": "entries/pages/shop/_page.js",
+    "imports": [
+      "_environment.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/shop/+page.js"
+  },
+  "src/routes/shop/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.6cf3cf06.css"
+    ],
+    "file": "entries/pages/shop/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/shop/+page.svelte"
+  }
+}
