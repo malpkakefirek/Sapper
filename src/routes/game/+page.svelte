@@ -54,6 +54,8 @@
     let max_x = 50;
     let mines = 20;
     let gameStarted = 0;
+    
+    let current_skin = 0; // 0 for default
 
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
@@ -71,6 +73,8 @@
         gameStarted = parseInt(localStorage.getItem('gameStarted')) || 0;
         is_won = parseInt(localStorage.getItem('is_won')) || 0;
         is_loss = parseInt(localStorage.getItem('is_loss')) || 0;
+        
+        current_skin = parseInt(localStorage.getItem('current_skin')) || 0;
 
         //check if user is logged in
         let session_id = localStorage.getItem('session_id');
@@ -287,7 +291,6 @@
     //     // }
     // });
 
-    let current_skin = 1; // 0 for default
 </script>
 
 <svelte:head>

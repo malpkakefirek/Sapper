@@ -39,6 +39,18 @@
             console.error('Error fetching data:', error);        
         }
     }
+
+
+    function handleEquipSkin(){
+        console.log("Equipping Skin id "+ item.id);
+        localStorage.setItem("current_skin", item.id);
+        location.reload();
+    }
+    function handleUnequipSkin(){
+        console.log("Unequipping Skin id "+ item.id);
+        localStorage.setItem("current_skin", 0);
+        location.reload();
+    }
 </script>
 
 <div class="item-container">
@@ -46,9 +58,9 @@
     <h3>{item.name}</h3>
     {#if item.isOwned}
         {#if item.isEquipped}
-            <button class="custom_button2">EQUIPPED</button>
+            <button on:click={handleUnequipSkin} class="custom_button2">UNEQUIP</button>
         {:else}
-            <button class="custom_button1">EQUIP</button>
+            <button on:click={handleEquipSkin} class="custom_button1">EQUIP</button>
         {/if}
     {:else}
         <div class="button-container">
