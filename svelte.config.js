@@ -4,15 +4,16 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
 	kit: {
 		// adapter-node only supports node environments, such as Replit Autoscale or Reserved VM.
-    // If you'd like to change your Replit Deployment type, see https://kit.svelte.dev/docs/building-your-app
-    // for more information on SvelteKit Adapters
+        // If you'd like to change your Replit Deployment type, see https://kit.svelte.dev/docs/building-your-app
+        // for more information on SvelteKit Adapters
 		adapter: adapter({
-      pages: 'build',
-      strict: true,
-    }),
-    prerender: {
-      handleMissingId: 'warn'
-    }
+            pages: 'build',
+            strict: true,
+        }),
+        prerender: {
+            handleMissingId: 'warn',
+            handleHttpError: 'warn'
+        }
 	},
 };
 
