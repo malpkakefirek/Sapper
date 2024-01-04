@@ -44,11 +44,13 @@
     function handleEquipSkin(){
         console.log("Equipping Skin id "+ item.id);
         localStorage.setItem("current_skin", item.id);
+        item.isEquipped=true;
         location.reload();
     }
     function handleUnequipSkin(){
         console.log("Unequipping Skin id "+ item.id);
         localStorage.setItem("current_skin", 0);
+        item.isEquipped=false;
         location.reload();
     }
 </script>
