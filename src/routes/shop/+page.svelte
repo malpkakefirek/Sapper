@@ -182,6 +182,10 @@
         </div>
     {:else}
         <div>You're not on any hash!</div>
+        <script>
+            window.location.pathname = "/shop";
+            window.location.hash = "#skins";
+        </script>
     {/if}
 </div>
 
