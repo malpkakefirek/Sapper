@@ -56,12 +56,13 @@
     import { onMount } from "svelte";
     onMount(async () => {
         let eq_id = localStorage.getItem("current_skin");
+        console.log("current_skin equiped loaded id: "+eq_id);
         if (eq_id != null) {
             if (eq_id == item.id){
                 item.isEquipped=true;
             }
         }
-    }
+    });
 </script>
 
 <div class="item-container">
