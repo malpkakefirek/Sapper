@@ -1,1 +1,0 @@
-import{r as s,w as t}from"./index.9991ffd9.js";const l=t({"":""}),c=t({"":""}),f=t(!1),u=t(!1);s(new Date,function(a){const e=setInterval(()=>{a(new Date)},1e3);return function(){clearInterval(e)}});export{u as a,c as f,f as s,l as t};
