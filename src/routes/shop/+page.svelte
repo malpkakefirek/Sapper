@@ -9,7 +9,7 @@
     let shop_items = [];
     let owned = [];
     onMount(async () => {
-        const response = await fetch("https://sapperapi.malpkakefirek.repl.co/get_all_skins");
+        const response = await fetch("https://ssapper-api.onrender.com/get_all_skins");
         const data = await response.json();
         items = Object.keys(data).map(id => ({
             id: parseInt(id),
@@ -28,7 +28,7 @@
         }
         let sessionID = storedSession;
         try {
-            const response = await fetch("https://sapperapi.malpkakefirek.repl.co/get_user_skins", {
+            const response = await fetch("https://ssapper-api.onrender.com/get_user_skins", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,7 @@
         }
         let sessionID = storedSession;
         try {
-            const response = await fetch("https://sapperapi.malpkakefirek.repl.co/get_balance", {
+            const response = await fetch("https://ssapper-api.onrender.com/get_balance", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

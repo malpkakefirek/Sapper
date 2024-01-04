@@ -61,7 +61,7 @@
     method="post" 
     on:submit|preventDefault={handleSubmit}
     use:form2
-    action="https://sapperapi.malpkakefirek.repl.co/register" 
+    action="https://sapper-api.onrender.com/register" 
 >
     <h1>Register</h1>
     <div style="display: flex; justify-content: center;">

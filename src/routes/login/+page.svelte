@@ -47,7 +47,7 @@
     method="post"
     on:submit|preventDefault={handleSubmit}
     use:form
-    action="https://sapperapi.malpkakefirek.repl.co/login"
+    action="https://sapper-api.onrender.com/login"
 >
     <h1>Login</h1>
     <div style="display: flex; justify-content: center;">

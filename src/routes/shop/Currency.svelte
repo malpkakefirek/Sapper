@@ -29,7 +29,7 @@
         }
         let sessionID = storedSession;
         try {
-            const response = await fetch("https://sapperapi.malpkakefirek.repl.co/buy_gems", {
+            const response = await fetch("https://sapper-api.onrender.com/buy_gems", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

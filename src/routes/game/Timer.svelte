@@ -34,7 +34,7 @@
     }
     async function request_time_update() {
         let send_data = {"session_id": "000000"};
-        const response = await fetch("https://sapperapi.malpkakefirek.repl.co/request_time", {
+        const response = await fetch("https://sapper-api.onrender.com/request_time", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 <script>
-    let promise = fetch('https://sapperapi.malpkakefirek.repl.co/health').then((x) => x.json());
+    let promise = fetch('https://sapper-api.onrender.com/health').then((x) => x.json());
 </script>
 
 {#await promise}

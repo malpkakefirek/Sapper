@@ -122,7 +122,7 @@
             return;
         }
         let tile_data = {"tile_id": tile_id, "session_id": session_id};
-        const response = await fetch("https://sapperapi.malpkakefirek.repl.co/click_tile", {
+        const response = await fetch("https://sapper-api.onrender.com/click_tile", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -227,7 +227,7 @@
         
         // await game creation
         let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "mine_count": mines};
-        const response = await fetch("https://sapperapi.malpkakefirek.repl.co/create_game", {
+        const response = await fetch("https://sapper-api.onrender.com/create_game", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
