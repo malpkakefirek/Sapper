@@ -5,14 +5,14 @@
         "status": 200
     }],
     "redirects": [
-        {"source": "/", "destination": "/index.html"},
-        {"source": "/about", "destination": "/about.html", "prermanent": false},
-        {"source": "/friends", "destination": "/friends.html", "prermanent": false},
-        {"source": "/game", "destination": "/game.html", "prermanent": false},
-        {"source": "/login", "destination": "/login.html", "prermanent": false},
-        {"source": "/logout", "destination": "/logout.html", "prermanent": false},
-        {"source": "/register", "destination": "/register.html", "prermanent": false},
-        {"source": "/settings", "destination": "/settings.html", "prermanent": false},
-        {"source": "/shop", "destination": "/shop.html", "prermanent": false}
+        {"source": "/", "destination": "/index.html", "permanent": false},
+        {"source": "/about", "destination": "/about.html", "permanent": false},
+        {"source": "/friends", "destination": "/friends.html", "permanent": false},
+        {"source": "/game", "destination": "/game.html", "permanent": false},
+        {"source": "/login", "destination": "/login.html", "permanent": false},
+        {"source": "/logout", "destination": "/logout.html", "permanent": false},
+        {"source": "/register", "destination": "/register.html", "permanent": false},
+        {"source": "/settings", "destination": "/settings.html", "permanent": false},
+        {"source": "/shop", "destination": "/shop.html", "permanent": false}
     ]
 }
