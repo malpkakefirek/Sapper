@@ -1,6 +1,18 @@
 {
-    "rewrites": [{
-        "source": "/(.*)",
-        "destination": "/"
-    }]
+    "routes": [{
+        "src": "/[^.]+",
+        "dest": "/",
+        "status": 200
+    }],
+    "redirects": [
+        {"source": "/", "destination": "/index.html", "prermanent": false},
+        {"source": "/about", "destination": "/about.html", "prermanent": false},
+        {"source": "/friends", "destination": "/friends.html", "prermanent": false},
+        {"source": "/game", "destination": "/game.html", "prermanent": false},
+        {"source": "/login", "destination": "/login.html", "prermanent": false},
+        {"source": "/logout", "destination": "/logout.html", "prermanent": false},
+        {"source": "/register", "destination": "/register.html", "prermanent": false},
+        {"source": "/settings", "destination": "/settings.html", "prermanent": false},
+        {"source": "/shop", "destination": "/shop.html", "prermanent": false}
+    ]
 }
