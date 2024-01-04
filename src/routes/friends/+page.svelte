@@ -3,16 +3,16 @@
     import Friend from './Friend.svelte';
 
     let friends_list = [
-          { id: 1, name: 'Lukas', image: 'Lukas.jpg' },
-          { id: 2, name: 'Anna', image: 'Anna.jpg' },
-          { id: 3, name: 'John', image: 'John.jpg' },
-          { id: 4, name: 'Emily', image: 'Emily.jpg' },
-          { id: 5, name: 'Michael', image: 'Michael.jpg' },
-          { id: 6, name: 'Sophia', image: 'Sophia.jpg' },
-          { id: 7, name: 'Daniel', image: 'Daniel.jpg' },
-          { id: 8, name: 'Olivia', image: 'Olivia.jpg' },
-          { id: 9, name: 'David', image: 'David.jpg' },
-          { id: 10, name: 'Emma', image: 'Emma.jpg' },
+          { id: 1, name: 'Lukas', image: '/images/avatars/avatar1.png' },
+          { id: 2, name: 'Anna', image: '/images/avatars/avatar2.png' },
+          { id: 3, name: 'John', image: '/images/avatars/avatar2.png' },
+          { id: 4, name: 'Emily', image: '/images/avatars/avatar2.png' },
+          { id: 5, name: 'Michael', image: '/images/avatars/avatar2.png' },
+          { id: 6, name: 'Sophia', image: '/images/avatars/avatar2.png' },
+          { id: 7, name: 'Daniel', image: '/images/avatars/avatar2.png' },
+          { id: 8, name: 'Olivia', image: '/images/avatars/avatar2.png' },
+          { id: 9, name: 'David', image: '/images/avatars/avatar2.png' },
+          { id: 10, name: 'Emma', image: '/images/avatars/avatar2.png' },
     ];
 </script>
 
