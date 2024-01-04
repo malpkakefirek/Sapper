@@ -8,8 +8,15 @@
     let owned_items = [];
     let shop_items = [];
     let owned = [];
+
+    console.log($page);
+    console.log($page.url);
+    console.log($page.url.hash);
     onMount(async () => {
         // Check if the hash is empty
+        console.log($page);
+        console.log($page.url);
+        console.log($page.url.hash);
         if ($page.url.hash === "") {
             console.log("You are on a URL without a hash.");
             await goto("/shop#skins");
@@ -140,7 +147,7 @@
 <div class="text-column">
     <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
     
-    {#if window.location.hash == "#skins"}
+    {#if $page.url.hash == "#skins"}
         <div class="items-container">
             {#each shop_items as item (item.id)}
                 <div class="item">
@@ -148,7 +155,7 @@
                 </div>
             {/each}
         </div>
-    {:else if window.location.hash == "#equip"}
+    {:else if $page.url.hash == "#equip"}
         <div class="items-container">
             {#each owned_items as item (item.id)}
                 <div class="item">
@@ -156,11 +163,11 @@
                 </div>
             {/each}
         </div>
-    {:else if window.location.hash == "#battlepass"}
+    {:else if $page.url.hash == "#battlepass"}
         <div class="battlepass-container">
             <BattlePass />
         </div>
-    {:else if window.location.hash == "#boosters"}
+    {:else if $page.url.hash == "#boosters"}
         <div class="items-container">
             {#each boosters as item (item.id)}
                 <div class="item">
@@ -169,7 +176,7 @@
                 </div>
             {/each}
         </div>
-    {:else if window.location.hash == "#currency"}
+    {:else if $page.url.hash == "#currency"}
         <div class="currency-container">
             <Currency />
         </div>
