@@ -1,41 +1,37 @@
+<script>
+    import { page } from "$app/stores";
+    import { Friend } from "./Friend.svelte';
+
+    let friends_list = 
+          { id: 1, name: 'Lukas', image: 'Lukas.jpg' },
+          { id: 2, name: 'Anna', image: 'Anna.jpg' },
+          { id: 3, name: 'John', image: 'John.jpg' },
+          { id: 4, name: 'Emily', image: 'Emily.jpg' },
+          { id: 5, name: 'Michael', image: 'Michael.jpg' },
+          { id: 6, name: 'Sophia', image: 'Sophia.jpg' },
+          { id: 7, name: 'Daniel', image: 'Daniel.jpg' },
+          { id: 8, name: 'Olivia', image: 'Olivia.jpg' },
+          { id: 9, name: 'David', image: 'David.jpg' },
+          { id: 10, name: 'Emma', image: 'Emma.jpg' },
+    ];
+</script>
+
 <svelte:head>
     <title>Friends</title>
     <meta name="description" content="About this app" />
 </svelte:head>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="text-column" on:mousemove={(e) => (mouse = { x: e.clientX, y: e.clientY })}>
-    The mouse position is {mouse.x} x {mouse.y}
-    
-    <h1>You are in <bold>Friends{$page.url.hash}</bold> page!</h1>
-
-    <p>
-        mhm game gaming game game game game game game game game game here
-    </p>
-
-    <pre>time: {formatter.format($time)} nice :)</pre>
-
-    <p>
-        Need change. static to dynamic.
-    </p>
-    
-    <pre>DONE</pre>
+<div class="text-column">
+    <div class="friends-container">
+        {#each friends_list as friend (friend.id)}
+            <div class="friend">
+                <Friend {friend} />
+            </div>
+        {/each}
+    </div>
 </div>
 
-<script>
-    import { time } from './stores.js';
-    import { page } from "$app/stores";
-
-    const formatter = new Intl.DateTimeFormat('en', {
-        hour12: false,
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-
-
-    let mouse = { x: 0, y: 0 };
-</script>
 
 <style>
     div {
