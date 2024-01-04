@@ -1,13 +1,13 @@
 {
-    "redirects": [
-        {"source": "/", "destination": "/index.html", "permanent": false},
-        {"source": "/about", "destination": "/about.html", "permanent": false},
-        {"source": "/friends", "destination": "/friends.html", "permanent": false},
-        {"source": "/game", "destination": "/game.html", "permanent": false},
-        {"source": "/login", "destination": "/login.html", "permanent": false},
-        {"source": "/logout", "destination": "/logout.html", "permanent": false},
-        {"source": "/register", "destination": "/register.html", "permanent": false},
-        {"source": "/settings", "destination": "/settings.html", "permanent": false},
-        {"source": "/shop", "destination": "/shop.html", "permanent": false}
+    "rewrites": [
+        {"source": "/", "destination": "/index.html"},
+        {"source": "/about", "destination": "/about.html"},
+        {"source": "/friends", "destination": "/friends.html"},
+        {"source": "/game", "destination": "/game.html"},
+        {"source": "/login", "destination": "/login.html"},
+        {"source": "/logout", "destination": "/logout.html"},
+        {"source": "/register", "destination": "/register.html"},
+        {"source": "/settings", "destination": "/settings.html"},
+        {"source": "/shop", "destination": "/shop.html"}
     ]
 }
