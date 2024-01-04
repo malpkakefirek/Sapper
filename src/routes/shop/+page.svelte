@@ -140,7 +140,7 @@
 <div class="text-column">
     <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
     
-    {#if $page.url.hash == "#skins"}
+    {#if window.location.hash == "#skins"}
         <div class="items-container">
             {#each shop_items as item (item.id)}
                 <div class="item">
@@ -148,7 +148,7 @@
                 </div>
             {/each}
         </div>
-    {:else if $page.url.hash == "#equip"}
+    {:else if window.location.hash == "#equip"}
         <div class="items-container">
             {#each owned_items as item (item.id)}
                 <div class="item">
@@ -156,11 +156,11 @@
                 </div>
             {/each}
         </div>
-    {:else if $page.url.hash == "#battlepass"}
+    {:else if window.location.hash == "#battlepass"}
         <div class="battlepass-container">
             <BattlePass />
         </div>
-    {:else if $page.url.hash == "#boosters"}
+    {:else if window.location.hash == "#boosters"}
         <div class="items-container">
             {#each boosters as item (item.id)}
                 <div class="item">
@@ -169,7 +169,7 @@
                 </div>
             {/each}
         </div>
-    {:else if $page.url.hash == "#currency"}
+    {:else if window.location.hash == "#currency"}
         <div class="currency-container">
             <Currency />
         </div>
