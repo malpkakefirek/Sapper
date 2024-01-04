@@ -1,6 +1,6 @@
 <script>
     import { page } from "$app/stores";
-    import { Friend } from "./Friend.svelte";
+    import { Friend } from './Friend.svelte';
 
     let friends_list = [
           { id: 1, name: 'Lukas', image: 'Lukas.jpg' },
