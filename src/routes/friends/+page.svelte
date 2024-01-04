@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
     import { Friend } from "./Friend.svelte';
 
-    let friends_list = 
+    let friends_list = [
           { id: 1, name: 'Lukas', image: 'Lukas.jpg' },
           { id: 2, name: 'Anna', image: 'Anna.jpg' },
           { id: 3, name: 'John', image: 'John.jpg' },
