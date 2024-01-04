@@ -287,23 +287,7 @@
     //     // }
     // });
 
-    let current_skin = 1;
-
-    // Checks if skin exists, if not loads the default skin instead.
-    function getImageUrl(x, y) {
-        skinId = tileData[(max_x * y + x).toString()];
-        skinUrl = `/images/skins/${current_skin}/${skinId}.svg`;
-        defaultUrl = `/images/default/${skinId}.svg`;
-
-        img = new Image();
-        img.src = skinUrl;
-
-        if(img.complete) {
-            return skinUrl;
-        } else {
-            return defaultUrl;
-        }
-    }
+    let current_skin = 1; // 0 for default
 </script>
 
 <svelte:head>
@@ -365,7 +349,9 @@
                                     on:keypress={(e) => {if(e.key === 'Enter') clicked(x, y)}} 
                                     on:contextmenu|preventDefault={() => rightClicked(x, y)}
                                     class="sapper_tile" 
-                                    style="background-image: url('{getImageUrl(x, y)}')"
+                                    style="background-image: url('/images/skins/${current_skin}/{
+                                        tileData[(max_x*y + x).toString()]
+                                    }.svg')"
                                 >
                                     <div class="sapper_tile_content">
                                         <!-- <img src="/images/tile.png"> -->
