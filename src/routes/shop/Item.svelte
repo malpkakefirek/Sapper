@@ -53,6 +53,15 @@
         item.isEquipped=false;
         location.reload();
     }
+    import { onMount } from "svelte";
+    onMount(async () => {
+        let eq_id = localStorage.getItem("current_skin");
+        if (eq_id != null) {
+            if (eq_id == item.id){
+                item.isEquipped=true;
+            }
+        }
+    }
 </script>
 
 <div class="item-container">
@@ -60,9 +69,9 @@
     <h3>{item.name}</h3>
     {#if item.isOwned}
         {#if item.isEquipped}
-            <button on:click={handleUnequipSkin} class="custom_button2">UNEQUIP</button>
+            <button on:click={handleUnequipSkin} class="custom_button1">UNEQUIP</button>
         {:else}
-            <button on:click={handleEquipSkin} class="custom_button1">EQUIP</button>
+            <button on:click={handleEquipSkin} class="custom_button2">EQUIP</button>
         {/if}
     {:else}
         <div class="button-container">
