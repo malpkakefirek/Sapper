@@ -181,7 +181,7 @@
             <Currency />
         </div>
     {:else}
-        <div></div>
+        <div>You're not on any hash!</div>
     {/if}
 </div>
 
