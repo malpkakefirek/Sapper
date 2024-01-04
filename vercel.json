@@ -1,9 +1,4 @@
 {
-    "routes": [{
-        "src": "/[^.]+",
-        "dest": "/",
-        "status": 200
-    }],
     "redirects": [
         {"source": "/", "destination": "/index.html", "permanent": false},
         {"source": "/about", "destination": "/about.html", "permanent": false},
