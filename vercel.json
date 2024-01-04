@@ -5,7 +5,7 @@
         "status": 200
     }],
     "redirects": [
-        {"source": "/", "destination": "/index.html", "prermanent": false},
+        {"source": "/", "destination": "/index.html"},
         {"source": "/about", "destination": "/about.html", "prermanent": false},
         {"source": "/friends", "destination": "/friends.html", "prermanent": false},
         {"source": "/game", "destination": "/game.html", "prermanent": false},
