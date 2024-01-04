@@ -58,6 +58,13 @@
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
     onMount(() => {
+        // Check if the hash is empty
+        if ($page.url.hash === "") {
+            console.log("You are on a URL without a hash.");
+            await goto("/shop#skins");
+            return;
+        }
+        
         max_y = parseInt(localStorage.getItem('max_y')) || 50;
         max_x = parseInt(localStorage.getItem('max_x')) || 50;
         mines = parseInt(localStorage.getItem('mines')) || 20;
@@ -378,6 +385,8 @@
         <h1>Congratulations you WON!</h1>
     {:else if $page.url.hash == "#loss"}
         <h1>Better try next time!</h1> -->
+    {:else}
+        <div></div>
     {/if}
     <!-- <button on:click={() => (showModal.update((value) => !value))}> show modal     </button> -->
     <!-- The mouse position is {mouse.x} x {mouse.y} -->

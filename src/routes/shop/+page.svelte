@@ -9,6 +9,13 @@
     let shop_items = [];
     let owned = [];
     onMount(async () => {
+        // Check if the hash is empty
+        if ($page.url.hash === "") {
+            console.log("You are on a URL without a hash.");
+            await goto("/shop#skins");
+            return;
+        }
+        
         const response = await fetch("https://sapper-api.onrender.com/get_all_skins");
         const data = await response.json();
         items = Object.keys(data).map(id => ({
@@ -141,8 +148,7 @@
                 </div>
             {/each}
         </div>
-    {/if}
-    {#if $page.url.hash == "#equip"}
+    {:else if $page.url.hash == "#equip"}
         <div class="items-container">
             {#each owned_items as item (item.id)}
                 <div class="item">
@@ -150,13 +156,11 @@
                 </div>
             {/each}
         </div>
-    {/if}
-    {#if $page.url.hash == "#battlepass"}
+    {:else if $page.url.hash == "#battlepass"}
         <div class="battlepass-container">
             <BattlePass />
         </div>
-    {/if}
-    {#if $page.url.hash == "#boosters"}
+    {:else if $page.url.hash == "#boosters"}
         <div class="items-container">
             {#each boosters as item (item.id)}
                 <div class="item">
@@ -165,11 +169,12 @@
                 </div>
             {/each}
         </div>
-    {/if}
-    {#if $page.url.hash == "#currency"}
+    {:else if $page.url.hash == "#currency"}
         <div class="currency-container">
             <Currency />
         </div>
+    {:else}
+        <div></div>
     {/if}
 </div>
 
