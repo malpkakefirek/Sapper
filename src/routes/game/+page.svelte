@@ -349,7 +349,7 @@
                                     on:keypress={(e) => {if(e.key === 'Enter') clicked(x, y)}} 
                                     on:contextmenu|preventDefault={() => rightClicked(x, y)}
                                     class="sapper_tile" 
-                                    style="background-image: url('/images/skins/${current_skin}/{
+                                    style="background-image: url('/images/skins/{current_skin}/{
                                         tileData[(max_x*y + x).toString()]
                                     }.svg')"
                                 >
