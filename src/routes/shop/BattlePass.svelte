@@ -1,12 +1,12 @@
 <script>
     let images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
-        '/src/lib/images/1.svg',
-        '/src/lib/images/2.svg',
-        '/src/lib/images/3.svg',
-        '/src/lib/images/4.svg',
-        '/src/lib/images/5.svg',
-        '/src/lib/images/6.svg',
-        '/src/lib/images/7.svg',
+        '/images/1.svg',
+        '/images/2.svg',
+        '/images/3.svg',
+        '/images/4.svg',
+        '/images/5.svg',
+        '/images/6.svg',
+        '/images/7.svg',
     ];
 
     let currentIndex = 0;  // TODO: LOAD AND SET THIS TO USERS BATTPLE PASS LEVEL
