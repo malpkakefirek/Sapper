@@ -14,7 +14,7 @@
         items = Object.keys(data).map(id => ({
             id: parseInt(id),
             name: data[id].name,
-            image: `/src/lib/images/skins/${id}/preview.png`,
+            image: `/static/images/skins/${id}/preview.png`,
             priceCoins: data[id].price_coins,
             priceGems: data[id].price_gems
         }));

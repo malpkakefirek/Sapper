@@ -340,12 +340,12 @@
                                     on:keypress={(e) => {if(e.key === 'Enter') clicked(x, y)}} 
                                     on:contextmenu|preventDefault={() => rightClicked(x, y)}
                                     class="sapper_tile" 
-                                    style="background-image: url('/src/lib/images/{
+                                    style="background-image: url('/static/images/{
                                         tileData[(max_x*y + x).toString()]
                                     }.svg')"
                                 >
                                     <div class="sapper_tile_content">
-                                        <!-- <img src="/src/lib/images/tile.png"> -->
+                                        <!-- <img src="/static/images/tile.png"> -->
                                     </div>
                                 </div>
                             {/if}
@@ -428,11 +428,11 @@
         -o-background-size: cover;
         background-size: cover;
         image-rendering: pixelated;
-        /*background-image: url("/src/lib/images/tile.png");*/
+        /*background-image: url("/static/images/tile.png");*/
     }
     .sapper_tile_content {
         font-size: 8px;
-        /* background-image: url("/src/lib/images/tile.png"); */
+        /* background-image: url("/static/images/tile.png"); */
     }
 
 
