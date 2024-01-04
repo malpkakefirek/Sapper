@@ -291,11 +291,11 @@
 
     // Checks if skin exists, if not loads the default skin instead.
     function getImageUrl(x, y) {
-        const skinId = tileData[(max_x * y + x).toString()];
-        const skinUrl = `/images/skins/${current_skin}/${skinId}.svg`;
-        const defaultUrl = `/images/default/${skinId}.svg`;
+        skinId = tileData[(max_x * y + x).toString()];
+        skinUrl = `/images/skins/${current_skin}/${skinId}.svg`;
+        defaultUrl = `/images/default/${skinId}.svg`;
 
-        const img = new Image();
+        img = new Image();
         img.src = skinUrl;
 
         if(img.complete) {
