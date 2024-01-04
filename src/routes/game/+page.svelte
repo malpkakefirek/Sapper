@@ -57,7 +57,7 @@
 
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    onMount(() => {
+    onMount(async () => {
         // Check if the hash is empty
         if ($page.url.hash === "") {
             console.log("You are on a URL without a hash.");
@@ -292,7 +292,7 @@
     // Checks if skin exists, if not loads the default skin instead.
     function getImageUrl(x, y) {
         const skinId = tileData[(max_x * y + x).toString()];
-        const skinUrl = '/images/skins/${current_skin}/${skinId}.svg';
+        const skinUrl = `/images/skins/${current_skin}/${skinId}.svg`;
         const defaultUrl = `/images/default/${skinId}.svg`;
 
         const img = new Image();
