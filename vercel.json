@@ -1,13 +1,8 @@
 {
-    "rewrites": [
-        {"source": "/", "destination": "/index.html"},
-        {"source": "/about", "destination": "/about.html"},
-        {"source": "/friends", "destination": "/friends.html"},
-        {"source": "/game", "destination": "/game.html"},
-        {"source": "/login", "destination": "/login.html"},
-        {"source": "/logout", "destination": "/logout.html"},
-        {"source": "/register", "destination": "/register.html"},
-        {"source": "/settings", "destination": "/settings.html"},
-        {"source": "/shop", "destination": "/shop.html"}
-    ]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
