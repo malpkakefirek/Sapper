@@ -168,7 +168,6 @@
     {:else}
         <div>You're not on any correct hash!</div>
         <script>
-            console.log($page.url.hash);
             console.log(window.location.hash);
             if (["#skins, #equip, #battlepass, #boosters, #currency"].includes(window.location.hash)) {
                 console.log("changing page to /shop" + window.location.hash);
