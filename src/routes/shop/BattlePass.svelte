@@ -72,8 +72,9 @@
 
 
 <div class="carousel-container">
+    <!-- LEWY -->
     {#if currentIndex > 0}
-        {#if currentIndex <= level}
+        {#if (currentIndex - 1) <= level}
             <div class="backgroundUnlocked">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image">
             </div>
@@ -84,6 +85,20 @@
         {/if}
     {/if}
 
+    <!-- PRAWY -->
+    {#if currentIndex < images.length - 1}
+        {#if (currentIndex + 1 ) <= level}
+            <div class="backgroundUnlocked">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+            </div>
+        {:else}
+            <div class="backgroundNormal">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+            </div>
+        {/if}
+    {/if}
+
+    <!-- SRODKOWY -->
     {#if currentIndex <= level}
         <div class="backgroundUnlockedMiddle">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
@@ -91,12 +106,6 @@
     {:else}
         <div class="backgroundNormal">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
-        </div>
-    {/if}
-
-    {#if currentIndex < images.length - 1}
-        <div class="backgroundNormal">
-            <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
         </div>
     {/if}
 </div>
