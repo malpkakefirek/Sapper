@@ -63,7 +63,7 @@
 
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
-        UpdateCurrency();
+        await UpdateCurrency();
 
         //check if booster is in use
         booster_used = (localStorage.getItem('booster_used') === 'true');
