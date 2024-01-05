@@ -169,12 +169,17 @@
                         tileData[i.toString()] = -3;
                         continue;
                     }
-                    if (result.board[i] < 9 && result.board[i] >= 0) {
-                        console.log(flagData[i.toString()]);
-                    }
                     // Show unflagged mines
                     if (result.board[i] >= 9 && flagData[i.toString()] !== true) {
                         tileData[i.toString()] = result.board[i];
+                        continue;
+                    }
+                }
+            } else if (result.type == "win") {
+                for (let i = 0; i < max_y*max_x; i++) {
+                    // Mark flags
+                    if (flagData[i.toString()] === true && result.board[i] === -1) {
+                        tileData[i.toString()] = -2;
                         continue;
                     }
                 }
