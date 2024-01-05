@@ -66,16 +66,14 @@
         <input type="text" id="searchInput" bind:value={searchTerm} />
         <button on:click={handleSubmit}>Submit</button>
         
-        
-        <ul>
+
+        <div class="friends-container">
             {#each SearchList as friend (friend.id)}
-                <li>
-                    <img src={friend.image} alt={friend.name} />
-                    <p>ID: {friend.id}</p>
-                    <p>Name: {friend.name}</p>
-                </li>
+                <div class="friend">
+                    <Friend {friend} />
+                </div>
             {/each}
-        </ul>
+        </div>
     {/if}
 </div>
 
