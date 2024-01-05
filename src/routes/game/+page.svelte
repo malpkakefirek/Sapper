@@ -165,7 +165,7 @@
             if (result.type == "loss") {
                 for (let key in result.board) { 
                     if (flagData[key.toString()] && result.board[key] < 9 && result.board[key] >= 0) {
-                        tileData[key.toString()] = -2;
+                        tileData[key.toString()] = -3;
                         continue;
                     }
                     if (result.board[key] >= 9 && !flagData[key.toString()]) {
