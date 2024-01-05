@@ -18,23 +18,40 @@
     import { onMount } from "svelte";
     let session_id;
     let username;
-    let level;
-    let xp;
-    let max_xp;
-    let bp_level1;
-    let bp_xp;
-    let bp_max_xp;
+    let level = 0;
+    let xp = 0;
+    let max_xp = 100;
     let coins = -1;
     let gems = -1;
+
+    $: level = calculateLevel(xp);
+
+    function calculateLevel(xp) {
+        let expRequired = 100;
+        let expIncrementAmount = 50;
+        let currentLevel = 0;
+
+        while ( xp >= expRequired) {
+            xp -= expRequired;
+                currentLevel++;
+            expRequired+=expIncrementAmount;
+        }
+        max_xp=expRequired;
+        //console.log("Current Battlepass level: "+ currentIndex);
+
+        return currentLevel;
+    }
+    
     onMount(() => {
         session_id = localStorage.getItem('session_id');
         console.log(session_id);
         username = localStorage.getItem('username');
-        xp = localStorage.getItem('xp');
-        bp_xp = localStorage.getItem('bp_xp');
+        xp = parseInt(localStorage.getItem('xp')) || 0;
         //retrieveLevelsInfo();
         coins = localStorage.getItem('coins');
         gems = localStorage.getItem('gems');
+
+        calculateLevel(xp);
     });
 
     function retrieveLevelsInfo(){
