@@ -2,7 +2,7 @@
     let images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/3.svg',
+        '/images/avatars/3.png',
         '/images/battlepass/boosterx2.svg',
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx1.svg',
@@ -13,7 +13,7 @@
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/boosterx2.svg',
-        '/images/battlepass/boosterx1.svg',
+        '/images/avatars/2.png',
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx2.svg',
         '/images/battlepass/gemsx50.svg',
@@ -23,7 +23,7 @@
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx2.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/4.svg',
+        '/images/avatars/5.png',
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/boosterx1.svg',
@@ -33,13 +33,13 @@
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/boosterx2.svg',
-        '/images/4.svg',
+        '/images/avatars/8.png',
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/gemsx100.svg',
-        '/images/0.svg',
+        '/images/avatars/9.png',
     ];
 
     let currentIndex = 0; 
