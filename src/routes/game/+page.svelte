@@ -161,8 +161,21 @@
         }
         
         console.log(result);
-        if (result.type !== "fail") {
-            tileData = result.board;
+        if ("board" in result) {
+            if (result.type == "loss") {
+                for (let key in result.board) { 
+                    if (key in flagData && result.board[key] < 9) {
+                        tileData[key] = -2;
+                        continue;
+                    }
+                    if (result.board[key] >= 9) {
+                        tileData[key] = result.board[key];
+                        continue;
+                    }
+                }
+            } else {
+                tileData = result.board;
+            }
             //stopTimer();
         }
         if (result.type === "win") {
