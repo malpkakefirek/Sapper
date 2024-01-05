@@ -27,7 +27,7 @@
 
 
 
-    let inputValue = ''; 
+    let searchTerm = ''; 
     
     function filterFriends() {
         return friends_list.filter(friend => friend.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -43,8 +43,8 @@
 <div class="text-column">
     {#if $page.url.hash == "#profile"}
         <img src={friends_list[profile_id].image} alt="avatar of {friends_list[profile_id].name}" />
-        <p>friends_list[profile_id].name</p>
-        <p>friends_list[profile_id].id</p>
+        <p>{friends_list[profile_id].name}</p>
+        <p>{friends_list[profile_id].id}</p>
     {:else if $page.url.hash == "#list"}
         <div class="friends-container">
             {#each friends_list as friend (friend.id)}
