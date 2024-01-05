@@ -22,6 +22,8 @@
         let profile_id = parseInt(localStorage.getItem('profile_viewed_id'));
         let profile_name = localStorage.getItem('profile_viewed_name');
         profile = friends_list.find(friend => friend.id === profile_id);
+
+        befriended = Bool(localStorage.getItem('befriended'));
     });
 
 
@@ -46,6 +48,13 @@
     let games_won = Math.floor(Math.random() * games_played) + 1;
     let games_lost = games_played-games_won;
     let flags_placed = Math.floor(Math.random() * 5000) + 1;
+    let befriended = false;
+
+    function toggle_friend(){
+        befriended = !befriended;
+        befriended = localStorage.setItem('befriended',befriended);
+        location.reload();
+    }
 </script>
 
 <svelte:head>
@@ -62,10 +71,10 @@
                     <img style="width:inherit" src={profile.image} alt="avatar of {profile.name}" />
                 </div>
                 <div class="profileName">{profile.name}</div>
-                {#if "coś tam"}
-                    <button class="custom_button_add_friend">Add Friend</button>
+                {#if befriended}
+                    <button on:click={() => toggle_friend()} class="custom_button_remove_friend">Remove Friend</button>
                 {:else}
-                    <button class="custom_button_remove_friend">Remove Friend</button>
+                    <button on:click={() => toggle_friend()} class="custom_button_add_friend">Add Friend</button>
                 {/if}
             </div>
             <div class="right">
