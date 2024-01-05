@@ -6,7 +6,7 @@
         console.log("Profile Viewed of "+friend.name+" | id: "+friend.id);
         localStorage.setItem('profile_viewed_id',friend.id);
         localStorage.setItem('profile_viewed_name',friend.name);
-        goto("/friend#profile");
+        goto("/friends#profile");
         location.reload();
     }
 </script>
