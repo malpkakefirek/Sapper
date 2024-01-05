@@ -58,10 +58,10 @@
     {#if $page.url.hash == "#profile"}
         <div class="profileCard">
             <div class="left">
-                <div class="profileName">{profile.name}</div>
                 <div class="avatar">
                     <img style="width:inherit" src={profile.image} alt="avatar of {profile.name}" />
                 </div>
+                <div class="profileName">{profile.name}</div>
                 {#if "coś tam"}
                     <button class="custom_button_add_friend">Add Friend</button>
                 {:else}
@@ -135,6 +135,7 @@
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 10px;
+        text-align: center;
     }
     .avatar {
         width: 128px;
