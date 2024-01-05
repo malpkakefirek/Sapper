@@ -83,6 +83,8 @@
     async function UpdateCurrency() {
         console.log("Shop clicked");
         // Set to -1 which equals to 'LOADING...'
+        let oldCoins = localStorage.getItem('coins');
+        let oldGems = localStorage.getItem('gems');
         localStorage.setItem('coins',-1);
         localStorage.setItem('gems',-1);
         coins = -1;
@@ -113,6 +115,10 @@
                 localStorage.setItem('gems',result.gems);
                 coins = result.coins;
                 gems = result.gems;
+                if (oldCoins !== coins || oldGems !== gems) {
+                    // Update currency if it's wrong
+                    location.reload()
+                }
             }
         } catch (error) {
             console.error('Error fetching data:', error);        
