@@ -168,7 +168,7 @@
                         tileData[key.toString()] = -2;
                         continue;
                     }
-                    if (result.board[key] >= 9) {
+                    if (result.board[key] >= 9 && !flagData[key.toString()]) {
                         tileData[key.toString()] = result.board[key];
                         continue;
                     }
