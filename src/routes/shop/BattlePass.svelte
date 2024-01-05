@@ -79,24 +79,12 @@
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image">
             </div>
         {:else}
-            <div class="backgroundNormal">
+            <div class="backgroundSmall">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
             </div>
         {/if}
     {/if}
 
-    <!-- PRAWY -->
-    {#if currentIndex < images.length - 1}
-        {#if (currentIndex + 1 ) <= level}
-            <div class="backgroundUnlocked">
-                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
-            </div>
-        {:else}
-            <div class="backgroundNormal">
-                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
-            </div>
-        {/if}
-    {/if}
 
     <!-- SRODKOWY -->
     {#if currentIndex <= level}
@@ -107,6 +95,19 @@
         <div class="backgroundNormal">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
         </div>
+    {/if}
+    
+    <!-- PRAWY -->
+    {#if currentIndex < images.length - 1}
+        {#if (currentIndex + 1 ) <= level}
+            <div class="backgroundUnlocked">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+            </div>
+        {:else}
+            <div class="backgroundSmall">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+            </div>
+        {/if}
     {/if}
 </div>
 
@@ -153,6 +154,9 @@
 
     div.backgroundNormal {
         transform: scale(1.5);
+    }
+    div.backgroundSmall {
+        transform: scale(1.2);
     }
     div.backgroundUnlocked {
         background-color: rgba(0, 255, 0, 0.5);
