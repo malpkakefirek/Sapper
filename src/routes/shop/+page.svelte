@@ -71,7 +71,7 @@
 
     let boosters_owned=11;
     let boosters = [
-        { id: 1, name: 'Booster', image: '/images/1.svg', priceCoins: 200, priceGems: 50 },
+        { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
     ];
 
     import Currency from './Currency.svelte';
