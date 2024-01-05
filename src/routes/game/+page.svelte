@@ -172,6 +172,11 @@
                         tileData[i.toString()] = result.board[i.toString()];
                         continue;
                     }
+                    // Show flagged mines
+                    if (flagData[i.toString()] === true && result.board[i.toString()] === 9) {
+                        tileData[i.toString()] = -2;
+                        continue;
+                    }
                 }
             } else {
                 tileData = result.board;
