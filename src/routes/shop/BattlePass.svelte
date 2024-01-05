@@ -96,28 +96,25 @@
     }
 
 
-    let bp_xp = 0;
-    let level = 0;
+    let bp_xp = -1;
+    let level = -1;
     let bp_xp_max = -1;
-    
-    $: level = calculateLevel(bp_xp);
+
 
     function calculateLevel(xp) {
         let expRequired = 100;
-        let expIncrementAmount = 50;
+        let expIncrementAmount = 25;
         let currentLevel = 0;
 
         while ( xp >= expRequired) {
             xp -= expRequired;
-                currentLevel++;
-            expRequired+=expIncrementAmount;
+            currentLevel++;
+            expRequired += expIncrementAmount;
         }
         bp_xp = xp;
         bp_xp_max = expRequired;
-        currentIndex=currentLevel;
-        //console.log("Current Battlepass level: "+ currentIndex);
-
-        return currentLevel;
+        currentIndex = currentLevel;
+        level = currentLevel;
     }
 
         
