@@ -169,6 +169,9 @@
                         tileData[i.toString()] = -3;
                         continue;
                     }
+                    if (result.board[i] < 9 && result.board[i] >= 0) {
+                        console.log(flagData[i.toString()]);
+                    }
                     // Show unflagged mines
                     if (result.board[i] >= 9 && flagData[i.toString()] !== true) {
                         tileData[i.toString()] = result.board[i];
