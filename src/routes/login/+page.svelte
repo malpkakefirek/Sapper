@@ -31,10 +31,12 @@
             }
             await goto("/");
             location.reload();
+            
+            await invalidateAll();
         }
         // TODO: add login fail logic
 
-        // applyAction(result);
+        applyAction(result);
     }
 </script>
 
