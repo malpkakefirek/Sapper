@@ -23,7 +23,7 @@
         let profile_name = localStorage.getItem('profile_viewed_name');
         profile = friends_list.find(friend => friend.id === profile_id);
 
-        befriended = Bool(localStorage.getItem('befriended'));
+        befriended = (localStorage.getItem('befriended') === 'true');
     });
 
 
@@ -52,7 +52,7 @@
 
     function toggle_friend(){
         befriended = !befriended;
-        befriended = localStorage.setItem('befriended',befriended);
+        befriended = localStorage.setItem('befriended', befriended.toString());
         location.reload();
     }
 </script>
