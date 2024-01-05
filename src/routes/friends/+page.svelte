@@ -161,35 +161,37 @@
     }
     
 
+    /* BUTTON FOR UNFRIEND */
     .custom_button_remove_friend {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #725AC1;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
+        position: relative;
+        flex: 1;
+        display: inline-block;
+        margin: 5px;
+        padding: 6px;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #CCAC00;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #CCAC00;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #CCAC00;
     }
 
     .custom_button_remove_friend:hover {
         color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
+        box-shadow: inset 0 -100px 0 0 #CCAC00;
         transform: scale(1.1);
     }
 
     .custom_button_remove_friend:active {
         transform: scale(0.9);
     }
-    
 
+    /* BUTTON FOR ADD FRIEND */
     .custom_button_add_friend {
         position: relative;
         flex: 1;
