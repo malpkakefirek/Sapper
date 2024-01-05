@@ -64,15 +64,14 @@
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
         UpdateCurrency();
+
+        //check if booster is in use
+        booster_used = localStorage.getItem('booster_used');
     });
 
 
     import BattlePass from './BattlePass.svelte';
 
-    let boosters_owned=11;
-    let boosters = [
-        { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
-    ];
 
     import Currency from './Currency.svelte';
     import { goto } from "$app/navigation";
@@ -118,6 +117,17 @@
             console.error('Error fetching data:', error);        
         }
     }
+
+    let boosters_owned=11;
+    let booster_used = false;
+    let boosters = [
+        { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
+    ];
+    function use_booster(){
+        boosters_owned--;
+        booster_used=true;
+        localStorage.setItem('booster_used',booster_used);
+    }
 </script>
 
 <svelte:head>
@@ -155,6 +165,11 @@
                 <div class="item">
                     <Item {item} />
                     You have: {boosters_owned} boosters
+                    {#if !booster_used}
+                        <button on:click={() => use_booster()} class="custom_button1"> Use Booster</button>
+                    {:else}
+                        <button class="custom_button2"> Activated</button>
+                    {/if}
                 </div>
             {/each}
         </div>
@@ -197,4 +212,61 @@
         justify-content: space-around;
     }
     
+    .custom_button1 {
+      position: relative;
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #725AC1;
+      background: transparent;
+      cursor: pointer;
+      transition: ease-out 0.5s;
+      border: 2px solid #725AC1;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 0 #725AC1;
+    }
+
+    .custom_button1:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+        transform: scale(1.1);
+    }
+
+    .custom_button1:active {
+        transform: scale(0.9);
+    }
+
+    
+    .custom_button2 {
+        position: relative;
+        flex: 1;
+        display: inline-block;
+        margin: 5px;
+        padding: 6px;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #4CAF50;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #4CAF50;
+    }
+
+    .custom_button2:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #4CAF50;
+        transform: scale(1.1);
+    }
+
+    .custom_button2:active {
+        transform: scale(0.9);
+    }
 </style>
