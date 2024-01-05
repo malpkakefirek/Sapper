@@ -18,9 +18,9 @@
     import { onMount } from "svelte";
     let session_id;
     let username;
-    let level = 0;
-    let xp = 0;
-    let max_xp = 100;
+    let level = -1;
+    let xp = -1;
+    let max_xp = -1;
     let coins = -1;
     let gems = -1;
 
