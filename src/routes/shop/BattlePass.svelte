@@ -133,7 +133,7 @@
     <!-- LEWY -->
     {#if currentIndex > 0}
         {#if (currentIndex - 1) < level}
-            <div class="backgroundUnlocked itemSmall">
+            <div class="backgroundUnlocked itemSmall itemSlot">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -145,7 +145,7 @@
                 </div>
             </div>
         {:else}
-            <div class="backgroundSmall itemSmall">
+            <div class="backgroundSmall itemSmall itemSlot">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -162,7 +162,7 @@
 
     <!-- SRODKOWY -->
     {#if currentIndex < level}
-        <div class="backgroundUnlockedMiddle itemNormal">
+        <div class="backgroundUnlockedMiddle itemNormal itemSlot">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
@@ -174,7 +174,7 @@
             </div>
         </div>
     {:else}
-        <div class="backgroundNormal itemNormal">
+        <div class="backgroundNormal itemNormal itemSlot">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
@@ -190,7 +190,7 @@
     <!-- PRAWY -->
     {#if currentIndex < images.length - 1}
         {#if (currentIndex + 1 ) < level}
-            <div class="backgroundUnlocked itemSmall">
+            <div class="backgroundUnlocked itemSmall itemSlot">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -202,7 +202,7 @@
                 </div>
             </div>
         {:else}
-            <div class="backgroundSmall itemSmall">
+            <div class="backgroundSmall itemSmall itemSlot">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -216,7 +216,7 @@
         {/if}
     {/if}
 </div>
-
+<!-- 
 <div class="container">
     <label for="xpSlider">XP:</label>
     <input
@@ -231,7 +231,7 @@
     <p>Current XP: {bp_xp}</p>
     <p>Current Level: {level}</p>
     <p>{names[currentIndex]}</p>
-</div>
+</div> -->
 
 
 
@@ -244,6 +244,11 @@
         margin-bottom: 32px;
     }
 
+    .itemSlot {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .itemSmall {
         width: 128px;
         margin-top: 32px;
@@ -252,7 +257,7 @@
     .itemSmall-label {
         text-align: center;
         text-wrap: pretty;
-        margin-top: 8px;
+        margin-top: 4px;
     }
         
     .itemSmall-tier {
@@ -271,7 +276,7 @@
     .itemNormal-label {
         text-align: center;
         text-wrap: pretty;
-        margin-top: 16px;
+        margin-top: 8px;
     }
     
     .itemNormal-tier {
@@ -286,7 +291,7 @@
     .carousel-container {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         max-width: 600px; 
         margin: auto;
     }

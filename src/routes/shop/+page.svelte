@@ -193,7 +193,7 @@
 
     .battlepass-container {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: space-around;
     }
     
