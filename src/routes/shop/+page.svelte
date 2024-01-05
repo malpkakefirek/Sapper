@@ -63,6 +63,9 @@
 
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
+
+        let coins = localStorage.getItem('coins') || -1;
+        let gems = localStorage.getItem('gems') || -1;
         await UpdateCurrency();
 
         //check if booster is in use
@@ -77,14 +80,12 @@
     import Currency from './Currency.svelte';
     import { goto } from "$app/navigation";
 
-
-    let coins=-1;
-    let gems=-1;
+    
     async function UpdateCurrency() {
         console.log("Shop clicked");
         // Set to -1 which equals to 'LOADING...'
-        let oldCoins = localStorage.getItem('coins');
-        let oldGems = localStorage.getItem('gems');
+        let oldCoins = coins;
+        let oldGems = gems;
         localStorage.setItem('coins',-1);
         localStorage.setItem('gems',-1);
         coins = -1;
@@ -115,7 +116,7 @@
                 localStorage.setItem('gems',result.gems);
                 coins = result.coins;
                 gems = result.gems;
-                if (oldCoins !== coins || oldGems !== gems) {
+                if ((oldCoins !== -1 && oldCoins !== coins) || (oldGems !== -1 && oldGems !== gems)) {
                     // Update currency if it's wrong
                     location.reload()
                 }
