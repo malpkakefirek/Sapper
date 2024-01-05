@@ -24,41 +24,20 @@
     let coins = -1;
     let gems = -1;
 
-    // $: level = calculateLevel(xp);
 
     function calculateLevel(_xp) {
         let expRequired = 100;
         let expIncrementAmount = 50;
         let currentLevel = 0;
 
-        console.log("before");
-        console.log(xp);
-        console.log(max_xp);
-        console.log(level);
-        console.log(_xp);
-
-        console.log("during");
         while ( _xp >= expRequired) {
             _xp -= expRequired;
             currentLevel++;
             expRequired+=expIncrementAmount;
-            console.log(_xp);
-            console.log(currentLevel);
-            console.log(expRequired);
         }
         max_xp=expRequired;
         xp = _xp;
         level = currentLevel;
-
-        console.log("after");
-        console.log(xp);
-        console.log(max_xp);
-        console.log(level);
-        console.log(_xp);
-        
-        //console.log("Current Battlepass level: "+ currentIndex);
-
-        return currentLevel;
     }
     
     onMount(() => {
