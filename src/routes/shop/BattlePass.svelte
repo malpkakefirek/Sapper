@@ -23,22 +23,24 @@
 
 
     let bp_xp = 0;
+    let level = 1;
     
-    $: level = calculateLevel(xp);
+    $: level = calculateLevel(bp_xp);
 
     function calculateLevel(xp) {
         let expRequired = 100;
         let expIncrementAmount = 50;
+        let currentLevel = 1;
 
         while ( xp >= expRequired) {
             xp -= expRequired;
-            level++;
+                currentLevel++;
             expRequired+=expIncrementAmount;
         }
-        currentIndex=level;
+        currentIndex=currentLevel;
         console.log("Current Battlepass level: "+ currentIndex);
 
-        return level;
+        return currentLevel;
     }
 
         
