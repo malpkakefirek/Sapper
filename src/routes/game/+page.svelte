@@ -310,12 +310,12 @@
         <h1>Choose game difficulty to start the game!</h1>
 
         <div>
-            <p>Mines: {mines}</p>
+            <p>Mines: {mines} % of the field</p>
             <div class="button-container">
-                <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> 10 mines </button>
-                <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> 20 mines </button>
-                <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> 30 mines </button>
-                <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> 50 mines </button>
+                <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> 10 % mines </button>
+                <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> 20 % mines </button>
+                <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> 30 % mines </button>
+                <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> 50 % mines </button>
             </div>
         </div>
         <div>
