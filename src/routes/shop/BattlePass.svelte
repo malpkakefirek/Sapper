@@ -89,11 +89,11 @@
     <!-- SRODKOWY -->
     {#if currentIndex < level}
         <div class="backgroundUnlockedMiddle">
-            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
         </div>
     {:else}
         <div class="backgroundNormal">
-            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
         </div>
     {/if}
     
@@ -101,11 +101,11 @@
     {#if currentIndex < images.length - 1}
         {#if (currentIndex + 1 ) < level}
             <div class="backgroundUnlocked">
-                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
             </div>
         {:else}
             <div class="backgroundSmall">
-                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
             </div>
         {/if}
     {/if}
@@ -152,26 +152,16 @@
         width: 100%;
     }
 
-    div.backgroundNormal {
-        transform: scale(1.5);
-        display: flex;
-        justify-content: space-between;
+    img.backgroundNormal {
+        width: 96px;
     }
-    div.backgroundSmall {
-        transform: scale(1.2);
-        display: flex;
-        justify-content: space-between;
+    img.backgroundSmall {
+        width: 77px;
     }
     div.backgroundUnlocked {
         background-color: rgba(0, 255, 0, 0.5);
-        transform: scale(1.2);
-        display: flex;
-        justify-content: space-between;
     }
     div.backgroundUnlockedMiddle {
         background-color: rgba(0, 255, 0, 0.5);
-        transform: scale(1.5);
-        display: flex;
-        justify-content: space-between;
     }
 </style>
