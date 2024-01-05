@@ -74,20 +74,30 @@
 <div class="carousel-container">
     {#if currentIndex > 0}
         {#if currentIndex <= level}
-            <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image unlocked">
+            <div class="backgroundUnlocked">
+                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image">
+            </div>
         {:else}
-            <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
+            <div class="backgroundNormal">
+                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
+            </div>
         {/if}
     {/if}
 
     {#if currentIndex <= level}
-        <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image unlocked">
+        <div class="backgroundUnlockedMiddle">
+            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+        </div>
     {:else}
-        <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+        <div class="backgroundNormal">
+            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+        </div>
     {/if}
 
     {#if currentIndex < images.length - 1}
-        <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+        <div class="backgroundNormal">
+            <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+        </div>
     {/if}
 </div>
 
@@ -116,7 +126,6 @@
         align-items: center;
         max-width: 600px; 
         margin: auto;
-        transform: scale(1.75);
     }
 
     .carousel-image {
@@ -127,14 +136,21 @@
     .darkened {
         filter: brightness(0.5);
         max-width: 160px;
-        transform: scale(1.5);
     }
 
-    .unlocked {
-        background-color: rgba(0, 255, 0, 0.5);
-    }
-    
     .slider {
         width: 100%;
+    }
+
+    div.backgroundNormal {
+        transform: scale(1.5);
+    }
+    div.backgroundUnlocked {
+        background-color: rgba(0, 255, 0, 0.5);
+        transform: scale(1.2);
+    }
+    div.backgroundUnlockedMiddle {
+        background-color: rgba(0, 255, 0, 0.5);
+        transform: scale(1.5);
     }
 </style>
