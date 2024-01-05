@@ -7,6 +7,25 @@
         '/images/5.svg',
         '/images/6.svg',
         '/images/7.svg',
+        '/images/8.svg',
+        '/images/9.svg',
+        '/images/10.svg',
+        '/images/-1.svg',
+        '/images/-2.svg',
+        '/images/-3.svg',
+        '/images/1.svg',
+        '/images/2.svg',
+        '/images/3.svg',
+        '/images/4.svg',
+        '/images/5.svg',
+        '/images/6.svg',
+        '/images/7.svg',
+        '/images/8.svg',
+        '/images/9.svg',
+        '/images/10.svg',
+        '/images/-1.svg',
+        '/images/-2.svg',
+        '/images/-3.svg',
     ];
 
     let currentIndex = 0;  // TODO: LOAD AND SET THIS TO USERS BATTPLE PASS LEVEL
@@ -23,14 +42,14 @@
 
 
     let bp_xp = 0;
-    let level = 1;
+    let level = 0;
     
     $: level = calculateLevel(bp_xp);
 
     function calculateLevel(xp) {
         let expRequired = 100;
         let expIncrementAmount = 50;
-        let currentLevel = 1;
+        let currentLevel = 0;
 
         while ( xp >= expRequired) {
             xp -= expRequired;
