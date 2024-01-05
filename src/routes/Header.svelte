@@ -33,11 +33,12 @@
 
         while ( _xp >= expRequired) {
             _xp -= expRequired;
-                currentLevel++;
+            currentLevel++;
             expRequired+=expIncrementAmount;
         }
         max_xp=expRequired;
         xp = _xp;
+        level = currentLevel;
         
         //console.log("Current Battlepass level: "+ currentIndex);
 
