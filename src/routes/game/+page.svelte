@@ -163,13 +163,15 @@
         console.log(result);
         if ("board" in result) {
             if (result.type == "loss") {
-                for (let key in result.board) { 
-                    if (flagData[key.toString()] && result.board[key] < 9 && result.board[key] >= 0) {
-                        tileData[key.toString()] = -3;
+                for (let i = 0; i < max_y*max_x; i++) {
+                    // Mark incorrect flags
+                    if (flagData[i.toString()] === true && result.board[i] < 9 && result.board[i] >= 0) {
+                        tileData[i.toString()] = -3;
                         continue;
                     }
-                    if (result.board[key] >= 9 && !flagData[key.toString()]) {
-                        tileData[key.toString()] = result.board[key];
+                    // Show unflagged mines
+                    if (result.board[i] >= 9 && flagData[i.toString()] !== true) {
+                        tileData[i.toString()] = result.board[i];
                         continue;
                     }
                 }
