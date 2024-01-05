@@ -16,12 +16,12 @@
           { id: 11, name: 'Evelina', image: '/images/avatars/11.png' },
     ];
 
-    let profile_name = 'Null';
-    let profile_id = -1;
+    let profile = [];
     import { onMount } from 'svelte';
     onMount(async () => {
         profile_id = localStorage.getItem('profile_viewed_id');
         profile_name = localStorage.getItem('profile_viewed_name');
+        profile = friends_list.find(friend => friend.id === profile_id);
     });
 
 
@@ -50,9 +50,9 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
     {#if $page.url.hash == "#profile"}
-        <img src={friends_list[profile_id].image} alt="avatar of {friends_list[profile_id].name}" />
-        <p>{friends_list[profile_id].name}</p>
-        <p>{friends_list[profile_id].id}</p>
+        <img src={profile.image} alt="avatar of {profile.name}" />
+        <p>{profile.name}</p>
+        <p>{profile.id}</p>
     {:else if $page.url.hash == "#list"}
         <div class="friends-container">
             {#each friends_list as friend (friend.id)}
