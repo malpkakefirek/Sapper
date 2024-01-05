@@ -66,8 +66,8 @@
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
 
-        coins = localStorage.getItem('coins') || -1;
-        gems = localStorage.getItem('gems') || -1;
+        coins = parseInt(localStorage.getItem('coins')) || -1;
+        gems = parseInt(localStorage.getItem('gems')) || -1;
         await UpdateCurrency();
 
         //check if booster is in use
