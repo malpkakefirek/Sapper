@@ -1,5 +1,4 @@
 <script>
-	import Counter from './Counter.svelte';
     import Health from './Health.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
@@ -19,14 +18,12 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		to new and improved<br />MINESWEEPER
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+    <h2>
+        Page status
+    </h2>
     <Health />
 </section>
 
