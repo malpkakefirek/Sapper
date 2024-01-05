@@ -74,7 +74,7 @@
 <div class="carousel-container">
     <!-- LEWY -->
     {#if currentIndex > 0}
-        {#if (currentIndex - 1) <= level}
+        {#if (currentIndex - 1) < level}
             <div class="backgroundUnlocked">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image">
             </div>
@@ -87,7 +87,7 @@
 
 
     <!-- SRODKOWY -->
-    {#if currentIndex <= level}
+    {#if currentIndex < level}
         <div class="backgroundUnlockedMiddle">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
         </div>
@@ -99,7 +99,7 @@
     
     <!-- PRAWY -->
     {#if currentIndex < images.length - 1}
-        {#if (currentIndex + 1 ) <= level}
+        {#if (currentIndex + 1 ) < level}
             <div class="backgroundUnlocked">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
             </div>
@@ -154,16 +154,24 @@
 
     div.backgroundNormal {
         transform: scale(1.5);
+        display: flex;
+        justify-content: space-between;
     }
     div.backgroundSmall {
         transform: scale(1.2);
+        display: flex;
+        justify-content: space-between;
     }
     div.backgroundUnlocked {
         background-color: rgba(0, 255, 0, 0.5);
         transform: scale(1.2);
+        display: flex;
+        justify-content: space-between;
     }
     div.backgroundUnlockedMiddle {
         background-color: rgba(0, 255, 0, 0.5);
         transform: scale(1.5);
+        display: flex;
+        justify-content: space-between;
     }
 </style>
