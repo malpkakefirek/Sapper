@@ -2,11 +2,11 @@
     export let friend;
 
     import { goto } from "$app/navigation";
-    function handleProfileView(){
+    async function handleProfileView(){
         console.log("Profile Viewed of "+friend.name+" | id: "+friend.id);
         localStorage.setItem('profile_viewed_id',friend.id);
         localStorage.setItem('profile_viewed_name',friend.name);
-        goto("/friends#profile");
+        await goto("/friends#profile");
         location.reload();
     }
 </script>
