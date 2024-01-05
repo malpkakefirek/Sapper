@@ -66,7 +66,7 @@
         UpdateCurrency();
 
         //check if booster is in use
-        booster_used = localStorage.getItem('booster_used');
+        booster_used = (localStorage.getItem('booster_used') === 'true');
         boosters_owned = localStorage.getItem('boosters_owned'); //TODO: add loading `boosters_owned` from backend: user
     });
 
@@ -127,7 +127,7 @@
     function use_booster(){
         boosters_owned--;
         booster_used=true;
-        localStorage.setItem('booster_used',booster_used);
+        localStorage.setItem('booster_used', booster_used.toString());
         localStorage.setItem('boosters_owned',boosters_owned);
     }
 </script>
