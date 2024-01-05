@@ -143,20 +143,18 @@
         const result = await response.json();
 
         // Fix flagged tiles
-        if (result.type === "playing") {
-            for (let i = 0; i < max_y*max_x; i++) {
-                // Skip unflagged tiles
-                if (flagData[i.toString()] !== true) {
-                    continue;
-                }
-                // Keep flagged hidden tiles
-                if (result.board[i.toString()] === -1) {
-                    result.board[i.toString()] = -2;
-                }
-                // Unflag shown tiles
-                if (result.board[i.toString()] > -1) {
-                    flagData[i.toString()] = false;
-                }
+        for (let i = 0; i < max_y*max_x; i++) {
+            // Skip unflagged tiles
+            if (flagData[i.toString()] !== true) {
+                continue;
+            }
+            // Keep flagged hidden tiles
+            if (result.board[i.toString()] === -1) {
+                result.board[i.toString()] = -2;
+            }
+            // Unflag shown tiles
+            if (result.board[i.toString()] > -1) {
+                flagData[i.toString()] = false;
             }
         }
         
@@ -165,21 +163,13 @@
             if (result.type == "loss") {
                 for (let i = 0; i < max_y*max_x; i++) {
                     // Mark incorrect flags
-                    if (flagData[i.toString()] === true && result.board[i] < 9 && result.board[i] >= 0) {
+                    if (flagData[i.toString()] === true && result.board[i.toString()] < 9 && result.board[i.toString()] >= 0) {
                         tileData[i.toString()] = -3;
                         continue;
                     }
                     // Show unflagged mines
-                    if (result.board[i] >= 9 && flagData[i.toString()] !== true) {
-                        tileData[i.toString()] = result.board[i];
-                        continue;
-                    }
-                }
-            } else if (result.type == "win") {
-                for (let i = 0; i < max_y*max_x; i++) {
-                    // Mark flags
-                    if (flagData[i.toString()] === true && result.board[i] === -1) {
-                        tileData[i.toString()] = -2;
+                    if (result.board[i.toString()] >= 9 && flagData[i.toString()] !== true) {
+                        tileData[i.toString()] = result.board[i.toString()];
                         continue;
                     }
                 }
