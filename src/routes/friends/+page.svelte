@@ -40,6 +40,12 @@
         SearchList=filterFriends();
         console.log(SearchList);
     }
+
+    let games_played = Math.floor(Math.random() * 1000) + 1;
+    let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
+    let games_won = Math.floor(Math.random() * games_played) + 1;
+    let games_lost = games_played-games_won;
+    let flags_placed = Math.floor(Math.random() * 5000) + 1;
 </script>
 
 <svelte:head>
@@ -50,9 +56,31 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
     {#if $page.url.hash == "#profile"}
-        <img src={profile.image} alt="avatar of {profile.name}" />
-        <p>{profile.name}</p>
-        <p>{profile.id}</p>
+        <div class="profileCard">
+            <div class="left">
+                <div class="profileName">{profile.name}</div>
+                <div class="avatar">
+                    <img style="width:inherit" src={profile.image} alt="avatar of {profile.name}" />
+                </div>
+                {#if "coś tam"}
+                    <button class="custom_button_add_friend">Add Friend</button>
+                {:else}
+                    <button class="custom_button_remove_friend">Remove Friend</button>
+                {/if}
+            </div>
+            <div class="right">
+                <div class="statistics-title">
+                    Statistics
+                </div>
+                <div class="statistics">
+                    <div>Games Played: <span>{games_played}</span></div>
+                    <div>Tiles Clicked: <span>{tiles_clicked}</span></div>
+                    <div>Games Won: <span>{games_won}</span></div>
+                    <div>Games Lost: <span>{games_lost}</span></div>
+                    <div>Flags Placed: <span>{flags_placed}</span></div>
+                </div>
+            </div>
+        </div>
     {:else if $page.url.hash == "#list"}
         <div class="friends-container">
             {#each friends_list as friend (friend.id)}
@@ -94,5 +122,90 @@
         justify-content: space-around;
         margin: 10px;
         max-width: 200px;
+    }
+    .profileCard {
+        display: flex;
+    }
+    .left, .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .profileName {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .avatar {
+        width: 128px;
+        border-radius: 50%;
+    }
+    .statistics-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .statistics {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+
+    .custom_button_remove_friend {
+      position: relative;
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #725AC1;
+      background: transparent;
+      cursor: pointer;
+      transition: ease-out 0.5s;
+      border: 2px solid #725AC1;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 0 #725AC1;
+    }
+
+    .custom_button_remove_friend:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+        transform: scale(1.1);
+    }
+
+    .custom_button_remove_friend:active {
+        transform: scale(0.9);
+    }
+    
+
+    .custom_button_add_friend {
+        position: relative;
+        flex: 1;
+        display: inline-block;
+        margin: 5px;
+        padding: 6px;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #4CAF50;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #4CAF50;
+    }
+
+    .custom_button_add_friend:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #4CAF50;
+        transform: scale(1.1);
+    }
+
+    .custom_button_add_friend:active {
+        transform: scale(0.9);
     }
 </style>
