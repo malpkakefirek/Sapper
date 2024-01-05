@@ -36,17 +36,30 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
     {#if $page.url.hash == "#statistics"}
-        <div class="statistics-page">
-            <div class="statistics-title">
-                Statistics
+        <div class="settingsPage">
+            <div class="profileCard">
+                <div class="left">
+                    <div class="avatar">
+                        <img style="width:inherit" src={profile.image} alt="avatar of {profile.name}" />
+                    </div>
+                    <div class="profileName">{profile.name}</div>
+                </div>
+                <div class="right">
+                    <div class="statistics-title">
+                        Statistics
+                    </div>
+                    <div class="statistics">
+                        <div>Games Played: <span>{games_played}</span></div>
+                        <div>Tiles Clicked: <span>{tiles_clicked}</span></div>
+                        <div>Games Won: <span>{games_won}</span></div>
+                        <div>Games Lost: <span>{games_lost}</span></div>
+                        <div>Flags Placed: <span>{flags_placed}</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="statistics">
-                <div>Games Played: <span>{games_played}</span></div>
-                <div>Tiles Clicked: <span>{tiles_clicked}</span></div>
-                <div>Games Won: <span>{games_won}</span></div>
-                <div>Games Lost: <span>{games_lost}</span></div>
-                <div>Flags Placed: <span>{flags_placed}</span></div>
-            </div>
+            <!-- <div class="avatarSelection">
+                
+            </div> -->
         </div>
     {:else if $page.url.hash == "#changePassword"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
@@ -64,10 +77,28 @@
         height: 100%;
     }
 
-    .statistics-page {
+    .settingsPage {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .profileCard {
+        display: flex;
+    }
+    .left, .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .profileName {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .avatar {
+        width: 128px;
+        border-radius: 50%;
     }
     .statistics-title {
         font-size: 32px;
