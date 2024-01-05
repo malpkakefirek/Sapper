@@ -54,8 +54,6 @@
             console.error('Error fetching data:', error);        
         }
 
-        
-        // let owned_items = items.filter(item => owned.some(owned => owned.id === item.id));
         owned_items = items
         .filter(item => owned.some(owned => owned.id === item.id))
         .map(item => ({
