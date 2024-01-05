@@ -98,6 +98,7 @@
 
     let bp_xp = 0;
     let level = 0;
+    let bp_xp_max = -1;
     
     $: level = calculateLevel(bp_xp);
 
@@ -125,17 +126,35 @@
     });
 </script>
 
-
+<div class="container level">
+    Level: {level} XP: {bp_xp}/{bp_xp_max}
+</div>
 <div class="carousel-container">
     <!-- LEWY -->
     {#if currentIndex > 0}
         {#if (currentIndex - 1) < level}
-            <div class="backgroundUnlocked">
+            <div class="backgroundUnlocked itemSmall">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
+                <div class="itemSmall-label">
+                    <div class="itemSmall-tier">
+                        Tier {level - 1}
+                    </div>
+                    <div class="itemSmall-name">
+                        THIS IS A LONG ASS NAME
+                    </div>
+                </div>
             </div>
         {:else}
             <div class="backgroundSmall">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
+                <div class="itemSmall-label">
+                    <div class="itemSmall-tier">
+                        Tier {level - 1}
+                    </div>
+                    <div class="itemSmall-name">
+                        THIS IS A LONG ASS NAME
+                    </div>
+                </div>
             </div>
         {/if}
     {/if}
@@ -145,10 +164,26 @@
     {#if currentIndex < level}
         <div class="backgroundUnlockedMiddle">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+            <div class="itemNormal-label">
+                <div class="itemNormal-tier">
+                    Tier {level}
+                </div>
+                <div class="itemNormal-name">
+                    THIS IS A LONG ASS NAME
+                </div>
+            </div>
         </div>
     {:else}
         <div class="backgroundNormal">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+            <div class="itemNormal-label">
+                <div class="itemNormal-tier">
+                    Tier {level}
+                </div>
+                <div class="itemNormal-name">
+                    THIS IS A LONG ASS NAME
+                </div>
+            </div>
         </div>
     {/if}
     
@@ -157,10 +192,26 @@
         {#if (currentIndex + 1 ) < level}
             <div class="backgroundUnlocked">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                <div class="itemSmall-label">
+                    <div class="itemSmall-tier">
+                        Tier {level + 1}
+                    </div>
+                    <div class="itemSmall-name">
+                        THIS IS A LONG ASS NAME
+                    </div>
+                </div>
             </div>
         {:else}
             <div class="backgroundSmall">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                <div class="itemSmall-label">
+                    <div class="itemSmall-tier">
+                        Tier {level + 1}
+                    </div>
+                    <div class="itemSmall-name">
+                        THIS IS A LONG ASS NAME
+                    </div>
+                </div>
             </div>
         {/if}
     {/if}
@@ -186,6 +237,52 @@
 
 
 <style>
+    .level {
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+        margin-bottom: 32px;
+    }
+
+    .itemSmall {
+        width: 128px;
+        margin-top: 32px;
+    }
+
+    .itemSmall-label {
+        text-align: center;
+        text-wrap: pretty;
+        margin-top: 8px;
+    }
+        
+    .itemSmall-tier {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .itemSmall-name {
+        font-size: 12px;
+    }
+
+    .itemNormal {
+        width: 192px;
+    }
+    
+    .itemNormal-label {
+        text-align: center;
+        text-wrap: pretty;
+        margin-top: 16px;
+    }
+    
+    .itemNormal-tier {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .itemNormal-name {
+        font-size: 16px;
+    }
+    
     .carousel-container {
         display: flex;
         justify-content: space-between;
