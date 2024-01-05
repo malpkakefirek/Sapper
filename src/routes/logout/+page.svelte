@@ -26,6 +26,7 @@
                 localStorage.removeItem("session_id");
                 localStorage.removeItem("username");
                 await goto("/");
+                location.reload();
                 // await invalidateAll();
             }
         } catch (error) {
