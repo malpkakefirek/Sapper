@@ -54,6 +54,8 @@
     let max_x = 50;
     let mines = 20;
     let gameStarted = 0;
+    let xp_added = 0;
+    let bp_xp_added = 0;
     
     let current_skin = 0; // 0 for default
 
@@ -191,6 +193,8 @@
             localStorage.setItem("is_won", 1);
             localStorage.setItem("xp", result.xp);
             localStorage.setItem("bp_xp", result.battlepass_xp);
+            xp_added = result.xp_added;
+            bp_xp_added = result.battlepass_xp_added;
             //stopTimer();
             // goto("/game#win");
             return;
@@ -334,10 +338,10 @@
         <div>
             <p>Mines: {mines} % of the field</p>
             <div class="button-container">
-                <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> 10 %</button>
-                <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> 20 %</button>
-                <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> 30 %</button>
-                <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> 50 %</button>
+                <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> Easy</button>
+                <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> Medium</button>
+                <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> Hard</button>
+                <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> Impossible</button>
             </div>
         </div>
         <div>
@@ -433,7 +437,8 @@
     <ol class="definition-list">
         <p>Map Size: {max_x}x{max_y}</p>
         <p>Difficulty: {mines} mines</p>
-        <p>Exp: Null</p>
+        <p>XP: +{xp_added}</p>
+        <p>Battlepass XP: +{bp_xp_added}</p>
     </ol>
 </Modal2>
 
