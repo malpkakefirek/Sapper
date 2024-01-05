@@ -41,7 +41,48 @@
         '/images/battlepass/gemsx100.svg',
         '/images/avatars/9.png',
     ];
-
+    let names = [  
+        'booster x1',
+        'booster x1',
+        'avatar 3',
+        'booster x2',
+        'gems x100',
+        'booster x1',
+        'booster x3',
+        'gems x50',
+        'booster x1',
+        'skinpack Icy Skin', //ZMIENIC W PRZYSZLOSCI
+        'gems x100',
+        'booster x1',
+        'booster x2',
+        'avatar 2',
+        'gems x100',
+        'booster x2',
+        'gems x50',
+        'booster x1',
+        'booster x1',
+        'skinpack Mechanical Knight', //ZMIENIC W PRZYSZLOSCI
+        'gems x100',
+        'booster x2',
+        'booster x1',
+        'avatar 5',
+        'gems x100',
+        'booster x3',
+        'booster x1',
+        'gems x50',
+        'booster x1',
+        'skinpack Elite Warlord', //ZMIENIC W PRZYSZLOSCI
+        'gems x100',
+        'booster x3',
+        'booster x2',
+        'avatar 8',
+        'gems x100',
+        'booster x3',
+        'gems x50',
+        'booster x1',
+        'gems x100',
+        'avatar 9',
+    ];
     let currentIndex = 0; 
 
     function handleClick(direction) {
@@ -138,6 +179,7 @@
 
     <p>Current XP: {bp_xp}</p>
     <p>Current Level: {level}</p>
+    <p>{names[currentIndex]}</p>
 </div>
 
 
