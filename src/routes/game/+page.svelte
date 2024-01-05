@@ -182,6 +182,8 @@
             console.log("Congratulations! You won!");
             is_won=true;
             localStorage.setItem("is_won", 1);
+            localStorage.setItem("xp", result.xp);
+            localStorage.setItem("bp_xp", result.battlepass_xp);
             //stopTimer();
             // goto("/game#win");
             return;
