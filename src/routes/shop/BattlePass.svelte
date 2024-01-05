@@ -112,7 +112,7 @@
                 currentLevel++;
             expRequired+=expIncrementAmount;
         }
-        bp_xp_max = expRequired
+        bp_xp_max = expRequired;
         currentIndex=currentLevel;
         //console.log("Current Battlepass level: "+ currentIndex);
 
