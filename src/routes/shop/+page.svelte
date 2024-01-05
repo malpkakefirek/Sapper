@@ -8,7 +8,9 @@
     let owned_items = [];
     let shop_items = [];
     let owned = [];
-
+    let coins = -1;
+    let gems = -1;
+    
     onMount(async () => {
         const response = await fetch("https://sapper-api.onrender.com/get_all_skins");
         const data = await response.json();
@@ -64,8 +66,8 @@
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
 
-        let coins = localStorage.getItem('coins') || -1;
-        let gems = localStorage.getItem('gems') || -1;
+        coins = localStorage.getItem('coins') || -1;
+        gems = localStorage.getItem('gems') || -1;
         await UpdateCurrency();
 
         //check if booster is in use
