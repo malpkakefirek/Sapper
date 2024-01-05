@@ -80,8 +80,8 @@
     
     async function UpdateCurrency() {
         console.log("Shop clicked");
-        coins = parseInt(localStorage.getItem('coins')) || 0;
-        gems = parseInt(localStorage.getItem('gems')) || 0;
+        coins = (localStorage.getItem('coins') !== null) ? parseInt(localStorage.getItem('coins')) : -1;
+        gems = (localStorage.getItem('gems') !== null) ? parseInt(localStorage.getItem('gems')) : -1;
         let oldCoins = coins;
         let oldGems = gems;
         // Fetch numbers from backend
