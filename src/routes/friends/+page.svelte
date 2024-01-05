@@ -23,6 +23,15 @@
         profile_id = localStorage.getItem('profile_viewed_id');
         profile_name = localStorage.getItem('profile_viewed_name');
     });
+
+
+
+
+    let inputValue = ''; 
+    
+    function filterFriends() {
+        return friends_list.filter(friend => friend.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
 </script>
 
 <svelte:head>
@@ -36,7 +45,7 @@
         <img src={friends_list[profile_id].image} alt="avatar of {friends_list[profile_id].name}" />
         <p>friends_list[profile_id].name</p>
         <p>friends_list[profile_id].id</p>
-    {:else}
+    {:else if $page.url.hash == "#list"}
         <div class="friends-container">
             {#each friends_list as friend (friend.id)}
                 <div class="friend">
@@ -44,6 +53,24 @@
                 </div>
             {/each}
         </div>
+    {:else if $page.url.hash == "#add"}
+        <label for="searchInput">Search by name:</label>
+        <input
+            type="text"
+            id="searchInput"
+            bind:value={searchTerm}
+        />
+        
+        
+        <ul>
+            {#each filterFriends() as friend (friend.id)}
+                <li>
+                    <img src={friend.image} alt={friend.name} />
+                    <p>ID: {friend.id}</p>
+                    <p>Name: {friend.name}</p>
+                </li>
+            {/each}
+        </ul>
     {/if}
 </div>
 
