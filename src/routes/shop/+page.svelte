@@ -13,16 +13,6 @@
     console.log($page.url);
     console.log($page.url.hash);
     onMount(async () => {
-        // Check if the hash is empty
-        console.log($page);
-        console.log($page.url);
-        console.log($page.url.hash);
-        if ($page.url.hash === "") {
-            console.log("You are on a URL without a hash.");
-            await goto("/shop#skins");
-            return;
-        }
-        
         const response = await fetch("https://sapper-api.onrender.com/get_all_skins");
         const data = await response.json();
         items = Object.keys(data).map(id => ({
@@ -91,11 +81,6 @@
     import { goto } from "$app/navigation";
 
 
-
-    // import { onMount } from "svelte";
-    // onMount(() => {
-    //     UpdateCurrency();
-    // });
     let coins=-1;
     let gems=-1;
     async function UpdateCurrency() {
@@ -181,9 +166,9 @@
             <Currency />
         </div>
     {:else}
-        <div>You're not on any hash!</div>
+        <div>You're not on any correct hash!</div>
         <script>
-            console.log("changing pages");
+            console.log("changing page to default hash");
             window.location.href = "/shop#skins";
         </script>
     {/if}
