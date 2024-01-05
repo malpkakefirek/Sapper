@@ -145,7 +145,7 @@
                 </div>
             </div>
         {:else}
-            <div class="backgroundSmall">
+            <div class="backgroundSmall itemSmall">
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -162,7 +162,7 @@
 
     <!-- SRODKOWY -->
     {#if currentIndex < level}
-        <div class="backgroundUnlockedMiddle">
+        <div class="backgroundUnlockedMiddle itemNormal">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
@@ -174,7 +174,7 @@
             </div>
         </div>
     {:else}
-        <div class="backgroundNormal">
+        <div class="backgroundNormal itemNormal">
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
@@ -190,7 +190,7 @@
     <!-- PRAWY -->
     {#if currentIndex < images.length - 1}
         {#if (currentIndex + 1 ) < level}
-            <div class="backgroundUnlocked">
+            <div class="backgroundUnlocked itemSmall">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -202,7 +202,7 @@
                 </div>
             </div>
         {:else}
-            <div class="backgroundSmall">
+            <div class="backgroundSmall itemSmall">
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
@@ -306,10 +306,10 @@
     }
 
     img.backgroundNormal {
-        width: 96px;
+        width: 192px;
     }
     img.backgroundSmall {
-        width: 77px;
+        width: 128px;
     }
     div.backgroundUnlocked {
         background-color: rgba(0, 255, 0, 0.5);
