@@ -33,7 +33,7 @@
             console.log(result);
             if (result.type === "success") {
                 console.log("Succesfully bought skin");
-                location.reload();
+                localStorage.setItem(currency, result.new_balance);
                 location.reload();
             }
         } catch (error) {
