@@ -65,9 +65,6 @@
 
         shop_items = items.filter(item => !owned.some(owned => owned.id === item.id));
 
-
-        coins = parseInt(localStorage.getItem('coins')) || -1;
-        gems = parseInt(localStorage.getItem('gems')) || -1;
         await UpdateCurrency();
 
         //check if booster is in use
@@ -85,13 +82,10 @@
     
     async function UpdateCurrency() {
         console.log("Shop clicked");
-        // Set to -1 which equals to 'LOADING...'
+        coins = parseInt(localStorage.getItem('coins')) || 0;
+        gems = parseInt(localStorage.getItem('gems')) || 0;
         let oldCoins = coins;
         let oldGems = gems;
-        localStorage.setItem('coins',-1);
-        localStorage.setItem('gems',-1);
-        coins = -1;
-        gems = -1;
         // Fetch numbers from backend
         let storedSession = localStorage.getItem("session_id");
         if (!storedSession) {
@@ -114,8 +108,8 @@
             const result = await response.json();
             console.log(result);
             if (result.type === "success") {
-                localStorage.setItem('coins',result.coins);
-                localStorage.setItem('gems',result.gems);
+                localStorage.setItem('coins', result.coins);
+                localStorage.setItem('gems', result.gems);
                 coins = result.coins;
                 gems = result.gems;
                 if ((oldCoins !== -1 && oldCoins !== coins) || (oldGems !== -1 && oldGems !== gems)) {
