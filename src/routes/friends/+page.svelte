@@ -28,9 +28,17 @@
 
 
     let searchTerm = ''; 
+    let SearchList = [];
     
     function filterFriends() {
+        if (searchTerm.trim() === '') {
+            return [];
+        }
         return friends_list.filter(friend => friend.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+    function handleSubmit() {
+        SearchList=filterFriends();
+        console.log(SearchList);
     }
 </script>
 
@@ -55,15 +63,12 @@
         </div>
     {:else if $page.url.hash == "#add"}
         <label for="searchInput">Search by name:</label>
-        <input
-            type="text"
-            id="searchInput"
-            bind:value={searchTerm}
-        />
+        <input type="text" id="searchInput" bind:value={searchTerm} />
+        <button on:click={handleSubmit}>Submit</button>
         
         
         <ul>
-            {#each filterFriends() as friend (friend.id)}
+            {#each SearchList as friend (friend.id)}
                 <li>
                     <img src={friend.image} alt={friend.name} />
                     <p>ID: {friend.id}</p>
