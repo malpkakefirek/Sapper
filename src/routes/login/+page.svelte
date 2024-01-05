@@ -34,7 +34,7 @@
         }
         // TODO: add login fail logic
 
-        applyAction(result);
+        // applyAction(result);
     }
 </script>
 
