@@ -28,7 +28,7 @@
         '/images/-3.svg',
     ];
 
-    let currentIndex = 0;  // TODO: LOAD AND SET THIS TO USERS BATTPLE PASS LEVEL
+    let currentIndex = 0; 
 
     function handleClick(direction) {
         if (direction === 'left') {
@@ -57,7 +57,7 @@
             expRequired+=expIncrementAmount;
         }
         currentIndex=currentLevel;
-        console.log("Current Battlepass level: "+ currentIndex);
+        //console.log("Current Battlepass level: "+ currentIndex);
 
         return currentLevel;
     }
@@ -70,6 +70,39 @@
     });
 </script>
 
+
+<div class="carousel-container">
+    {#each images as image, i (image)}
+        {#if currentIndex === 0 && (i === 0 || i === 1)}
+            <img src={image} alt="Image" class="carousel-image" on:click={() => handleClick(i)} />
+        {:else if currentIndex === images.length - 1 && (i === images.length - 2 || i === images.length - 1)}
+            <img src={image} alt="Image" class="carousel-image" on:click={() => handleClick(i)} />
+        {:else if i === currentIndex - 1 || i === currentIndex + 1}
+            <img src={image} alt="Darkened" class="carousel-image darkened" on:click={() => handleClick(i)} />
+        {:else if i === currentIndex}
+            <img src={image} alt="Middle" class="carousel-image" on:click={() => handleClick('middle')} />
+        {/if}
+    {/each}
+</div>
+
+<div class="container">
+    <label for="xpSlider">XP:</label>
+    <input
+        type="range"
+        id="xpSlider"
+        bind:value={bp_xp}
+        min="0"
+        max="2500"
+        class="slider"
+    />
+
+    <p>Current XP: {bp_xp}</p>
+    <p>Current Level: {level}</p>
+</div>
+
+
+
+
 <style>
     .carousel-container {
         display: flex;
@@ -77,7 +110,7 @@
         align-items: center;
         max-width: 600px; 
         margin: auto;
-        transform: scale(1.25);
+        transform: scale(1.75);
     }
 
     .carousel-image {
@@ -88,36 +121,14 @@
     .darkened {
         filter: brightness(0.5);
         max-width: 160px;
-        transform: scale(0.66);
+        transform: scale(1.5);
     }
+
+    .unlocked {
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+    
     .slider {
         width: 100%;
     }
 </style>
-
-<div class="carousel-container">
-    {#if currentIndex > 0}
-        <img src={images[(currentIndex - 1 + images.length) % images.length]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
-    {/if}
-
-    <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
-
-    {#if currentIndex < images.length - 1}
-        <img src={images[(currentIndex + 1) % images.length]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
-    {/if}
-
-    <div class="container">
-      <label for="xpSlider">XP:</label>
-      <input
-        type="range"
-        id="xpSlider"
-        bind:value={bp_xp}
-        min="0"
-        max="2500"
-        class="slider"
-       />
-
-      <p>Current XP: {bp_xp}</p>
-      <p>Current Level: {level}</p>
-    </div>
-</div>
