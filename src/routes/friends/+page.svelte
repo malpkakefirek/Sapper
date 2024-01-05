@@ -38,4 +38,16 @@
         width: 100%;
         height: 100%;
     }
+    .friends-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .friend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 10px;
+        max-width: 200px;
+    }
 </style>
