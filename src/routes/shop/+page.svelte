@@ -168,8 +168,13 @@
     {:else}
         <div>You're not on any correct hash!</div>
         <script>
-            console.log("changing page to default hash");
-            window.location.href = "/shop#skins";
+            if (["#skins, #equip, #battlepass, #boosters, #currency"].includes(window.location.hash)) {
+                console.log("changing page to /shop" + window.location.hash);
+                window.location.href = "/shop" + window.location.hash;
+            } else {
+                console.log("changing page to default hash");
+                window.location.href = "/shop#skins";
+            }
         </script>
     {/if}
 </div>
