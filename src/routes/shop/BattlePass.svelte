@@ -112,6 +112,7 @@
                 currentLevel++;
             expRequired+=expIncrementAmount;
         }
+        bp_xp = xp;
         bp_xp_max = expRequired;
         currentIndex=currentLevel;
         //console.log("Current Battlepass level: "+ currentIndex);
@@ -138,7 +139,7 @@
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {currentIndex - 1}
+                        Tier {currentIndex}
                     </div>
                     <div class="itemSmall-name">
                         {names[currentIndex - 1]}
@@ -150,7 +151,7 @@
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {currentIndex - 1}
+                        Tier {currentIndex}
                     </div>
                     <div class="itemSmall-name">
                         {names[currentIndex - 1]}
@@ -167,7 +168,7 @@
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
-                    Tier {currentIndex}
+                    Tier {currentIndex + 1}
                 </div>
                 <div class="itemNormal-name">
                     {names[currentIndex]}
@@ -179,7 +180,7 @@
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
-                    Tier {currentIndex}
+                    Tier {currentIndex + 1}
                 </div>
                 <div class="itemNormal-name">
                     {names[currentIndex]}
@@ -195,7 +196,7 @@
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {currentIndex + 1}
+                        Tier {currentIndex + 2}
                     </div>
                     <div class="itemSmall-name">
                         {names[currentIndex + 1]}
@@ -207,7 +208,7 @@
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {currentIndex + 1}
+                        Tier {currentIndex + 2}
                     </div>
                     <div class="itemSmall-name">
                         {names[currentIndex + 1]}
