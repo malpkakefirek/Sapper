@@ -24,7 +24,7 @@
     let coins = -1;
     let gems = -1;
 
-    $: level = calculateLevel(xp);
+    // $: level = calculateLevel(xp);
 
     function calculateLevel(_xp) {
         let expRequired = 100;
