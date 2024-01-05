@@ -9,7 +9,7 @@
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/0.svg',
+        '/images/skins/1/preview.svg', //ZMIENIC W PRZYSZLOSCI
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/boosterx2.svg',
@@ -19,7 +19,7 @@
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/0.svg',
+        '/images/skins/3/preview.svg', //ZMIENIC W PRZYSZLOSCI
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx2.svg',
         '/images/battlepass/boosterx1.svg',
@@ -29,7 +29,7 @@
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/0.svg',
+        '/images/skins/10/preview.svg', //ZMIENIC W PRZYSZLOSCI
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/boosterx2.svg',
