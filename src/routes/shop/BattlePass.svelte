@@ -112,6 +112,7 @@
                 currentLevel++;
             expRequired+=expIncrementAmount;
         }
+        bp_xp_max = expRequired
         currentIndex=currentLevel;
         //console.log("Current Battlepass level: "+ currentIndex);
 
@@ -137,10 +138,10 @@
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {level - 1}
+                        Tier {currentIndex - 1}
                     </div>
                     <div class="itemSmall-name">
-                        THIS IS A LONG ASS NAME
+                        {names[currentIndex - 1]}
                     </div>
                 </div>
             </div>
@@ -149,10 +150,10 @@
                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {level - 1}
+                        Tier {currentIndex - 1}
                     </div>
                     <div class="itemSmall-name">
-                        THIS IS A LONG ASS NAME
+                        {names[currentIndex - 1]}
                     </div>
                 </div>
             </div>
@@ -166,10 +167,10 @@
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
-                    Tier {level}
+                    Tier {currentIndex}
                 </div>
                 <div class="itemNormal-name">
-                    THIS IS A LONG ASS NAME
+                    {names[currentIndex]}
                 </div>
             </div>
         </div>
@@ -178,10 +179,10 @@
             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
             <div class="itemNormal-label">
                 <div class="itemNormal-tier">
-                    Tier {level}
+                    Tier {currentIndex}
                 </div>
                 <div class="itemNormal-name">
-                    THIS IS A LONG ASS NAME
+                    {names[currentIndex]}
                 </div>
             </div>
         </div>
@@ -194,10 +195,10 @@
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {level + 1}
+                        Tier {currentIndex + 1}
                     </div>
                     <div class="itemSmall-name">
-                        THIS IS A LONG ASS NAME
+                        {names[currentIndex + 1]}
                     </div>
                 </div>
             </div>
@@ -206,10 +207,10 @@
                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                 <div class="itemSmall-label">
                     <div class="itemSmall-tier">
-                        Tier {level + 1}
+                        Tier {currentIndex + 1}
                     </div>
                     <div class="itemSmall-name">
-                        THIS IS A LONG ASS NAME
+                        {names[currentIndex + 1]}
                     </div>
                 </div>
             </div>
