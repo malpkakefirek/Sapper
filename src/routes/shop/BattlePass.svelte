@@ -72,17 +72,23 @@
 
 
 <div class="carousel-container">
-    {#each images as image, i (image)}
-        {#if currentIndex === 0 && (i === 0 || i === 1)}
-            <img src={image} alt="Image" class="carousel-image" on:click={() => handleClick(i)} />
-        {:else if currentIndex === images.length - 1 && (i === images.length - 2 || i === images.length - 1)}
-            <img src={image} alt="Image" class="carousel-image" on:click={() => handleClick(i)} />
-        {:else if i === currentIndex - 1 || i === currentIndex + 1}
-            <img src={image} alt="Darkened" class="carousel-image darkened" on:click={() => handleClick(i)} />
-        {:else if i === currentIndex}
-            <img src={image} alt="Middle" class="carousel-image" on:click={() => handleClick('middle')} />
+    {#if currentIndex > 0}
+        {#if currentIndex <= level}
+            <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image unlocked">
+        {:else}
+            <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
         {/if}
-    {/each}
+    {/if}
+
+    {#if currentIndex <= level}
+        <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image unlocked">
+    {:else}
+        <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image">
+    {/if}
+
+    {#if currentIndex < images.length - 1}
+        <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
+    {/if}
 </div>
 
 <div class="container">
