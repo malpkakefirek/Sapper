@@ -237,7 +237,8 @@
         }
         
         // await game creation
-        let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "mine_count": mines};
+        let difficulty = mines === 10 ? 1 : mines === 20 ? 2 : mines === 30 ? 3 : mines === 50 ? 4 : 1;
+        let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "difficulty": difficulty};
         const response = await fetch("https://sapper-api.onrender.com/create_game", {
             method: "POST",
             headers: {
