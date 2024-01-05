@@ -20,6 +20,33 @@
             console.log("Showing Reward for ",(currentIndex+1));
         }
     }
+
+
+    let bp_xp = 0;
+    
+    $: level = calculateLevel(xp);
+
+    function calculateLevel(xp) {
+        let expRequired = 100;
+        let expIncrementAmount = 50;
+
+        while ( xp >= expRequired) {
+            xp -= expRequired;
+            level++;
+            expRequired+=expIncrementAmount;
+        }
+        currentIndex=level;
+        console.log("Current Battlepass level: "+ currentIndex);
+
+        return level;
+    }
+
+        
+    import { onMount } from 'svelte';
+    onMount(async () => {
+        bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
+        calculateLevel(bp_xp);
+    });
 </script>
 
 <style>
@@ -42,6 +69,9 @@
         max-width: 160px;
         transform: scale(0.66);
     }
+    .slider {
+        width: 100%;
+    }
 </style>
 
 <div class="carousel-container">
@@ -54,4 +84,19 @@
     {#if currentIndex < images.length - 1}
         <img src={images[(currentIndex + 1) % images.length]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened">
     {/if}
+
+    <div class="container">
+      <label for="xpSlider">XP:</label>
+      <input
+        type="range"
+        id="xpSlider"
+        bind:value={bp_xp}
+        min="0"
+        max="2500"
+        class="slider"
+       />
+
+      <p>Current XP: {bp_xp}</p>
+      <p>Current Level: {level}</p>
+    </div>
 </div>
