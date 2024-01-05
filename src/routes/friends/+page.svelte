@@ -19,8 +19,8 @@
     let profile = [];
     import { onMount } from 'svelte';
     onMount(async () => {
-        profile_id = localStorage.getItem('profile_viewed_id');
-        profile_name = localStorage.getItem('profile_viewed_name');
+        let profile_id = parseInt(localStorage.getItem('profile_viewed_id'));
+        let profile_name = localStorage.getItem('profile_viewed_name');
         profile = friends_list.find(friend => friend.id === profile_id);
     });
 
