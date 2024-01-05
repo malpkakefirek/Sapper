@@ -34,6 +34,7 @@
             if (result.type === "success") {
                 console.log("Succesfully bought skin");
                 location.reload();
+                location.reload();
             }
         } catch (error) {
             console.error('Error fetching data:', error);        
