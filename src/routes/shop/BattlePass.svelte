@@ -76,11 +76,11 @@
     {#if currentIndex > 0}
         {#if (currentIndex - 1) < level}
             <div class="backgroundUnlocked">
-                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image">
+                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
             </div>
         {:else}
             <div class="backgroundSmall">
-                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened">
+                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
             </div>
         {/if}
     {/if}
