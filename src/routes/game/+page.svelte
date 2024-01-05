@@ -143,24 +143,26 @@
         const result = await response.json();
 
         // Fix flagged tiles
-        for (let i = 0; i < max_y*max_x; i++) {
-            // Skip unflagged tiles
-            if (flagData[i.toString()] !== true) {
-                continue;
-            }
-            // Keep flagged hidden tiles
-            if (result.board[i.toString()] === -1) {
-                result.board[i.toString()] = -2;
-            }
-            // Unflag shown tiles
-            if (result.board[i.toString()] > -1) {
-                flagData[i.toString()] = false;
+        if (result.type !== "loss") {
+            for (let i = 0; i < max_y*max_x; i++) {
+                // Skip unflagged tiles
+                if (flagData[i.toString()] !== true) {
+                    continue;
+                }
+                // Keep flagged hidden tiles
+                if (result.board[i.toString()] === -1) {
+                    result.board[i.toString()] = -2;
+                }
+                // Unflag shown tiles
+                if (result.board[i.toString()] > -1) {
+                    flagData[i.toString()] = false;
+                }
             }
         }
         
         console.log(result);
         if ("board" in result) {
-            if (result.type == "loss") {
+            if (result.type === "loss") {
                 for (let i = 0; i < max_y*max_x; i++) {
                     // Mark incorrect flags
                     if (flagData[i.toString()] === true && result.board[i.toString()] < 9 && result.board[i.toString()] >= 0) {
