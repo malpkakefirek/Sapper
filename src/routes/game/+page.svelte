@@ -163,7 +163,6 @@
         console.log(result);
         if ("board" in result) {
             if (result.type === "loss") {
-                console.log(flagData);
                 for (let i = 0; i < max_y*max_x; i++) {
                     // Mark incorrect flags
                     if (flagData[i.toString()] === true && result.board[i.toString()] < 9 && result.board[i.toString()] >= 0) {
@@ -181,7 +180,6 @@
                         continue;
                     }
                 }
-                console.log(tileData);
             } else {
                 tileData = result.board;
             }
