@@ -1,8 +1,13 @@
 <script>
     export let friend;
 
+    import { goto } from "$app/navigation";
     function handleProfileView(){
         console.log("Profile Viewed of "+friend.name+" | id: "+friend.id);
+        localStorage.setItem('profile_viewed_id',friend.id);
+        localStorage.setItem('profile_viewed_name',friend.name);
+        await goto("/friend#profile");
+        location.reload();
     }
 </script>
 

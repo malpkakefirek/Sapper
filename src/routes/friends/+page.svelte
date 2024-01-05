@@ -15,6 +15,14 @@
           { id: 10, name: 'Emma', image: '/images/avatars/10.png' },
           { id: 11, name: 'Evelina', image: '/images/avatars/11.png' },
     ];
+
+    let profile_name = 'Null';
+    let profile_id = -1;
+    import { onMount } from 'svelte';
+    onMount(async () => {
+        profile_id = localStorage.getItem('profile_viewed_id');
+        profile_name = localStorage.getItem('profile_viewed_name');
+    });
 </script>
 
 <svelte:head>
@@ -24,13 +32,19 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
-    <div class="friends-container">
-        {#each friends_list as friend (friend.id)}
-            <div class="friend">
-                <Friend {friend} />
-            </div>
-        {/each}
-    </div>
+    {#if $page.url.hash == "#profile"}
+        <img src={friends_list[profile_id].image} alt="avatar of {friends_list[profile_id].name}" />
+        <p>friends_list[profile_id].name</p>
+        <p>friends_list[profile_id].id</p>
+    {:else}
+        <div class="friends-container">
+            {#each friends_list as friend (friend.id)}
+                <div class="friend">
+                    <Friend {friend} />
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
 
 
