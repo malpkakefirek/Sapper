@@ -63,6 +63,28 @@
     //
     let avatar_equiped = 1;
     profile.image = '/images/avatars/' + avatar_equiped + '.png';
+
+
+
+    import {
+        useForm,
+        validators,
+        HintGroup,
+        Hint,
+        required,
+    } from "svelte-use-form";
+    import { applyAction, deserialize } from "$app/forms";
+    import { invalidateAll, goto } from "$app/navigation";
+
+    const form = useForm();
+    async function handleChangePassword(event) {
+        console.log("You tried changing the password");
+        const data = new FormData(event.currentTarget);
+        for (const [key, value] of data.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+    }
+
     
     // on mount:
     import { onMount } from "svelte";
@@ -190,6 +212,27 @@
     {:else if $page.url.hash == "#changePassword"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
         <h2>This is not implemented yet!</h2>
+        <form
+            method="post"
+            on:submit|preventDefault={handleChangePassword}
+            use:form
+            action="https://sapper-api.onrender.com/change_password"
+        >
+            <h1>Login</h1>
+            <div style="display: flex; justify-content: center;">
+                <input type="password" name="currentPassword" use:validators={[required]} />
+                <Hint for="currentPassword" on="required">This is a mandatory field</Hint>
+
+                <input type="password" name="newPassword" use:validators={[required]} />
+                <Hint for="newPassword" on="required">This is a mandatory field</Hint>
+
+                <input type="password" name="confirmNewPassword" use:validators={[required, match:newPassword]} />
+                <Hint for="confirmNewPassword" on="required">This is a mandatory field</Hint>
+                <Hint for="confirmNewPassword">Passwords do not match</Hint>
+
+                <button disabled={!$form.valid}>Change Password</button>
+            </div>
+        </form>
     {:else if $page.url.hash == "#deleteProfile"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
         <h2>This is not implemented yet!</h2>
@@ -295,5 +338,12 @@
     }
     div.backgroundUnlockedMiddle {
         background-color: rgba(0, 255, 0, 0.5);
+    }
+
+
+
+    
+    form {
+        flex: none;
     }
 </style>
