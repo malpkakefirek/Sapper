@@ -79,7 +79,7 @@
         profile.name = localStorage.getItem("username");
         avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 0;
         profile.image = '/images/avatars/' + avatar_equiped + '.png';
-        
+        currentIndex = avatar_equiped-1;
     });
 </script>
 
@@ -120,19 +120,19 @@
                     {#if currentIndex > 0}
                         {#if (currentIndex) == avatar_equiped}
                             <div class="backgroundUnlocked itemSmall itemSlot">
-                                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
+                                <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
                                 <div class="itemSmall-label">
                                     <div class="itemSmall-name">
-                                        {names[currentIndex - 1]}
+                                        {names[currentIndex]}
                                     </div>
                                 </div>
                             </div>
                         {:else}
                             <div class="backgroundSmall itemSmall itemSlot">
-                                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
+                                <img src={images[currentIndex]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
                                 <div class="itemSmall-label">
                                     <div class="itemSmall-name">
-                                        {names[currentIndex - 1]}
+                                        {names[currentIndex]}
                                     </div>
                                 </div>
                             </div>
@@ -142,19 +142,19 @@
                     <!-- MIDDLE -->
                     {#if (currentIndex + 1) == avatar_equiped}
                         <div class="backgroundUnlockedMiddle itemNormal itemSlot">
-                            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+                            <img src={images[currentIndex + 1]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
                             <div class="itemNormal-label">
                                 <div class="itemNormal-name">
-                                    {names[currentIndex]}
+                                    {names[currentIndex + 1]}
                                 </div>
                             </div>
                         </div>
                     {:else}
                         <div class="backgroundNormal itemNormal itemSlot">
-                            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+                            <img src={images[currentIndex + 1]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
                             <div class="itemNormal-label">
                                 <div class="itemNormal-name">
-                                    {names[currentIndex]}
+                                    {names[currentIndex + 1]}
                                 </div>
                             </div>
                         </div>
@@ -164,19 +164,19 @@
                     {#if currentIndex < images.length - 1}
                         {#if (currentIndex + 2 ) == avatar_equiped}
                             <div class="backgroundUnlocked itemSmall itemSlot">
-                                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                                <img src={images[currentIndex + 2]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                                 <div class="itemSmall-label">
                                     <div class="itemSmall-name">
-                                        {names[currentIndex + 1]}
+                                        {names[currentIndex + 2]}
                                     </div>
                                 </div>
                             </div>
                         {:else}
                             <div class="backgroundSmall itemSmall itemSlot">
-                                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                                <img src={images[currentIndex + 2]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                                 <div class="itemSmall-label">
                                     <div class="itemSmall-name">
-                                        {names[currentIndex + 1]}
+                                        {names[currentIndex + 2]}
                                     </div>
                                 </div>
                             </div>
