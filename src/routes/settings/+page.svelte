@@ -88,7 +88,6 @@
             console.log(`${key}: ${value}`);
         }
         
-        const data = new FormData(event.currentTarget);
         const response = await fetch(event.currentTarget.action, {
             method: "POST",
             body: data,
@@ -135,10 +134,39 @@
             delete_sure4 = true;
         }
     }
-    function handleDeleteFinal() {
+    async function handleDeleteFinal() { //rework this to include FORM with current password input
         if (delete_sure1 && delete_sure2 && delete_sure3 && delete_sure4){
-            //TO DO SEND DELETE REQUEST TO BACKEND
+            
             console.log("You tried deleting your account");
+            
+            let storedSession = localStorage.getItem("session_id");
+            if (!storedSession) {
+                // TODO: Check if username in storage and remove it
+                await goto("/");
+                location.reload();
+                return;
+            }
+            let sessionID = storedSession;
+            try {
+                const response = await fetch("https://sapper-api.onrender.com/delete", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({session_id: sessionID}),
+                });
+                const result = await response.json();
+                console.log(result);
+                if (result.type === "success") {
+                    localStorage.removeItem("session_id");
+                    localStorage.removeItem("username");
+                    await goto("/");
+                    location.reload();
+                    // await invalidateAll();
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);        
+            }
         }
     }
     // on mount:
