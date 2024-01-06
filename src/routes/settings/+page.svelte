@@ -14,13 +14,16 @@
     // HANDLE CAROUSEL
     let currentIndex = 0; 
 
-    function handleClick(direction) {
+    async function handleClick(direction) {
         if (direction === 'left') {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
         } else if (direction === 'right') {
             currentIndex = (currentIndex + 1) % images.length;
         } else if (direction === 'middle') {
-            console.log("Showing Reward for ",(currentIndex+1));
+            console.log("Changing avatar to: ",(currentIndex+1));
+            avatar_equiped = (currentIndex+1);
+            profile.image = '/images/avatars/' + avatar_equiped + '.png';
+            location.reload();
         }
     }
     let all_images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
@@ -111,7 +114,7 @@
                 <div class="carousel-container">
                     <!-- LEFT -->
                     {#if currentIndex > 0}
-                        {#if (currentIndex - 1) == avatar_equiped}
+                        {#if (currentIndex) == avatar_equiped}
                             <div class="backgroundUnlocked itemSmall itemSlot">
                                 <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
                                 <div class="itemSmall-label">
@@ -133,7 +136,7 @@
                     {/if}
 
                     <!-- MIDDLE -->
-                    {#if currentIndex == avatar_equiped}
+                    {#if (currentIndex + 1) == avatar_equiped}
                         <div class="backgroundUnlockedMiddle itemNormal itemSlot">
                             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
                             <div class="itemNormal-label">
@@ -155,7 +158,7 @@
 
                     <!-- RIGHT -->
                     {#if currentIndex < images.length - 1}
-                        {#if (currentIndex + 1 ) == avatar_equiped}
+                        {#if (currentIndex + 2 ) == avatar_equiped}
                             <div class="backgroundUnlocked itemSmall itemSlot">
                                 <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
                                 <div class="itemSmall-label">
