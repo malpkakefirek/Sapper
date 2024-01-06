@@ -322,10 +322,10 @@
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
         <h2>This is not implemented yet!</h2>
         <button on:click={() => handleDelete1()} class="custom_button1"> Delete Profile</button>
-        <button on:click={() => handleDelete2()} class="custom_button1"> Are sure?</button>
-        <button on:click={() => handleDelete3()} class="custom_button1"> Are you sure sure?</button>
-        <button on:click={() => handleDelete4()} class="custom_button1"> There is no going back!</button>
-        <button on:click={() => handleDeleteFinal()} class="custom_button1"> DELETE FOREVER</button>
+        {#if delete_sure1}<button on:click={() => handleDelete2()} class="custom_button1"> Are sure?</button>{/if}
+        {#if delete_sure2}<button on:click={() => handleDelete3()} class="custom_button1"> Are you sure sure?</button>{/if}
+        {#if delete_sure3}<button on:click={() => handleDelete4()} class="custom_button1"> There is no going back!</button>{/if}
+        {#if delete_sure4}<button on:click={() => handleDeleteFinal()} class="custom_button1"> DELETE FOREVER</button>{/if}
     {/if}
 </div>
 
