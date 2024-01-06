@@ -78,6 +78,9 @@
         is_loss = parseInt(localStorage.getItem('is_loss')) || 0;
         
         current_skin = parseInt(localStorage.getItem('current_skin')) || 0;
+        
+        booster_used = (localStorage.getItem('booster_used') === 'true');
+        boosters_owned = localStorage.getItem('boosters_owned'); //TODO: add loading `boosters_owned` from backend: user
 
         //check if user is logged in
         let session_id = localStorage.getItem('session_id');
@@ -196,7 +199,7 @@
             localStorage.setItem("bp_xp", result.battlepass_xp);
             xp_added = result.xp_added;
             bp_xp_added = result.battlepass_xp_added;
-            battlepass_reward = result.battlepass_reward;
+            battlepass_reward = (result.battlepass_reward === 'true');
             //stopTimer();
             // goto("/game#win");
             return;
@@ -320,6 +323,19 @@
     //     // }
     // });
 
+
+    let boosters_owned=0;
+    let booster_used = false;
+    function use_booster(){
+        boosters_owned--;
+        booster_used=true;
+        localStorage.setItem('booster_used', booster_used.toString());
+        localStorage.setItem('boosters_owned',boosters_owned);
+    }
+    function handle_after_game_booster(){ // set booster used to false after the game
+        booster_used=false;
+        localStorage.setItem('booster_used', booster_used.toString());
+    }
 </script>
 
 <svelte:head>
@@ -354,6 +370,14 @@
                 <button on:click={() => handleFieldClick(30, 30)} class="custom_button1 field"> 30x30 </button>
                 <button on:click={() => handleFieldClick(50, 50)} class="custom_button1 field"> 50x50 </button>
             </div>
+        </div>
+        <div>
+            <p>Boosters: {boosters_owned}</p>
+            {#if !booster_used}
+                <button on:click={() => use_booster()} class="custom_button_booster_activate"> Use Booster</button>
+            {:else}
+                <button class="custom_button_booster_activated"> Activated</button>
+            {/if}
         </div>
         <p> </p>
         <button on:click={() => start_game()} class="custom_button1"> START THE GAME! </button>
@@ -519,4 +543,62 @@
         transform: scale(1.12);
     }
 
+
+    .custom_button_booster_activate {
+      position: relative;
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #725AC1;
+      background: transparent;
+      cursor: pointer;
+      transition: ease-out 0.5s;
+      border: 2px solid #725AC1;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 0 #725AC1;
+    }
+
+    .custom_button_booster_activate:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+        transform: scale(1.1);
+    }
+
+    .custom_button_booster_activate:active {
+        transform: scale(0.9);
+    }
+
+
+    .custom_button_booster_activated {
+        position: relative;
+        flex: 1;
+        display: inline-block;
+        margin: 5px;
+        padding: 6px;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #4CAF50;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #4CAF50;
+    }
+
+    .custom_button_booster_activated:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #4CAF50;
+        transform: scale(1.1);
+    }
+
+    .custom_button_booster_activated:active {
+        transform: scale(0.9);
+    }
 </style>
