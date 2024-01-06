@@ -93,6 +93,7 @@
             console.log(result);
             if (result.type === "success") {
                 localStorage.setItem("boosters_owned", result.booster_count);
+                boosters_owned=result.booster_count;
             }
         } catch (error) {
             console.error('Error fetching data:', error);        
