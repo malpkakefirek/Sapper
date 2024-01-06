@@ -24,7 +24,6 @@
             avatar_equiped = owned_skins[currentIndex];
             profile.image = '/images/avatars/' + avatar_equiped + '.png';
             localStorage.setItem('avatar_equiped', avatar_equiped);
-            location.reload();
         }
     }
     let all_images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
@@ -62,7 +61,7 @@
     let images = owned_skins.map(index => all_images[index-1]);
     let names = owned_skins.map(index => all_names[index-1]);
     //
-    let avatar_equiped = 3;
+    let avatar_equiped = 1;
     profile.image = '/images/avatars/' + avatar_equiped + '.png';
     
     // on mount:
@@ -77,7 +76,7 @@
         }
 
         profile.name = localStorage.getItem("username");
-        avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 0;
+        avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 1;
         currentIndex = owned_skins.indexOf(avatar_equiped);
         profile.image = '/images/avatars/' + avatar_equiped + '.png';
     });
