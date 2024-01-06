@@ -77,6 +77,8 @@
     import { invalidateAll, goto } from "$app/navigation";
 
     const form = useForm();
+
+    let success=false;
     
     /** @param {{ currentTarget: EventTarget & HTMLFormElement}} event */
     async function handleChangePassword(event) {
@@ -85,6 +87,27 @@
         for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
         }
+        
+        const data = new FormData(event.currentTarget);
+        const response = await fetch(event.currentTarget.action, {
+            method: "POST",
+            body: data,
+        });
+
+        /** @type {import('@sveltejs/kit').ActionResult} */
+        const result = deserialize(await response.text());
+        console.log(result);
+        if (result.type === "success") {
+            console.log("Succesfully changed password");
+            success=true;
+
+            await invalidateAll();
+        }else{
+            console.error("Password change failed: ", result);
+        }
+        // TODO: add login fail logic
+
+        applyAction(result);
     }
 
     
@@ -234,6 +257,9 @@
                 <button disabled={!$form.valid}>Change Password</button>
             </div>
         </form>
+        {#if success}
+            <div style="color: darkgreen;">Successfully changed password!</div>
+        {/if}
     {:else if $page.url.hash == "#deleteProfile"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
         <h2>This is not implemented yet!</h2>
