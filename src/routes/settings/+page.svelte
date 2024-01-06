@@ -110,7 +110,37 @@
         applyAction(result);
     }
 
-    
+    let delete_sure1 = false;
+    let delete_sure2 = false;
+    let delete_sure3 = false;
+    let delete_sure4 = false;
+
+    function handleDelete1() {
+        if (!delete_sure1) {
+            delete_sure1 = true;
+        }
+    }
+    function handleDelete2() {
+        if (!delete_sure2) {
+            delete_sure2 = true;
+        }
+    }
+    function handleDelete3() {
+        if (!delete_sure3) {
+            delete_sure3 = true;
+        }
+    }
+    function handleDelete4() {
+        if (!delete_sure4) {
+            delete_sure4 = true;
+        }
+    }
+    function handleDeleteFinal() {
+        if (delete_sure1 && delete_sure2 && delete_sure3 && delete_sure4){
+            //TO DO SEND DELETE REQUEST TO BACKEND
+            console.log("You tried deleting your account");
+        }
+    }
     // on mount:
     import { onMount } from "svelte";
     onMount(async () => {
@@ -263,6 +293,11 @@
     {:else if $page.url.hash == "#deleteProfile"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
         <h2>This is not implemented yet!</h2>
+        <button on:click={() => handleDelete1()} class="custom_button1"> Delete Profile</button>
+        <button on:click={() => handleDelete2()} class="custom_button1"> Are sure?</button>
+        <button on:click={() => handleDelete3()} class="custom_button1"> Are you sure sure?</button>
+        <button on:click={() => handleDelete4()} class="custom_button1"> There is no going back!</button>
+        <button on:click={() => handleDeleteFinal()} class="custom_button1"> DELETE FOREVER</button>
     {/if}
 </div>
 
@@ -372,5 +407,35 @@
     
     form {
         flex: none;
+    }
+
+
+
+    .custom_button1 {
+      position: relative;
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #725AC1;
+      background: transparent;
+      cursor: pointer;
+      transition: ease-out 0.5s;
+      border: 2px solid #725AC1;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 0 #725AC1;
+    }
+
+    .custom_button1:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+        transform: scale(1.1);
+    }
+
+    .custom_button1:active {
+        transform: scale(0.9);
     }
 </style>
