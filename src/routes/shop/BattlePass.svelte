@@ -117,16 +117,32 @@
         level = currentLevel;
     }
 
+
+
+    let battlepass_owned = false;
+
+    async function handle_skin_buy(){
+        //SEND TO BACKEND SKIN BUY REQUEST
+        //IF SUCCESSFUL SET battlepass_owned = true
+        battlepass_owned = true;
+        localStorage.setItem('battlepass_owned', battlepass_owned.toString());
+    }
+
         
     import { onMount } from 'svelte';
     onMount(async () => {
         bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
         calculateLevel(bp_xp);
+        battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
     });
 </script>
 
 <div class="container level">
-    Level: {level} XP: {bp_xp}/{bp_xp_max}
+    {#if !battlepass_owned}
+        Buy the battlepass and unlock {level} tiers!
+    {:else}
+        Level: {level} XP: {bp_xp}/{bp_xp_max}
+    {/if}
 </div>
 <div class="carousel-container">
     <!-- LEWY -->
@@ -213,6 +229,13 @@
                 </div>
             </div>
         {/if}
+    {/if}
+</div>
+
+<div class="container buy">
+    {#if !battlepass_owned}
+        Buy the battlepass and unlock all tiers up to {level} and all next tiers with 25% exp boost!
+        <button on:click={() => handle_skin_buy()} class="custom_button_buy_battlepass">Buy (1000 gems)</button>
     {/if}
 </div>
 <!-- 
@@ -320,5 +343,35 @@
     }
     div.backgroundUnlockedMiddle {
         background-color: rgba(0, 255, 0, 0.5);
+    }
+
+
+    .custom_button_buy_battlepass {
+        position: relative;
+        flex: 1;
+        display: inline-block;
+        margin: 5px;
+        padding: 6px;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #725AC1;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #725AC1;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #725AC1;
+    }
+
+    .custom_button_buy_battlepass:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+        transform: scale(1.1);
+    }
+
+    .custom_button_buy_battlepass:active {
+        transform: scale(0.9);
     }
 </style>
