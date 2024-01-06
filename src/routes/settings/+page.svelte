@@ -53,9 +53,7 @@
         'elf queen',
         'eye patch guy but sunny',
     ];
-
     let owned_skins = [1, 2, 3, 4, 10, 12,13];  // TODO get from backend
-
     // Filter images and names based on owned skins
     let images = owned_skins.map(index => all_images[index]);
     let names = owned_skins.map(index => all_names[index]);
@@ -104,38 +102,45 @@
                     </div>
                 </div>
             </div>
+            
             <div class="avatarSelection">
                 Choose avatar:
                 <div class="carousel-container">
                     <!-- LEFT -->
-                    <div class="backgroundUnlocked itemSmall itemSlot">
-                        <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
-                        <div class="itemSmall-label">
-                            <div class="itemSmall-name">
-                                {names[currentIndex - 1]}
+                    {#if currentIndex > 0}
+                        <div class="backgroundUnlocked itemSmall itemSlot">
+                            <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
+                            <div class="itemSmall-label">
+                                <div class="itemSmall-name">
+                                    {names[currentIndex - 1]}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {/if}
 
-                <!-- MIDDLE -->
-                <div class="backgroundUnlockedMiddle itemNormal itemSlot">
-                    <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
-                    <div class="itemNormal-label">
-                        <div class="itemNormal-name">
-                            {names[currentIndex]}
+                    <!-- MIDDLE -->
+                    {#if currentIndex < level}
+                        <div class="backgroundUnlockedMiddle itemNormal itemSlot">
+                            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+                            <div class="itemNormal-label">
+                                <div class="itemNormal-name">
+                                    {names[currentIndex]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    {/if}
 
-                <!-- RIGHT -->
-                <div class="backgroundUnlocked itemSmall itemSlot">
-                    <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
-                    <div class="itemSmall-label">
-                        <div class="itemSmall-name">
-                            {names[currentIndex + 1]}
+                    <!-- RIGHT -->
+                    {#if currentIndex < images.length - 1}
+                        <div class="backgroundUnlocked itemSmall itemSlot">
+                            <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                            <div class="itemSmall-label">
+                                <div class="itemSmall-name">
+                                    {names[currentIndex + 1]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {/if}
                 </div>
             </div>
         </div>
