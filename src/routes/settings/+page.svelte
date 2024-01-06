@@ -11,6 +11,55 @@
 
 
 
+    // HANDLE CAROUSEL
+    let currentIndex = 0; 
+
+    function handleClick(direction) {
+        if (direction === 'left') {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+        } else if (direction === 'right') {
+            currentIndex = (currentIndex + 1) % images.length;
+        } else if (direction === 'middle') {
+            console.log("Showing Reward for ",(currentIndex+1));
+        }
+    }
+    let all_images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
+        '/images/avatars/1.png',
+        '/images/avatars/2.png',
+        '/images/avatars/3.png',
+        '/images/avatars/4.png',
+        '/images/avatars/5.png',
+        '/images/avatars/6.png',
+        '/images/avatars/7.png',
+        '/images/avatars/8.png',
+        '/images/avatars/9.png',
+        '/images/avatars/10.png',
+        '/images/avatars/11.png',
+        '/images/avatars/12.png',
+        '/images/avatars/13.png',
+    ];
+    let all_names = [
+        'default man 1',
+        'white wizard',
+        'great warrior',
+        'default women 1',
+        'default man 2',
+        'man of great mind',
+        'eye patch guy',
+        'foxgirl',
+        'man of wars',
+        'tier 40 bp',
+        'fox avatar',
+        'elf queen',
+        'eye patch guy but sunny',
+    ];
+
+    let owned_skins = [1, 2, 3, 4, 10, 12,13];  // TODO get from backend
+
+    // Filter images and names based on owned skins
+    let images = owned_skins.map(index => all_images[index]);
+    let names = owned_skins.map(index => all_names[index]);
+    
     // on mount:
     import { onMount } from "svelte";
     onMount(async () => {
@@ -55,9 +104,40 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="avatarSelection">
-                
-            </div> -->
+            <div class="avatarSelection">
+                Choose avatar:
+                <div class="carousel-container">
+                    <!-- LEFT -->
+                    <div class="backgroundUnlocked itemSmall itemSlot">
+                        <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
+                        <div class="itemSmall-label">
+                            <div class="itemSmall-name">
+                                {names[currentIndex - 1]}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE -->
+                <div class="backgroundUnlockedMiddle itemNormal itemSlot">
+                    <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+                    <div class="itemNormal-label">
+                        <div class="itemNormal-name">
+                            {names[currentIndex]}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="backgroundUnlocked itemSmall itemSlot">
+                    <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                    <div class="itemSmall-label">
+                        <div class="itemSmall-name">
+                            {names[currentIndex + 1]}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     {:else if $page.url.hash == "#changePassword"}
         <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
@@ -106,5 +186,62 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+
+    .carousel-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 600px; 
+        margin: auto;
+    }
+    .carousel-image {
+        max-width: 200px;
+        height: auto;
+    }
+
+    .itemSlot {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .itemSmall {
+        width: 128px;
+        margin-top: 32px;
+    }
+    .itemSmall-label {
+        text-align: center;
+        text-wrap: pretty;
+        margin-top: 4px;
+    }
+    .itemSmall-name {
+        font-size: 12px;
+    }
+
+    .itemNormal {
+        width: 192px;
+    }
+    .itemNormal-label {
+        text-align: center;
+        text-wrap: pretty;
+        margin-top: 8px;
+    }
+    .itemNormal-name {
+        font-size: 16px;
+    }
+
+
+    img.backgroundNormal {
+        width: 192px;
+    }
+    img.backgroundSmall {
+        width: 128px;
+    }
+    div.backgroundUnlocked {
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+    div.backgroundUnlockedMiddle {
+        background-color: rgba(0, 255, 0, 0.5);
     }
 </style>
