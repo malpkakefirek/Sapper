@@ -21,7 +21,7 @@
             currentIndex = (currentIndex + 1) % images.length;
         } else if (direction === 'middle') {
             console.log("Changing avatar to: ",(currentIndex+1));
-            avatar_equiped = (currentIndex+1);
+            avatar_equiped = owned_skins[currentIndex];
             profile.image = '/images/avatars/' + avatar_equiped + '.png';
             localStorage.setItem('avatar_equiped', avatar_equiped);
             location.reload();
@@ -79,7 +79,7 @@
         profile.name = localStorage.getItem("username");
         avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 0;
         profile.image = '/images/avatars/' + avatar_equiped + '.png';
-        currentIndex = avatar_equiped-1;
+        currentIndex = owned_skins[avatar_equiped];
     });
 </script>
 
@@ -111,6 +111,7 @@
                         <div>Flags Placed: <span>{flags_placed}</span></div>
                         <div>(debug) avatar_equiped: <span>{avatar_equiped}</span></div>
                         <div>(debug) currentIndex: <span>{currentIndex}</span></div>
+                        <div>(debug) owned_skins[currentIndex]: <span>{owned_skins[currentIndex]}</span></div>
                     </div>
                 </div>
             </div>
