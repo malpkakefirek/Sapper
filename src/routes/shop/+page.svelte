@@ -67,9 +67,37 @@
 
         //check if booster is in use
         booster_used = (localStorage.getItem('booster_used') === 'true');
-        boosters_owned = localStorage.getItem('boosters_owned'); //TODO: add loading `boosters_owned` from backend: user
+        getBoosterCount();
     });
 
+
+    async function getBoosterCount(){
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            await goto("/login");
+            location.reload();
+            return;
+        }
+        let sessionID = storedSession;
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_booster_count", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                localStorage.setItem("boosters_owned", result.booster_count);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+    }
 
     import BattlePass from './BattlePass.svelte';
 
