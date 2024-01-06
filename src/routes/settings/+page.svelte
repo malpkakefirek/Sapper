@@ -57,6 +57,9 @@
     // Filter images and names based on owned skins
     let images = owned_skins.map(index => all_images[index]);
     let names = owned_skins.map(index => all_names[index]);
+    //
+    let avatar_equiped = 3;
+    profile.image = '/images/avatars/' + avatar_equiped + '.png';
     
     // on mount:
     import { onMount } from "svelte";
@@ -108,19 +111,39 @@
                 <div class="carousel-container">
                     <!-- LEFT -->
                     {#if currentIndex > 0}
-                        <div class="backgroundUnlocked itemSmall itemSlot">
-                            <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
-                            <div class="itemSmall-label">
-                                <div class="itemSmall-name">
-                                    {names[currentIndex - 1]}
+                        {#if (currentIndex - 1) == avatar_equiped}
+                            <div class="backgroundUnlocked itemSmall itemSlot">
+                                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image backgroundSmall">
+                                <div class="itemSmall-label">
+                                    <div class="itemSmall-name">
+                                        {names[currentIndex - 1]}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {:else}
+                            <div class="backgroundSmall itemSmall itemSlot">
+                                <img src={images[currentIndex - 1]} alt="Left" on:click={() => handleClick('left')} class="carousel-image darkened backgroundSmall">
+                                <div class="itemSmall-label">
+                                    <div class="itemSmall-name">
+                                        {names[currentIndex - 1]}
+                                    </div>
+                                </div>
+                            </div>
+                        {/if}
                     {/if}
 
                     <!-- MIDDLE -->
-                    {#if currentIndex < level}
+                    {#if currentIndex == avatar_equiped}
                         <div class="backgroundUnlockedMiddle itemNormal itemSlot">
+                            <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
+                            <div class="itemNormal-label">
+                                <div class="itemNormal-name">
+                                    {names[currentIndex]}
+                                </div>
+                            </div>
+                        </div>
+                    {:else}
+                        <div class="backgroundNormal itemNormal itemSlot">
                             <img src={images[currentIndex]} alt="Middle" on:click={() => handleClick('middle')} class="carousel-image backgroundNormal">
                             <div class="itemNormal-label">
                                 <div class="itemNormal-name">
@@ -132,14 +155,25 @@
 
                     <!-- RIGHT -->
                     {#if currentIndex < images.length - 1}
-                        <div class="backgroundUnlocked itemSmall itemSlot">
-                            <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
-                            <div class="itemSmall-label">
-                                <div class="itemSmall-name">
-                                    {names[currentIndex + 1]}
+                        {#if (currentIndex + 1 ) == avatar_equiped}
+                            <div class="backgroundUnlocked itemSmall itemSlot">
+                                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                                <div class="itemSmall-label">
+                                    <div class="itemSmall-name">
+                                        {names[currentIndex + 1]}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {:else}
+                            <div class="backgroundSmall itemSmall itemSlot">
+                                <img src={images[currentIndex + 1]} alt="Right" on:click={() => handleClick('right')} class="carousel-image darkened backgroundSmall">
+                                <div class="itemSmall-label">
+                                    <div class="itemSmall-name">
+                                        {names[currentIndex + 1]}
+                                    </div>
+                                </div>
+                            </div>
+                        {/if}
                     {/if}
                 </div>
             </div>
