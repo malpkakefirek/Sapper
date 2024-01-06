@@ -197,9 +197,10 @@
             localStorage.setItem("is_won", 1);
             localStorage.setItem("xp", result.xp);
             localStorage.setItem("bp_xp", result.battlepass_xp);
-            xp_added = result.xp_added;
-            bp_xp_added = result.battlepass_xp_added;
+            xp_added = result.added_xp;
+            bp_xp_added = result.added_battlepass_xp;
             battlepass_reward = (result.battlepass_reward === 'true');
+            handle_after_game_booster();
             //stopTimer();
             // goto("/game#win");
             return;
@@ -208,6 +209,7 @@
             console.log("I'm sorry, you lost!");
             is_loss=true;
             localStorage.setItem("is_loss", 1);
+            handle_after_game_booster();
             //stopTimer();
             // goto("/game#loss");
             return;
@@ -269,7 +271,7 @@
         
         // await game creation
         let difficulty = mines === 10 ? 1 : mines === 20 ? 2 : mines === 30 ? 3 : mines === 50 ? 4 : 1;
-        let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "difficulty": difficulty};
+        let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "difficulty": difficulty, "booster_used": (booster_used ? 1 : 0) };
         const response = await fetch("https://sapper-api.onrender.com/create_game", {
             method: "POST",
             headers: {
