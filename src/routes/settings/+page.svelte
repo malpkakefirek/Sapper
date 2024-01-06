@@ -235,6 +235,10 @@
         flex-direction: column;
         align-items: flex-start;
     }
+    .darkened {
+        filter: brightness(0.5);
+        max-width: 160px;
+    }
 
 
     .carousel-container {
