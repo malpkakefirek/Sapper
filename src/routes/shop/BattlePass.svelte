@@ -121,11 +121,41 @@
 
     let battlepass_owned = false;
 
-    async function handle_skin_buy(){
-        //SEND TO BACKEND SKIN BUY REQUEST
-        //IF SUCCESSFUL SET battlepass_owned = true
-        battlepass_owned = true;
-        localStorage.setItem('battlepass_owned', battlepass_owned.toString());
+    async function handle_skin_buy(){  
+        
+        let session_id = localStorage.getItem('session_id');
+        if (!session_id) {
+            console.log("PLEASE LOG IN TO BUY BATTLEPASS");
+            await goto("/login");
+            return;
+        }
+        
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/buy_battlepass", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: session_id,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);                                                                  // debug delete later
+            if (result.type === "success") {
+                let new_balance = parseInt(result.new_balance);
+                console.log("Successfully bought a battlepass, new balance: ", new_balance);  // debug delete later
+                battlepass_owned = true;
+                localStorage.setItem('battlepass_owned', battlepass_owned);
+                localStorage.setItem('gems', new_balance);
+                location.reload();
+            } else {
+                console.error('Failed to buy battlepass:', result);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+        
     }
 
         
@@ -235,7 +265,7 @@
 <div class="container buy">
     {#if !battlepass_owned}
         Buy the battlepass and unlock all tiers up to {level} and all next tiers with 25% exp boost!
-        <button on:click={() => handle_skin_buy()} class="custom_button_buy_battlepass">Buy (1000 gems)</button>
+        <button on:click={() => handle_skin_buy()} class="custom_button_buy_battlepass">Buy (950 gems)</button>
     {/if}
 </div>
 <!-- 
