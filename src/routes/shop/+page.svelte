@@ -149,7 +149,7 @@
         }
     }
 
-    let boosters_owned=11;
+    let boosters_owned= -1;
     let booster_used = false;
     let boosters = [
         { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
@@ -196,7 +196,11 @@
             {#each boosters as item (item.id)}
                 <div class="item">
                     <Item {item} />
-                    You have: {boosters_owned} boosters
+                    {#if boosters_owned==-1}
+                        LOADING...
+                    {:else}
+                        You have: {boosters_owned} boosters
+                    {/if}
                     {#if !booster_used}
                         <button on:click={() => use_booster()} class="custom_button1"> Use Booster</button>
                     {:else}
