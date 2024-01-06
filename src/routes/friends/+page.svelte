@@ -19,7 +19,7 @@
     let profile = [];
     import { onMount } from 'svelte';
     onMount(async () => {
-        if (window.location.hash !== "#profile") {
+        if (window.location.hash == "#profile") {
             let profile_id = parseInt(localStorage.getItem('profile_viewed_id')) || -1;
             let profile_name = localStorage.getItem('profile_viewed_name') || null;
             befriended = (localStorage.getItem('befriended') === 'true');
