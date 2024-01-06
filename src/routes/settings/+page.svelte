@@ -20,7 +20,7 @@
         } else if (direction === 'right') {
             currentIndex = (currentIndex + 1) % images.length;
         } else if (direction === 'middle') {
-            console.log("Changing avatar to: ",(currentIndex+1));
+            console.log("Changing avatar to: ",(owned_skins[currentIndex]));
             avatar_equiped = owned_skins[currentIndex];
             profile.image = '/images/avatars/' + avatar_equiped + '.png';
             localStorage.setItem('avatar_equiped', avatar_equiped);
@@ -57,7 +57,7 @@
         'elf queen',
         'eye patch guy but sunny',
     ];
-    let owned_skins = [1, 2, 3, 4, 10, 12,13];  // TODO get from backend
+    let owned_skins = [1, 2, 3, 4, 10, 12, 13];  // TODO get from backend
     // Filter images and names based on owned skins
     let images = owned_skins.map(index => all_images[index]);
     let names = owned_skins.map(index => all_names[index]);
@@ -78,8 +78,8 @@
 
         profile.name = localStorage.getItem("username");
         avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 0;
+        currentIndex = owned_skins.indexOf(avatar_equiped);
         profile.image = '/images/avatars/' + avatar_equiped + '.png';
-        currentIndex = owned_skins[avatar_equiped];
     });
 </script>
 
