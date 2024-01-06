@@ -23,6 +23,7 @@
             console.log("Changing avatar to: ",(currentIndex+1));
             avatar_equiped = (currentIndex+1);
             profile.image = '/images/avatars/' + avatar_equiped + '.png';
+            localStorage.setItem('avatar_equiped', avatar_equiped);
             location.reload();
         }
     }
@@ -67,8 +68,6 @@
     // on mount:
     import { onMount } from "svelte";
     onMount(async () => {
-        profile.name = localStorage.getItem("username");
-
         let storedSession = localStorage.getItem("session_id");
         if (!storedSession) {
             // TODO: Check if username in storage and remove it
@@ -76,6 +75,11 @@
             location.reload();
             return;
         }
+
+        profile.name = localStorage.getItem("username");
+        avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 0;
+        profile.image = '/images/avatars/' + avatar_equiped + '.png';
+        
     });
 </script>
 
