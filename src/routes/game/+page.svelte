@@ -56,6 +56,7 @@
     let gameStarted = 0;
     let xp_added = 0;
     let bp_xp_added = 0;
+    let battlepass_reward = false;
     
     let current_skin = 0; // 0 for default
 
@@ -195,6 +196,7 @@
             localStorage.setItem("bp_xp", result.battlepass_xp);
             xp_added = result.xp_added;
             bp_xp_added = result.battlepass_xp_added;
+            battlepass_reward = result.battlepass_reward;
             //stopTimer();
             // goto("/game#win");
             return;
@@ -439,6 +441,9 @@
         <p>Difficulty: {mines} mines</p>
         <p>XP: +{xp_added}</p>
         <p>Battlepass XP: +{bp_xp_added}</p>
+        {#if battlepass_reward}
+            <p>NEW BATTLEPASS LEVEL IS AVAILABLE TO CLAIM IN SHOP</p>
+        {/if}
     </ol>
 </Modal2>
 
