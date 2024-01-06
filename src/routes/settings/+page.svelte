@@ -77,6 +77,8 @@
     import { invalidateAll, goto } from "$app/navigation";
 
     const form = useForm();
+    
+    /** @param {{ currentTarget: EventTarget & HTMLFormElement}} event */
     async function handleChangePassword(event) {
         console.log("You tried changing the password");
         const data = new FormData(event.currentTarget);
@@ -226,9 +228,8 @@
                 <input type="password" name="newPassword" use:validators={[required]} />
                 <Hint for="newPassword" on="required">This is a mandatory field</Hint>
 
-                <input type="password" name="confirmNewPassword" use:validators={[required, match:newPassword]} />
+                <input type="password" name="confirmNewPassword" use:validators={[required]} />
                 <Hint for="confirmNewPassword" on="required">This is a mandatory field</Hint>
-                <Hint for="confirmNewPassword">Passwords do not match</Hint>
 
                 <button disabled={!$form.valid}>Change Password</button>
             </div>
