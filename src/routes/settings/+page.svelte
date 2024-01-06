@@ -59,8 +59,8 @@
     ];
     let owned_skins = [1, 2, 3, 4, 10, 12, 13];  // TODO get from backend
     // Filter images and names based on owned skins
-    let images = owned_skins.map(index => all_images[index]);
-    let names = owned_skins.map(index => all_names[index]);
+    let images = owned_skins.map(index => all_images[index-1]);
+    let names = owned_skins.map(index => all_names[index-1]);
     //
     let avatar_equiped = 3;
     profile.image = '/images/avatars/' + avatar_equiped + '.png';
