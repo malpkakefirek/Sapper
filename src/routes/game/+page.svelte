@@ -147,6 +147,7 @@
             body: JSON.stringify(tile_data),
         });
         const result = await response.json();
+        console.log(result);
 
         // Fix flagged tiles
         if (result.type !== "loss") {
@@ -166,7 +167,6 @@
             }
         }
         
-        console.log(result);
         if ("board" in result) {
             if (result.type === "loss") {
                 for (let i = 0; i < max_y*max_x; i++) {
