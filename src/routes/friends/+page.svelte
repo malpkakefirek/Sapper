@@ -19,11 +19,16 @@
     let profile = [];
     import { onMount } from 'svelte';
     onMount(async () => {
-        let profile_id = parseInt(localStorage.getItem('profile_viewed_id'));
-        let profile_name = localStorage.getItem('profile_viewed_name');
-        profile = friends_list.find(friend => friend.id === profile_id);
-
-        befriended = (localStorage.getItem('befriended') === 'true');
+        if (window.location.hash !== "#profile") {
+            let profile_id = parseInt(localStorage.getItem('profile_viewed_id')) || -1;
+            let profile_name = localStorage.getItem('profile_viewed_name') || null;
+            befriended = (localStorage.getItem('befriended') === 'true');
+            if (profile_id !== -1 && profile_name !== null) {
+                profile = friends_list.find(friend => friend.id === profile_id);
+            } else {
+                console.error("Missing or invalid profile data in localStorage.");
+            }
+        }
     });
 
 
@@ -101,7 +106,7 @@
     {:else if $page.url.hash == "#add"}
         <label for="searchInput">Search by name:</label>
         <input type="text" id="searchInput" bind:value={searchTerm} />
-        <button on:click={handleSubmit}>Submit</button>
+        <button on:click={handleSubmit} class="custom_button_remove_friend">Search!</button>
         
 
         <div class="friends-container">
