@@ -109,9 +109,9 @@
                         <div>Games Won: <span>{games_won}</span></div>
                         <div>Games Lost: <span>{games_lost}</span></div>
                         <div>Flags Placed: <span>{flags_placed}</span></div>
-                        <div>(debug) avatar_equiped: <span>{avatar_equiped}</span></div>
+                        <!-- <div>(debug) avatar_equiped: <span>{avatar_equiped}</span></div>
                         <div>(debug) currentIndex: <span>{currentIndex}</span></div>
-                        <div>(debug) owned_skins[currentIndex]: <span>{owned_skins[currentIndex]}</span></div>
+                        <div>(debug) owned_skins[currentIndex]: <span>{owned_skins[currentIndex]}</span></div> -->
                     </div>
                 </div>
             </div>
@@ -240,8 +240,8 @@
 
     .carousel-container {
         display: flex;
-        justify-content: space-between;
         align-items: flex-start;
+        justify-content: center;
         max-width: 600px; 
         margin: auto;
     }
