@@ -182,8 +182,8 @@
             const result = await response.json();
             console.log(result);
             if (result.type === "success") {
-                localStorage.setItem("battlepass_owned", result.owns_battlepass);
-                battlepass_owned=(result.owns_battlepass === "true");
+                localStorage.setItem("battlepass_owned", result.owned);
+                battlepass_owned=(result.owned === "true");
                 localStorage.setItem('battlepass_owned', battlepass_owned);
             }
         } catch (error) {
