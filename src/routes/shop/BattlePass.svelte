@@ -158,12 +158,45 @@
         
     }
 
+
+    // GET BATTLEPASS STATUS - IF USER OWNS THE BATTLEPASS OR NO
+    async function getBattlepassStatus(){
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            console.log("User is not logged in - Battlepass owned is unknown")
+            battlepass_owned=false;
+            localStorage.setItem('battlepass_owned', battlepass_owned);
+            return;
+        }
+        let sessionID = storedSession;
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/battlepass_status", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                localStorage.setItem("battlepass_owned", result.owns_battlepass);
+                battlepass_owned=(result.owns_battlepass == "true");
+                localStorage.setItem('battlepass_owned', battlepass_owned);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+
+    }
         
     import { onMount } from 'svelte';
     onMount(async () => {
         bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
         calculateLevel(bp_xp);
-        battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
+        getBattlepassStatus(); //battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
     });
 </script>
 

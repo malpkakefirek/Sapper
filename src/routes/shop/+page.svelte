@@ -98,6 +98,7 @@
         } catch (error) {
             console.error('Error fetching data:', error);        
         }
+        
     }
 
     import BattlePass from './BattlePass.svelte';
