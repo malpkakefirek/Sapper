@@ -237,7 +237,6 @@
                 },
                 body: JSON.stringify({
                     session_id: sessionID,
-                    avatar_id: owned_skins[currentIndex],
                 }),
             });
             const result = await response.json();
@@ -246,6 +245,7 @@
                 avatar_equiped = result.avatar_id;
                 profile.image = '/images/avatars/' + avatar_equiped + '.png';
                 localStorage.setItem('avatar_equiped', avatar_equiped);
+                currentIndex = owned_skins.indexOf(avatar_equiped);
             }
         } catch (error) {
             console.error('Error fetching data:', error);        
