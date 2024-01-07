@@ -21,9 +21,37 @@
             currentIndex = (currentIndex + 1) % images.length;
         } else if (direction === 'middle') {
             console.log("Changing avatar to: ",(owned_skins[currentIndex]));
-            avatar_equiped = owned_skins[currentIndex];
-            profile.image = '/images/avatars/' + avatar_equiped + '.png';
-            localStorage.setItem('avatar_equiped', avatar_equiped);
+
+            //handle backend avatar change
+            let storedSession = localStorage.getItem("session_id");
+            if (!storedSession) {
+                // TODO: Check if username in storage and remove it
+                await goto("/");
+                location.reload();
+                return;
+            }
+            let sessionID = storedSession;
+            try {
+                const response = await fetch("https://sapper-api.onrender.com/set_avatar", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionID,
+                        avatar_id: owned_skins[currentIndex],
+                    }),
+                });
+                const result = await response.json();
+                console.log(result);
+                if (result.type === "success") {
+                    avatar_equiped = owned_skins[currentIndex];
+                    profile.image = '/images/avatars/' + avatar_equiped + '.png';
+                    localStorage.setItem('avatar_equiped', avatar_equiped);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);        
+            }
         }
     }
     let all_images = [  // TODO: POPULATE THIS WITH ACTUAL SKIN TEXTURES
@@ -56,7 +84,7 @@
         'elf queen',
         'eye patch guy but sunny',
     ];
-    let owned_skins = [1, 2, 3, 4, 10, 12, 13];  // TODO get from backend
+    let owned_skins = [1, 4, 6];  // default free skins
     // Filter images and names based on owned skins
     let images = owned_skins.map(index => all_images[index-1]);
     let names = owned_skins.map(index => all_names[index-1]);
@@ -180,10 +208,51 @@
             return;
         }
 
+        //CHECK USER OWNED AVATARS
+        let sessionID = storedSession;
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_user_avatars", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                owned_skins = result.owned_avatars;
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+        //CHECK USER SET AVATAR
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_avatar", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                    avatar_id: owned_skins[currentIndex],
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                avatar_equiped = result.avatar_id;
+                profile.image = '/images/avatars/' + avatar_equiped + '.png';
+                localStorage.setItem('avatar_equiped', avatar_equiped);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+        //CHECK IF SET AVATAR IS IN USER OWNED AVATARS
+
         profile.name = localStorage.getItem("username");
-        avatar_equiped = parseInt(localStorage.getItem('avatar_equiped')) || 1;
-        currentIndex = owned_skins.indexOf(avatar_equiped);
-        profile.image = '/images/avatars/' + avatar_equiped + '.png';
     });
 </script>
 
