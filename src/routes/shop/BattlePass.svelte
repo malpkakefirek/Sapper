@@ -183,7 +183,7 @@
             console.log(result);
             if (result.type === "success") {
                 localStorage.setItem("battlepass_owned", result.owns_battlepass);
-                battlepass_owned=(result.owns_battlepass == "true");
+                battlepass_owned=(result.owns_battlepass === "true");
                 localStorage.setItem('battlepass_owned', battlepass_owned);
             }
         } catch (error) {
