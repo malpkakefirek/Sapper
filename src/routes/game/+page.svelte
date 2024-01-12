@@ -326,7 +326,7 @@
     let boosters_owned=0;
     let booster_used = false;
     function toggle_booster(){
-        if (boosters_owned > 0 && !boster_used) {
+        if (boosters_owned > 0 && !booster_used) {
             boosters_owned--;
             booster_used = true;
             localStorage.setItem('boosters_owned',boosters_owned);
