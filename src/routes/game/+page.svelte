@@ -329,10 +329,12 @@
     let boosters_owned=0;
     let booster_used = false;
     function use_booster(){
-        boosters_owned--;
-        booster_used=true;
-        localStorage.setItem('booster_used', booster_used.toString());
-        localStorage.setItem('boosters_owned',boosters_owned);
+        if(boosters_owned > 0){
+            boosters_owned--;
+            booster_used=true;
+            localStorage.setItem('booster_used', booster_used.toString());
+            localStorage.setItem('boosters_owned',boosters_owned);
+        }
     }
     function handle_after_game_booster(){ // set booster used to false after the game
         booster_used=false;
