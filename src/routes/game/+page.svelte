@@ -330,7 +330,7 @@
             boosters_owned--;
             booster_used = true;
             localStorage.setItem('boosters_owned',boosters_owned);
-        } else if (boster_used) {
+        } else if (booster_used) {
             boosters_owned++;
             booster_used = false;
         }
