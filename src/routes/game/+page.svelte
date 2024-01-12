@@ -66,8 +66,14 @@
         // Check if the hash is empty
         if ($page.url.hash === "") {
             console.log("You are on a URL without a hash.");
-            await goto("/shop#skins");
+            await goto("/game#start");
             return;
+        }
+        //check if user is logged in
+        let session_id = localStorage.getItem('session_id');
+        if(!session_id){
+            console.log("ERROR USER IS NOT LOGGED IN!");
+            goto("/login");
         }
         
         max_y = parseInt(localStorage.getItem('max_y')) || 50;
@@ -80,13 +86,8 @@
         current_skin = parseInt(localStorage.getItem('current_skin')) || 0;
         
         boosters_owned = localStorage.getItem('boosters_owned'); //TODO: add loading `boosters_owned` from backend: user
-
-        //check if user is logged in
-        let session_id = localStorage.getItem('session_id');
-        if(!session_id){
-            console.log("ERROR USER IS NOT LOGGED IN!");
-            goto("/login");
-        }
+        getBoosterCount();
+        
     });
 
     async function rightClicked(x,y) {
@@ -321,7 +322,35 @@
     //     //     });
     //     // }
     // });
+    async function getBoosterCount(){
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            await goto("/login");
+            location.reload();
+            return;
+        }
+        let sessionID = storedSession;
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_booster_count", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                localStorage.setItem("boosters_owned", result.booster_count);
+                boosters_owned=result.booster_count;
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
 
+    }
 
     let boosters_owned=0;
     let booster_used = false;
