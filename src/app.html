@@ -7,17 +7,18 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+		<div id="background"><div style="display: contents">%sveltekit.body%</div></div>
         
         
         <script>
             // Retrieve the current_skin value from localStorage
+            const background = document.getElementById('background');
             const current_skin = localStorage.getItem('current_skin');
 
             current_skin = current_skin ? current_skin : 0;
             
             // Set current_skin as the body's background
-            document.body.style.backgroundImage = `url('/images/skins/${current_skin}/background.svg')`;
+            background.style.backgroundImage = `url('/images/skins/${current_skin}/background.svg')`;
         </script>
 	</body>
 </html>
