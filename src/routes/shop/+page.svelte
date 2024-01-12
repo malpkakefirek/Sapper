@@ -156,10 +156,12 @@
         { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
     ];
     function use_booster(){
-        boosters_owned--;
-        booster_used=true;
-        localStorage.setItem('booster_used', booster_used.toString());
-        localStorage.setItem('boosters_owned',boosters_owned);
+        if(boosters_owned > 0){
+            boosters_owned--;
+            booster_used=true;
+            localStorage.setItem('booster_used', booster_used.toString());
+            localStorage.setItem('boosters_owned',boosters_owned);
+        }
     }
 </script>
 
