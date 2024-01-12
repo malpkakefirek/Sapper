@@ -140,7 +140,7 @@
                 localStorage.setItem('gems', result.gems);
                 coins = result.coins;
                 gems = result.gems;
-                if ((oldCoins !== -1 && oldCoins !== coins) || (oldGems !== -1 && oldGems !== gems)) {
+                if ((oldCoins !== coins) || (oldGems !== gems)) {
                     // Update currency if it's wrong
                     location.reload()
                 }
