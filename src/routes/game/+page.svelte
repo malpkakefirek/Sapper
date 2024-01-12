@@ -79,7 +79,6 @@
         
         current_skin = parseInt(localStorage.getItem('current_skin')) || 0;
         
-        booster_used = (localStorage.getItem('booster_used') === 'true');
         boosters_owned = localStorage.getItem('boosters_owned'); //TODO: add loading `boosters_owned` from backend: user
 
         //check if user is logged in
@@ -200,7 +199,6 @@
             xp_added = result.added_xp;
             bp_xp_added = result.added_battlepass_xp;
             battlepass_reward = (result.battlepass_reward === 'true');
-            handle_after_game_booster();
             //stopTimer();
             // goto("/game#win");
             return;
@@ -209,7 +207,6 @@
             console.log("I'm sorry, you lost!");
             is_loss=true;
             localStorage.setItem("is_loss", 1);
-            handle_after_game_booster();
             //stopTimer();
             // goto("/game#loss");
             return;
@@ -328,17 +325,15 @@
 
     let boosters_owned=0;
     let booster_used = false;
-    function use_booster(){
-        if(boosters_owned > 0){
+    function toggle_booster(){
+        if (boosters_owned > 0 && !boster_used) {
             boosters_owned--;
-            booster_used=true;
-            localStorage.setItem('booster_used', booster_used.toString());
+            booster_used = true;
             localStorage.setItem('boosters_owned',boosters_owned);
+        } else if (boster_used) {
+            boosters_owned++;
+            booster_used = false;
         }
-    }
-    function handle_after_game_booster(){ // set booster used to false after the game
-        booster_used=false;
-        localStorage.setItem('booster_used', booster_used.toString());
     }
 </script>
 
@@ -378,9 +373,9 @@
         <div>
             <p>Boosters: {boosters_owned}</p>
             {#if !booster_used}
-                <button on:click={() => use_booster()} class="custom_button_booster_activate"> Use Booster</button>
+                <button on:click={() => toggle_booster()} class="custom_button_booster_activate"> Use Booster</button>
             {:else}
-                <button class="custom_button_booster_activated"> Activated</button>
+                <button on:click={() => toggle_booster()} class="custom_button_booster_activated"> Activated</button>
             {/if}
         </div>
         <p> </p>

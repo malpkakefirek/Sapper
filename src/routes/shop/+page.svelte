@@ -65,8 +65,6 @@
 
         await UpdateCurrency();
 
-        //check if booster is in use
-        booster_used = (localStorage.getItem('booster_used') === 'true');
         getBoosterCount();
     });
 
@@ -151,18 +149,9 @@
     }
 
     let boosters_owned= -1;
-    let booster_used = false;
     let boosters = [
         { id: 1, name: 'Booster', image: '/images/booster.svg', priceCoins: 200, priceGems: 50 },
     ];
-    function use_booster(){
-        if(boosters_owned > 0){
-            boosters_owned--;
-            booster_used=true;
-            localStorage.setItem('booster_used', booster_used.toString());
-            localStorage.setItem('boosters_owned',boosters_owned);
-        }
-    }
 </script>
 
 <svelte:head>
@@ -203,11 +192,6 @@
                         LOADING...
                     {:else}
                         You have: {boosters_owned} boosters
-                    {/if}
-                    {#if !booster_used}
-                        <button on:click={() => use_booster()} class="custom_button1"> Use Booster</button>
-                    {:else}
-                        <button class="custom_button2"> Activated</button>
                     {/if}
                 </div>
             {/each}
