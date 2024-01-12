@@ -37,7 +37,7 @@
         }
         max_xp=expRequired;
         xp = _xp;
-        level = currentLevel;
+        level = currentLevel + 1;
     }
     
     onMount(() => {
