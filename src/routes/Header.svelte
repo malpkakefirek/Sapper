@@ -46,8 +46,8 @@
         username = localStorage.getItem('username');
         xp = parseInt(localStorage.getItem('xp')) || 0;
         //retrieveLevelsInfo();
-        coins = localStorage.getItem('coins');
-        gems = localStorage.getItem('gems');
+        coins = coins = (localStorage.getItem('coins') !== null) ? parseInt(localStorage.getItem('coins')) : -1;
+        gems = coins = (localStorage.getItem('gems') !== null) ? parseInt(localStorage.getItem('gems')) : -1;
 
         calculateLevel(xp);
     });
