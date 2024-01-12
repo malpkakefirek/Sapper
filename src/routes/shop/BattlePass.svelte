@@ -97,7 +97,7 @@
             return;
         }
         sessionID = session_id;
-        getXP(); //bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
+        await getXP(); //bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
         calculateLevel(bp_xp);
         getBattlepassStatus(); //battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
     });
