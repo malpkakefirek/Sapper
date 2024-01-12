@@ -12,13 +12,18 @@
         
         <script>
             // Retrieve the current_skin value from localStorage
+            console.log("1");
             const background = document.getElementById('background');
+            console.log(background);
             const current_skin = localStorage.getItem('current_skin');
+            console.log(current_skin);
 
             current_skin = current_skin ? current_skin : 0;
+            console.log(current_skin);
             
             // Set current_skin as the body's background
             background.style.backgroundImage = `url('/images/skins/${current_skin}/background.svg')`;
+            console.log("done");
         </script>
 	</body>
 </html>
