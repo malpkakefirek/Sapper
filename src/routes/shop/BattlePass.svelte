@@ -83,8 +83,26 @@
         'gems x100',
         'avatar 9',
     ];
-    let currentIndex = 0; 
+    let currentIndex = 0;
+    let bp_xp = -1;
+    let level = -1;
+    let bp_xp_max = -1;
+    
+    import { onMount } from 'svelte';
+    onMount(async () => {
+        let session_id = localStorage.getItem('session_id');
+        if (!session_id) {
+            console.log("PLEASE LOG IN TO BUY BATTLEPASS");
+            await goto("/login");
+            return;
+        }
+        sessionID = session_id;
+        getXP(); //bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
+        calculateLevel(bp_xp);
+        getBattlepassStatus(); //battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
+    });
 
+    
     function handleClick(direction) {
         if (direction === 'left') {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
@@ -94,12 +112,6 @@
             console.log("Showing Reward for ",(currentIndex+1));
         }
     }
-
-
-    let bp_xp = -1;
-    let level = -1;
-    let bp_xp_max = -1;
-
 
     function calculateLevel(xp) {
         let expRequired = 100;
@@ -118,18 +130,10 @@
     }
 
 
-
+    let sessionID;
     let battlepass_owned = false;
 
-    async function handle_skin_buy(){  
-        
-        let session_id = localStorage.getItem('session_id');
-        if (!session_id) {
-            console.log("PLEASE LOG IN TO BUY BATTLEPASS");
-            await goto("/login");
-            return;
-        }
-        
+    async function handle_skin_buy() {
         try {
             const response = await fetch("https://sapper-api.onrender.com/buy_battlepass", {
                 method: "POST",
@@ -160,15 +164,7 @@
 
 
     // GET BATTLEPASS STATUS - IF USER OWNS THE BATTLEPASS OR NO
-    async function getBattlepassStatus(){
-        let storedSession = localStorage.getItem("session_id");
-        if (!storedSession) {
-            console.log("User is not logged in - Battlepass owned is unknown")
-            battlepass_owned=false;
-            localStorage.setItem('battlepass_owned', battlepass_owned);
-            return;
-        }
-        let sessionID = storedSession;
+    async function getBattlepassStatus() {
         try {
             const response = await fetch("https://sapper-api.onrender.com/battlepass_status", {
                 method: "POST",
@@ -191,13 +187,30 @@
         }
 
     }
-        
-    import { onMount } from 'svelte';
-    onMount(async () => {
-        bp_xp = parseInt(localStorage.getItem('bp_xp')) || 0;
-        calculateLevel(bp_xp);
-        getBattlepassStatus(); //battlepass_owned = (localStorage.getItem('battlepass_owned') === 'true');
-    });
+
+
+    async function getXP(){
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_xp", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                bp_xp = result.battlepass_xp;
+                localStorage.setItem("bp_xp", bp_xp);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+
+    }
 </script>
 
 <div class="container level">

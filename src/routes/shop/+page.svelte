@@ -10,6 +10,7 @@
     let owned = [];
     let coins = -1;
     let gems = -1;
+    let sessionID;
     
     onMount(async () => {
         const response = await fetch("https://sapper-api.onrender.com/get_all_skins");
@@ -29,7 +30,7 @@
             location.reload();
             return;
         }
-        let sessionID = storedSession;
+        sessionID = storedSession;
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_user_skins", {
                 method: "POST",
@@ -68,15 +69,8 @@
         getBoosterCount();
     });
 
-
+    
     async function getBoosterCount(){
-        let storedSession = localStorage.getItem("session_id");
-        if (!storedSession) {
-            await goto("/login");
-            location.reload();
-            return;
-        }
-        let sessionID = storedSession;
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_booster_count", {
                 method: "POST",
@@ -113,14 +107,6 @@
         let oldCoins = coins;
         let oldGems = gems;
         // Fetch numbers from backend
-        let storedSession = localStorage.getItem("session_id");
-        if (!storedSession) {
-            // TODO: Check if username in storage and remove it
-            await goto("/login");
-            location.reload();
-            return;
-        }
-        let sessionID = storedSession;
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_balance", {
                 method: "POST",
