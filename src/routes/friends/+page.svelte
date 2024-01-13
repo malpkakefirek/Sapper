@@ -29,6 +29,8 @@
                 profile_searched_id = profile_id;
                 // profile = friends_list.find(friend => friend.id === profile_id);
                 await get_user_info(profile_id);
+                befriended = friends_list.some(friend => friend.id === profile_searched_id);
+                localStorage.setItem('befriended', befriended.toString());
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
@@ -51,12 +53,11 @@
             console.log(result);
             console.log('User data:', result.user);
             if (result.type === "success") {
-                profile = result.user.map(friend => ({
-                    id: friend.id,
-                    name: friend.username,
-                    image: '/images/avatars/'+friend.avatar+'.png',
-                    xp: friend.xp,
-                }));
+                profile.id = user_id;
+                profile.name: result.username;
+                profile.image: '/images/avatars/'+result.avatar+'.png';
+                profile.xp: result.xp;
+                localStorage.setItem('profile_viewed_name', result.username);
             }
         } catch (error) {
             console.error('Error fetching data:', error);        
@@ -160,6 +161,8 @@
                 const result = await response.json();
                 console.log(result);
                 if (result.type === "success") {
+                    befriended = false;
+                    befriended = localStorage.setItem('befriended', befriended.toString());
                     location.reload();
                     console.log('Successfully removed a friend');
                 }
@@ -181,6 +184,8 @@
                 const result = await response.json();
                 console.log(result);
                 if (result.type === "success") {
+                    befriended = true;
+                    befriended = localStorage.setItem('befriended', befriended.toString());
                     location.reload();
                     console.log('Successfully added a friend');
                 }
