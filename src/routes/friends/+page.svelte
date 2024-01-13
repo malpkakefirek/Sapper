@@ -17,8 +17,20 @@
     ];
 
     let profile = [];
+    
+    let sessionID;
     import { onMount } from 'svelte';
+    
     onMount(async () => {
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            await goto("/login");
+            location.reload();
+            return;
+        }
+        sessionID = storedSession;
+
+        
         if (window.location.hash == "#profile") {
             let profile_id = parseInt(localStorage.getItem('profile_viewed_id')) || -1;
             let profile_name = localStorage.getItem('profile_viewed_name') || null;
@@ -28,9 +40,37 @@
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
+        }else{
+            await getFriendsList();
         }
     });
 
+
+    async function getFriendsList(){
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_friends", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            console.log('Friends list:', result.friends);
+            if (result.type === "success") {
+                friends_list = result.friends.map(friend => ({
+                    id: friend.id,
+                    name: friend.username,
+                    image: '/images/avatars/'+friend.avatar+'.png',
+                }));
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+    }
 
 
 
