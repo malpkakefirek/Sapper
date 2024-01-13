@@ -81,7 +81,37 @@
         if (searchTerm.trim() === '') {
             return [];
         }
+        SearchList = getSearchResults();
+        
         return friends_list.filter(friend => friend.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+    async function getSearchResults(){
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/search_users", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                    query: searchTerm,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            console.log('Users Found:', result.users);
+            if (result.type === "success") {
+                SearchList = result.users.map(friend => ({
+                    id: friend.id,
+                    name: friend.username,
+                    image: '/images/avatars/'+friend.avatar+'.png',
+                }));
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);      
+            return [];
+        }
+        return [];
     }
     function handleSubmit() {
         SearchList=filterFriends();
