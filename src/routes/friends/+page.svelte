@@ -54,9 +54,9 @@
             console.log('User data:', result.user);
             if (result.type === "success") {
                 profile.id = user_id;
-                profile.name: result.username;
-                profile.image: '/images/avatars/'+result.avatar+'.png';
-                profile.xp: result.xp;
+                profile.name = result.username;
+                profile.image = '/images/avatars/'+result.avatar+'.png';
+                profile.xp = result.xp;
                 localStorage.setItem('profile_viewed_name', result.username);
             }
         } catch (error) {
