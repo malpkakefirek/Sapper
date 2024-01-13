@@ -27,13 +27,41 @@
             befriended = (localStorage.getItem('befriended') === 'true');
             if (profile_id !== -1 && profile_name !== null) {
                 profile_searched_id = profile_id;
-                profile = friends_list.find(friend => friend.id === profile_id);
+                // profile = friends_list.find(friend => friend.id === profile_id);
+                await get_user_info(profile_id);
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
         }
     });
 
+    async function get_user_info(user_id){
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/user_info", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                    user_id: user_id,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            console.log('User data:', result.user);
+            if (result.type === "success") {
+                profile = result.user.map(friend => ({
+                    id: friend.id,
+                    name: friend.username,
+                    image: '/images/avatars/'+friend.avatar+'.png',
+                    xp: friend.xp,
+                }));
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+    }
 
     async function getFriendsList(){
         try {
@@ -193,6 +221,7 @@
                     <div>Games Won: <span>{games_won}</span></div>
                     <div>Games Lost: <span>{games_lost}</span></div>
                     <div>Flags Placed: <span>{flags_placed}</span></div>
+                    <div>xp: <span>{profile.xp}</span></div>
                 </div>
             </div>
         </div>
