@@ -2,21 +2,10 @@
     import { page } from "$app/stores";
     import Friend from './Friend.svelte';
 
-    let friends_list = [
-          { id: 1, name: 'Lukas', image: '/images/avatars/1.png' },
-          { id: 2, name: 'Anna', image: '/images/avatars/2.png' },
-          { id: 3, name: 'John', image: '/images/avatars/3.png' },
-          { id: 4, name: 'Emily', image: '/images/avatars/4.png' },
-          { id: 5, name: 'Michael', image: '/images/avatars/5.png' },
-          { id: 6, name: 'Sophia', image: '/images/avatars/6.png' },
-          { id: 7, name: 'Daniel', image: '/images/avatars/7.png' },
-          { id: 8, name: 'Olivia', image: '/images/avatars/8.png' },
-          { id: 9, name: 'David', image: '/images/avatars/9.png' },
-          { id: 10, name: 'Emma', image: '/images/avatars/10.png' },
-          { id: 11, name: 'Evelina', image: '/images/avatars/11.png' },
-    ];
+    let friends_list = [];
 
     let profile = [];
+    let profile_searched_id;
     
     let sessionID;
     import { onMount } from 'svelte';
@@ -29,19 +18,19 @@
             return;
         }
         sessionID = storedSession;
-
+        
+        await getFriendsList();
         
         if (window.location.hash == "#profile") {
-            let profile_id = parseInt(localStorage.getItem('profile_viewed_id')) || -1;
+            let profile_id = localStorage.getItem('profile_viewed_id');
             let profile_name = localStorage.getItem('profile_viewed_name') || null;
             befriended = (localStorage.getItem('befriended') === 'true');
             if (profile_id !== -1 && profile_name !== null) {
+                profile_searched_id = profile_id;
                 profile = friends_list.find(friend => friend.id === profile_id);
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
-        }else{
-            await getFriendsList();
         }
     });
 
@@ -108,13 +97,11 @@
                 }));
             }
         } catch (error) {
-            console.error('Error fetching data:', error);      
-            return [];
+            console.error('Error fetching data:', error);
         }
-        return [];
     }
     function handleSubmit() {
-        SearchList=filterFriends();
+        filterFriends();
         console.log(SearchList);
     }
 
@@ -125,10 +112,54 @@
     let flags_placed = Math.floor(Math.random() * 5000) + 1;
     let befriended = false;
 
-    function toggle_friend(){
-        befriended = !befriended;
-        befriended = localStorage.setItem('befriended', befriended.toString());
-        location.reload();
+    async function toggle_friend(){
+        // befriended = !befriended;
+        // befriended = localStorage.setItem('befriended', befriended.toString());
+        // location.reload();
+
+        if (friends_list.some(friend => friend.id === profile_searched_id)) {
+            try {
+                const response = await fetch("https://sapper-api.onrender.com/remove_friend", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionID,
+                        user_id: profile_searched_id,
+                    }),
+                });
+                const result = await response.json();
+                console.log(result);
+                if (result.type === "success") {
+                    location.reload();
+                    console.log('Successfully removed a friend');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }else{
+            try {
+                const response = await fetch("https://sapper-api.onrender.com/add_friend", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionID,
+                        user_id: profile_searched_id,
+                    }),
+                });
+                const result = await response.json();
+                console.log(result);
+                if (result.type === "success") {
+                    location.reload();
+                    console.log('Successfully added a friend');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
     }
 </script>
 
