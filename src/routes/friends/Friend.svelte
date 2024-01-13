@@ -7,6 +7,7 @@
         localStorage.setItem('profile_viewed_id',friend.id);
         localStorage.setItem('profile_viewed_name',friend.name);
         await goto("/friends#profile");
+        location.reload();
     }
 </script>
 
