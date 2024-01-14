@@ -247,7 +247,9 @@
     {:else if $page.url.hash == "#add"}
         <label for="searchInput">Search by name:</label>
         <input type="text" id="searchInput" bind:value={searchTerm} />
-        <p class="not-found-text">No users found!</p>
+        {#if not_found}
+            <p class="not-found-text">No users found!</p>
+        {/if}
         <button on:click={handleSubmit} class="custom_button_remove_friend">Search!</button>
         
 
