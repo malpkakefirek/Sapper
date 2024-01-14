@@ -94,11 +94,13 @@
 
     let searchTerm = ''; 
     let SearchList = [];
+    let not_found=false;
     
     function filterFriends() {
         if (searchTerm.trim() === '') {
             return [];
         }
+        not_found=false;
         SearchList = getSearchResults();
         
         return friends_list.filter(friend => friend.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -119,11 +121,15 @@
             console.log(result);
             console.log('Users Found:', result.users);
             if (result.type === "success") {
-                SearchList = result.users.map(friend => ({
-                    id: friend.id,
-                    name: friend.username,
-                    image: '/images/avatars/'+friend.avatar+'.png',
-                }));
+                if (result.users.length === 0){
+                    not_found=true;
+                }else{
+                    SearchList = result.users.map(friend => ({
+                        id: friend.id,
+                        name: friend.username,
+                        image: '/images/avatars/'+friend.avatar+'.png',
+                    }));
+                }
             }
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -241,6 +247,7 @@
     {:else if $page.url.hash == "#add"}
         <label for="searchInput">Search by name:</label>
         <input type="text" id="searchInput" bind:value={searchTerm} />
+        <p class="not-found-text">No users found!</p>
         <button on:click={handleSubmit} class="custom_button_remove_friend">Search!</button>
         
 
@@ -359,5 +366,10 @@
 
     .custom_button_add_friend:active {
         transform: scale(0.9);
+    }
+
+    .not-found-text {
+        color: red;
+        margin-top: 10px;
     }
 </style>
