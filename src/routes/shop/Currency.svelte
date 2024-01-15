@@ -74,8 +74,6 @@
 <style>
   .currency-container {
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     margin: 20px;
     max-width: 400px;
   }

@@ -381,52 +381,54 @@
             </div>
         </div>
     {:else if $page.url.hash == "#changePassword"}
-        <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
-        <h2>This is not implemented yet!</h2>
-        <form
-            method="post"
-            on:submit|preventDefault={handleChangePassword}
-            use:form
-            action="https://sapper-api.onrender.com/change_password"
-        >
-            <h1>Login</h1>
-            <div style="display: flex; justify-content: center; flex-direction: column;">
-                <input type="hidden" name="session_id" bind:value={sessionID} />
-
-                <div class="formInput">
-                    <input type="password" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} />
-                    <HintGroup for="old_password">
-                        <Hint on="required">This is a mandatory field</Hint>
-                        <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
-                        <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
-                    </HintGroup>
+        <div class="dropbox">
+            <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
+            <h2>This is not implemented yet!</h2>
+            <form
+                method="post"
+                on:submit|preventDefault={handleChangePassword}
+                use:form
+                action="https://sapper-api.onrender.com/change_password"
+            >
+                <h1>Login</h1>
+                <div style="display: flex; justify-content: center; flex-direction: column;">
+                    <input type="hidden" name="session_id" bind:value={sessionID} />
+    
+                    <div class="formInput">
+                        <input type="password" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                        <HintGroup for="old_password">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                            <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                        </HintGroup>
+                    </div>
+                    <div class="formInput">
+                        <input type="password" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
+                        <HintGroup for="new_password">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                            <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
+                        </HintGroup>
+                    </div>
+                    <div class="formInput">
+                        <input type="password" name="new_password_confirm" use:validators={[required, passwordMatch]} />
+                        <HintGroup for="new_password_confirm">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
+                        </HintGroup>
+                    </div>
+    
+                    <button disabled={!$form.valid}>Change Password</button>
                 </div>
-                <div class="formInput">
-                    <input type="password" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
-                    <HintGroup for="new_password">
-                        <Hint on="required">This is a mandatory field</Hint>
-                        <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
-                        <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
-                        <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
-                    </HintGroup>
-                </div>
-                <div class="formInput">
-                    <input type="password" name="new_password_confirm" use:validators={[required, passwordMatch]} />
-                    <HintGroup for="new_password_confirm">
-                        <Hint on="required">This is a mandatory field</Hint>
-                        <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
-                    </HintGroup>
-                </div>
-
-                <button disabled={!$form.valid}>Change Password</button>
-            </div>
-        </form>
-        {#if success}
-            <div style="color: darkgreen;">Successfully changed password!</div>
-        {/if}
-        {#if message != ''}
-            <div style="color: red;">{message}</div>
-        {/if}
+            </form>
+            {#if success}
+                <div style="color: darkgreen;">Successfully changed password!</div>
+            {/if}
+            {#if message != ''}
+                <div style="color: red;">{message}</div>
+            {/if}
+        </div>
             
     {/if}
 </div>
