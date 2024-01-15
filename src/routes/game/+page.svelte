@@ -57,6 +57,7 @@
     let xp_added = 0;
     let bp_xp_added = 0;
     let battlepass_reward = false;
+    let time = 0;
     
     let current_skin = 0; // 0 for default
 
