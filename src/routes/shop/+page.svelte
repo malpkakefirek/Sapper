@@ -145,7 +145,7 @@
     <meta name="description" content="About this app" />
 </svelte:head>
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="text-column" style="align-items: center;">
+<div class="text-column" style="align-items: center; max-width: 64rem;">
     <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
     
     {#if $page.url.hash == "#skins"}
