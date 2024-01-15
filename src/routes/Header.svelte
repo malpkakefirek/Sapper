@@ -111,7 +111,11 @@
                 <li>
                     <!-- <button onclick="openModal()">Main Menu</button> -->
                     <!-- <a on:click={openModal} style="cursor: pointer;">Main Menu</a> -->
-                    <a href="/" on:click|preventDefault={() => showModal.update(() => true)}>Main Menu</a>
+                    {#if $page.url.hash === "#start"}
+                        <a href="/">Main Menu</a>
+                    {:else}
+                        <a href="/" on:click|preventDefault={() => showModal.update(() => true)}>Main Menu</a>
+                    {/if}
                 </li>
             {/if}
             {#if $page.url.pathname == "/shop"}
