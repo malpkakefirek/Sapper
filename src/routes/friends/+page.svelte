@@ -281,13 +281,14 @@
             {/each}
         </div>
     {:else if $page.url.hash == "#add"}
-        <label for="searchInput">Search by name:</label>
-        <input type="text" id="searchInput" bind:value={searchTerm} />
-        {#if not_found}
-            <p class="not-found-text">No users found!</p>
-        {/if}
-        <button on:click={handleSubmit} class="custom_button1">Search!</button>
-        
+        <div class="dropbox">
+            <label for="searchInput">Search by name:</label>
+            <input type="text" id="searchInput" bind:value={searchTerm} />
+            {#if not_found}
+                <p class="not-found-text">No users found!</p>
+            {/if}
+            <button on:click={handleSubmit} class="custom_button1">Search!</button>
+        </div>
 
         <div class="friends-container">
             {#each SearchList as friend (friend.id)}
