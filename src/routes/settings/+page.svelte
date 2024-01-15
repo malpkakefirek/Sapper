@@ -227,6 +227,11 @@
             console.error("Passwords do not match!");
             return;
         }
+        if (new_password == '' or new_password_confirm == '' or new_password == null or new_password_confirm == null) {
+            message="New password is empty!";
+            console.error("New password is empty!");
+            return;
+        }
         
         const response = await fetch(event.currentTarget.action, {
             method: "POST",
