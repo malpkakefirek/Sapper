@@ -169,9 +169,9 @@
             <BattlePass />
         </div>
     {:else if $page.url.hash == "#boosters"}
-        <div class="items-container dropbox">
+        <div class="items-container">
             {#each boosters as item (item.id)}
-                <div class="item">
+                <div class="item dropbox">
                     <Item {item} />
                     {#if boosters_owned==-1}
                         LOADING...
