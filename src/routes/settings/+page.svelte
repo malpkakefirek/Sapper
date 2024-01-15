@@ -396,7 +396,7 @@
                 action="https://sapper-api.onrender.com/change_password"
             >
                 <h1>Login</h1>
-                <div style="display: flex; justify-content: center; flex-direction: column;">
+                <div style="display: flex; align-content: center; flex-direction: column;">
                     <input type="hidden" name="session_id" bind:value={sessionID} />
     
                     <div class="formInput">
