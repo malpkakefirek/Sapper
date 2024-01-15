@@ -169,13 +169,6 @@
                 >
                     <a href="/settings#changePassword">Change Password</a>
                 </li>
-                <li
-                    aria-current={$page.url.hash === "#deleteProfile"
-                        ? "page"
-                        : undefined}
-                >
-                    <a href="/settings#deleteProfile">Delete Profile</a>
-                </li>
                 <li>
                     <a href="/">Main Menu</a>
                 </li>

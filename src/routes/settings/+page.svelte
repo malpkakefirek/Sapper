@@ -136,67 +136,7 @@
 
         applyAction(result);
     }
-
-    let delete_sure1 = false;
-    let delete_sure2 = false;
-    let delete_sure3 = false;
-    let delete_sure4 = false;
-
-    function handleDelete1() {
-        if (!delete_sure1) {
-            delete_sure1 = true;
-        }
-    }
-    function handleDelete2() {
-        if (!delete_sure2) {
-            delete_sure2 = true;
-        }
-    }
-    function handleDelete3() {
-        if (!delete_sure3) {
-            delete_sure3 = true;
-        }
-    }
-    function handleDelete4() {
-        if (!delete_sure4) {
-            delete_sure4 = true;
-        }
-    }
-    async function handleDeleteFinal() { //rework this to include FORM with current password input
-        if (delete_sure1 && delete_sure2 && delete_sure3 && delete_sure4){
-            
-            console.log("You tried deleting your account");
-            
-            let storedSession = localStorage.getItem("session_id");
-            if (!storedSession) {
-                // TODO: Check if username in storage and remove it
-                await goto("/");
-                location.reload();
-                return;
-            }
-            let sessionID = storedSession;
-            try {
-                const response = await fetch("https://sapper-api.onrender.com/delete", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({session_id: sessionID}),
-                });
-                const result = await response.json();
-                console.log(result);
-                if (result.type === "success") {
-                    localStorage.removeItem("session_id");
-                    localStorage.removeItem("username");
-                    await goto("/");
-                    location.reload();
-                    // await invalidateAll();
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);        
-            }
-        }
-    }
+    
     // on mount:
     import { onMount } from "svelte";
     onMount(async () => {
@@ -387,14 +327,6 @@
         {#if success}
             <div style="color: darkgreen;">Successfully changed password!</div>
         {/if}
-    {:else if $page.url.hash == "#deleteProfile"}
-        <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
-        <h2>This is not implemented yet!</h2>
-        <button on:click={() => handleDelete1()} class="custom_button1"> Delete Profile</button>
-        {#if delete_sure1}<button on:click={() => handleDelete2()} class="custom_button1"> Are sure?</button>{/if}
-        {#if delete_sure2}<button on:click={() => handleDelete3()} class="custom_button1"> Are you sure sure?</button>{/if}
-        {#if delete_sure3}<button on:click={() => handleDelete4()} class="custom_button1"> There is no going back!</button>{/if}
-        {#if delete_sure4}<button on:click={() => handleDeleteFinal()} class="custom_button1"> DELETE FOREVER</button>{/if}
     {/if}
 </div>
 
