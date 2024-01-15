@@ -121,14 +121,12 @@
         message='';
         console.log("You tried changing the password");
         const data = new FormData(event.currentTarget);
-        let old_password;
         let new_password;
         let new_password_confirm;
         for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
-            if(key === 'currentPassword') old_password = value;
-            if(key === 'newPassword') new_password = value;
-            if(key === 'confirmNewPassword') new_password_confirm = value;
+            if(key === 'new_password') new_password = value;
+            if(key === 'new_password_confirm') new_password_confirm = value;
         }
         if (new_password != new_password_confirm){
             console.error("Passwords do not match!");
@@ -138,9 +136,7 @@
         
         const response = await fetch(event.currentTarget.action, {
             method: "POST",
-            session_id: storedSession,
-            old_password: old_password,
-            new_password: new_password,
+            body: data,
         });
 
         /** @type {import('@sveltejs/kit').ActionResult} */
@@ -153,6 +149,7 @@
             await invalidateAll();
         }else{
             console.error("Password change failed: ", result);
+            message='Password change failed, check password';
         }
         // TODO: add login fail logic
 
@@ -334,14 +331,16 @@
         >
             <h1>Login</h1>
             <div style="display: flex; justify-content: center;">
-                <input type="password" name="currentPassword" use:validators={[required]} />
-                <Hint for="currentPassword" on="required">This is a mandatory field</Hint>
+                <input type="hidden" name="session_id" bind:value={sessionID} />
 
-                <input type="password" name="newPassword" use:validators={[required]} />
-                <Hint for="newPassword" on="required">This is a mandatory field</Hint>
+                <input type="password" name="old_password" use:validators={[required]} />
+                <Hint for="old_password" on="required">This is a mandatory field</Hint>
 
-                <input type="password" name="confirmNewPassword" use:validators={[required]} />
-                <Hint for="confirmNewPassword" on="required">This is a mandatory field</Hint>
+                <input type="password" name="new_password" use:validators={[required]} />
+                <Hint for="new_password" on="required">This is a mandatory field</Hint>
+
+                <input type="password" name="new_password_confirm" use:validators={[required]} />
+                <Hint for="new_password_confirm" on="required">This is a mandatory field</Hint>
 
                 <button disabled={!$form.valid}>Change Password</button>
             </div>
@@ -349,6 +348,10 @@
         {#if success}
             <div style="color: darkgreen;">Successfully changed password!</div>
         {/if}
+        {#if message != ''}
+            <div style="color: red;">{message}</div>
+        {/if}
+            
     {/if}
 </div>
 
