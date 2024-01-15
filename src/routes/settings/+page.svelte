@@ -2,7 +2,6 @@
     import { page } from "$app/stores";
     
     let profile = {
-        id: 1, 
         name: 'Loading...', 
         image: '/images/avatars/1.png', 
         statistics: {
@@ -96,7 +95,6 @@
             const result = await response.json();
             console.log(result);
             if (result.type === "success") {
-                profile.id = user_id;
                 profile.name = result.username;
                 profile.image = '/images/avatars/'+result.avatar+'.png';
                 profile.xp = result.xp;
