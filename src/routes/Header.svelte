@@ -60,35 +60,37 @@
 </script>
 
 <header>
-    <div class="corner">
-        <li aria-current={$page.url.pathname === "/about" ? "page" : ""}>
-            <a href="/about">
-                <!-- <img src={logo} alt="PlayersLogo" /> -->
-            </a>
-            {#if $page.url.pathname == "/shop"}
-                {#if session_id}
-                    {#if coins == -1}
-                        <p class="gold-text">Coins: Loading...</p>
-                    {:else}
-                        <p class="gold-text">Coins: {coins}</p>
-                    {/if}
-                    {#if gems == -1}
-                        <p class="green-text">Coins: Loading...</p>
-                    {:else}
-                        <p class="green-text">Gems: {gems}</p>
-                    {/if}
-                {/if}
-            {:else}
-                Level {level}: {xp}/{max_xp}
-            {/if}
-        </li>
-    </div>
 
     <nav>
         <svg viewBox="0 0 2 3" aria-hidden="true">
             <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
         </svg>
         <ul>
+            
+            <div class="corner">
+                <li aria-current={$page.url.pathname === "/about" ? "page" : ""}>
+                    <a href="/about">
+                        <!-- <img src={logo} alt="PlayersLogo" /> -->
+                    </a>
+                    {#if $page.url.pathname == "/shop"}
+                        {#if session_id}
+                            {#if coins == -1}
+                                <p class="gold-text">Coins: Loading...</p>
+                            {:else}
+                                <p class="gold-text">Coins: {coins}</p>
+                            {/if}
+                            {#if gems == -1}
+                                <p class="green-text">Coins: Loading...</p>
+                            {:else}
+                                <p class="green-text">Gems: {gems}</p>
+                            {/if}
+                        {/if}
+                    {:else}
+                        Level {level}: {xp}/{max_xp}
+                    {/if}
+                </li>
+            </div>
+            
             {#if $page.url.pathname == "/"}
                 <li aria-current="page">
                     <a href="/">Main Menu</a>
@@ -187,23 +189,27 @@
                     <a href="/">Main Menu</a>
                 </li>
             {/if}
+
+            
+            <div class="corner">
+                    {#if !session_id}
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">REGISTER</a>
+                    {:else}
+                        {username ? "Logged in as "+username : "Username not found"}
+                        <a href="/logout">log out</a>
+                    {/if}
+                    <!-- <a href="https://github.com/sveltejs/kit"> -->
+                    <!-- FIX THIS -->
+            </div>
+
+            
         </ul>
         <svg viewBox="0 0 2 3" aria-hidden="true">
             <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
         </svg>
     </nav>
 
-    <div class="corner">
-            {#if !session_id}
-                <a href="/login">LOGIN</a>
-                <a href="/register">REGISTER</a>
-            {:else}
-                {username ? "Logged in as "+username : "Username not found"}
-                <a href="/logout">log out</a>
-            {/if}
-            <!-- <a href="https://github.com/sveltejs/kit"> -->
-            <!-- FIX THIS -->
-    </div>
 </header>
 
 <style>
