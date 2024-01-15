@@ -13,6 +13,7 @@
         },
         xp: 0
     };
+    let formatted_time="Loading...";
     
     // let games_played = Math.floor(Math.random() * 1000) + 1;
     // let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
@@ -78,6 +79,7 @@
 
 
         await get_statistics();
+        formatted_time = display_time(profile.statistics.games_played);
     });
     
     async function get_statistics(){
@@ -251,7 +253,7 @@
     }
 
     function display_time(time){
-        let seconds = parseFloat(time);
+        let seconds = parseFloat(time)/100;
 
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor((seconds % 3600) / 60);
@@ -295,7 +297,7 @@
                         Statistics
                     </div>
                     <div class="statistics">
-                        <div>Time Played: <span>{display_time(profile.statistics.games_played)}</span></div>
+                        <div>Time Played: <span>{formatted_time}</span></div>
                         <div>Games Played: <span>{profile.statistics.games_played}</span></div>
                         <div>Tiles Clicked: <span>{profile.statistics.tiles_clicked}</span></div>
                         <div>Games Won: <span>{profile.statistics.games_won}</span></div>

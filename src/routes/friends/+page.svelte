@@ -17,6 +17,7 @@
         xp: 0
     };
     let profile_searched_id;
+    let formatted_time="Loading...";
     
     let sessionID;
     import { onMount } from 'svelte';
@@ -45,11 +46,12 @@
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
+            formatted_time = display_time(profile.statistics.games_played);
         }
     });
 
     function display_time(time){
-        let seconds = parseFloat(time);
+        let seconds = parseFloat(time)/100;
 
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor((seconds % 3600) / 60);
@@ -261,7 +263,7 @@
                     Statistics
                 </div>
                 <div class="statistics">
-                    <div>Time Played: <span>{display_time(profile.statistics.games_played)}</span></div>
+                    <div>Time Played: <span>{formatted_time}</span></div>
                     <div>Games Played: <span>{profile.statistics.games_played}</span></div>
                     <div>Tiles Clicked: <span>{profile.statistics.tiles_clicked}</span></div>
                     <div>Games Won: <span>{profile.statistics.games_won}</span></div>
