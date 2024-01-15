@@ -58,6 +58,7 @@
     let bp_xp_added = 0;
     let battlepass_reward = false;
     let time = 0;
+    let formatted_time='';
     
     let current_skin = 0; // 0 for default
 
@@ -202,6 +203,7 @@
             bp_xp_added = result.added_battlepass_xp;
             battlepass_reward = (result.battlepass_reward === 'true');
             time = result.seconds_played;
+            formatted_time = display_time();
             //stopTimer();
             // goto("/game#win");
             return;
@@ -210,6 +212,8 @@
             console.log("I'm sorry, you lost!");
             is_loss=true;
             localStorage.setItem("is_loss", 1);
+            time = result.seconds_played;
+            formatted_time = display_time();
             //stopTimer();
             // goto("/game#loss");
             return;
@@ -385,7 +389,7 @@
         
         display += remainingSeconds + 's ';
 
-        console.log(display)
+        console.log(display);
         return display;
     }
 </script>
@@ -513,7 +517,7 @@
     </h2>
 
     <ol class="definition-list">
-        <p>Time: {display_time()}</p>
+        <p>Time: {formatted_time}</p>
         <p>Map Size: {max_x}x{max_y}</p>
         <p>Difficulty: {mines} mines</p>
         <p>XP: +{xp_added}</p>
