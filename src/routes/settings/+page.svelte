@@ -227,7 +227,7 @@
             console.error("Passwords do not match!");
             return;
         }
-        if (new_password == '' or new_password_confirm == '' or new_password == null or new_password_confirm == null) {
+        if (new_password == '' || new_password_confirm == '' || new_password == null || new_password_confirm == null) {
             message="New password is empty!";
             console.error("New password is empty!");
             return;
