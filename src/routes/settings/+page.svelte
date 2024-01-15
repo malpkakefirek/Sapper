@@ -78,7 +78,7 @@
 
 
         await get_statistics();
-        formatted_time = display_time(profile.statistics.games_played);
+        formatted_time = display_time(profile.statistics.miliseconds_played);
     });
     
     async function get_statistics(){

@@ -46,7 +46,7 @@
             } else {
                 console.error("Missing or invalid profile data in localStorage.");
             }
-            formatted_time = display_time(profile.statistics.games_played);
+            formatted_time = display_time(profile.statistics.miliseconds_played);
         }
     });
 
