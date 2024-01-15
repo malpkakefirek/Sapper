@@ -332,6 +332,17 @@
 </div> -->
 
 
+<!-- PRE LOAD TEXTURES -->
+<div style="display: none;">
+    {#each {length: 2} as _, i}
+        {#if (currentIndex - i - 2) >= 0}
+            <img src={images[currentIndex - i - 2]} />
+        {/if}
+        {#if (currentIndex + i + 2) <= images.length - 1}
+            <img src={images[currentIndex + i + 2]} />
+        {/if}
+    {/each}
+</div>
 
 
 <style>

@@ -502,7 +502,7 @@
  <!-- PRE LOAD TEXTURES -->
 <div style="display: none;">
     {#each {length: 14} as _, i}
-        <img src="/images/skins/{current_skin}/{i-3}.svg" style="display: none;" />
+        <img src="/images/skins/{current_skin}/{i-3}.svg"/>
     {/each}
 </div>
 
