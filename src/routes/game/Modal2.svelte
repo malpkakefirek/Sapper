@@ -7,6 +7,7 @@
     let dialog; // HTMLDialogElement
 
     $: if (dialog && showModal_value2) dialog.showModal();
+
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
@@ -23,7 +24,7 @@
         <hr />
         <!-- svelte-ignore a11y-autofocus -->
         <div style="display: flex; justify-content: space-between;">
-            <button autofocus on:click={() => { showModal2.update(() => false); await location.reload(); }} class="custom_button1"><a href="/game#start" style="text-decoration: none; color: inherit;">Play Again</a></button>
+            <button autofocus on:click={async () => { showModal2.update(() => false); await location.reload(); }} class="custom_button1"><a href="/game#start" style="text-decoration: none; color: inherit;">Play Again</a></button>
             <button autofocus on:click={() => dialog.close()} class="custom_button2">View Board</button>
         </div>
     </div>
