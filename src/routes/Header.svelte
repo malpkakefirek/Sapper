@@ -302,13 +302,13 @@
 
     .gold-text {
         color: #FFD700;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
         max-height: 5px;
         margin-top: auto;
     }
     
     .green-text {
         color: #57C153;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
     }
 </style>

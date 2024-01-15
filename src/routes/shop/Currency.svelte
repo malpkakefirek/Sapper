@@ -76,6 +76,8 @@
     padding: 20px;
     margin: 20px;
     max-width: 400px;
+      display: flex;
+      flex-direction: column;
   }
 
   .slider-label {
