@@ -571,7 +571,7 @@
         /* background-image: url("/images/tile.png"); */
     }
     
-    .custom_button1.clicked {
+    :global(.custom_button1.clicked) {
         color: white;
         box-shadow: inset 0 -100px 0 0 #725AC1;
         transform: scale(1.12);
