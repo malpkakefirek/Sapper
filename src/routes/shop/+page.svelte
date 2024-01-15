@@ -198,13 +198,11 @@
     .items-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
     }
     .item {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        margin: 10px;
+        margin: 16px;
         /* max-width: 200px; */
         font-weight: bold;
         color: white;
