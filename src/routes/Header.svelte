@@ -305,8 +305,6 @@
     .gold-text {
         color: #FFD700;
         text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-        max-height: 5px;
-        margin-top: auto;
     }
     
     .green-text {
