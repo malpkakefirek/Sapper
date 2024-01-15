@@ -99,7 +99,7 @@
     import { invalidateAll, goto } from "$app/navigation";
 
     function passwordMatch(value, form) {
-        if (value !== form.values.new_password) {
+        if (value !== form.values.new_password || value !== form.values.new_password_confirm) {
           return { passwordMatch: true };
         }
     }
@@ -168,7 +168,7 @@
             return;
         }
         sessionID = storedSession;
-
+        message='';
         //CHECK USER OWNED AVATARS
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_user_avatars", {
@@ -341,11 +341,12 @@
                     <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
                 </HintGroup>
                 
-                <input type="password" name="new_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                <input type="password" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
                 <HintGroup for="new_password">
                     <Hint on="required">This is a mandatory field</Hint>
                     <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
                     <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                    <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
                 </HintGroup>
                     
                 <input type="password" name="new_password_confirm" use:validators={[required, passwordMatch]} />

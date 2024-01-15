@@ -16,7 +16,7 @@
     import { invalidateAll, goto } from '$app/navigation';
 
     function passwordMatch(value, form) {
-        if (value !== form.values.password) {
+        if (value !== form.values.password || value !== form.values.passwordConfirmation) {
           return { passwordMatch: true };
         }
     }
@@ -94,13 +94,15 @@
             use:validators={[
                 required,
                 minLength(8),
-                maxLength(64)
+                maxLength(64),
+                passwordMatch
             ]} 
         />
         <HintGroup for="password">
             <Hint for="password" on="required">This is a mandatory field</Hint>
             <Hint for="password" on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
             <Hint for="password" on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
         </HintGroup>
         
         <label for="passwordConfirmation">Password Confirmation</label>
