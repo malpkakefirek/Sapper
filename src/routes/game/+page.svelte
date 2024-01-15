@@ -202,7 +202,7 @@
             xp_added = result.added_xp;
             bp_xp_added = result.added_battlepass_xp;
             battlepass_reward = (result.battlepass_reward === 'true');
-            time = result.seconds_played;
+            time = parseFloat(result.miliseconds_played)/100;
             formatted_time = display_time();
             //stopTimer();
             // goto("/game#win");
@@ -212,7 +212,7 @@
             console.log("I'm sorry, you lost!");
             is_loss=true;
             localStorage.setItem("is_loss", 1);
-            time = result.seconds_played;
+            time = parseFloat(result.miliseconds_played)/100;
             formatted_time = display_time();
             //stopTimer();
             // goto("/game#loss");
