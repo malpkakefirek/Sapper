@@ -215,6 +215,9 @@
         background: var(--background);
         text-align: center;
         text-shadow: 1px 1px 2px goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .corner a {
