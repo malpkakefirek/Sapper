@@ -231,19 +231,19 @@
         font-size: 18px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: #000000;  /* DEQUIP */
+        color: #000000 !important;  /* DEQUIP */
         background: transparent;
         cursor: pointer;
         transition: ease-out 0.5s;
-        border: 2px solid #000000;
+        border: 2px solid #000000 !important;
         border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #000000;
-        font-weight: bold;
+        box-shadow: inset 0 0 0 0 #000000 !important;
+        font-weight: bold !important;
     }
 
     .custom_button1:hover {
         color: white;
-        box-shadow: inset 0 -100px 0 0 #000000;
+        box-shadow: inset 0 -100px 0 0 #000000 !important;
         transform: scale(1.1);
     }
 
@@ -262,19 +262,19 @@
         font-size: 14px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: #000000;
+        color: #000000 !important;
         background: transparent;
         cursor: pointer;
         transition: ease-out 0.5s;
-        border: 2px solid #000000;
+        border: 2px solid #000000 !important;
         border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #000000;
-        font-weight: bold;
+        box-shadow: inset 0 0 0 0 #000000 !important;
+        font-weight: bold !important;
     }
 
     .custom_button2:hover {
         color: white;
-        box-shadow: inset 0 -100px 0 0 #000000;
+        box-shadow: inset 0 -100px 0 0 #000000 !important;
         transform: scale(1.1);
     }
 
