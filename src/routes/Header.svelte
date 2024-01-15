@@ -251,10 +251,11 @@
     }
     
     .element_left {
-        
+        height: 100%;
     }
 
     .element_right {
+        height: 100%;
         padding-left: 1rem;
     }
 
