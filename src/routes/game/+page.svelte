@@ -407,39 +407,40 @@
     on:mousemove={(e) => (mouse = { x: e.clientX, y: e.clientY })}
 >
     {#if $page.url.hash == "#start"}
-        <h1>Choose game difficulty to start the game!</h1>
-
-        <div>
-            <p>Mines: {mines} % of the field</p>
-            <div class="button-container">
-                <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> Easy</button>
-                <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> Medium</button>
-                <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> Hard</button>
-                <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> Impossible</button>
+        <div class="dropbox">
+            <h1>Choose game difficulty to start the game!</h1>
+    
+            <div>
+                <p>Mines: {mines} % of the field</p>
+                <div class="button-container">
+                    <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> Easy</button>
+                    <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> Medium</button>
+                    <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> Hard</button>
+                    <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> Impossible</button>
+                </div>
             </div>
-        </div>
-        <div>
-            <p>Field: {max_x}x{max_y}</p>
-            <div class="button-container">
-                <button on:click={() => handleFieldClick(10, 10)} class="custom_button1 field"> 10x10 </button>
-                <button on:click={() => handleFieldClick(20, 20)} class="custom_button1 field"> 20x20 </button>
-                <button on:click={() => handleFieldClick(30, 30)} class="custom_button1 field"> 30x30 </button>
-                <button on:click={() => handleFieldClick(50, 50)} class="custom_button1 field"> 50x50 </button>
+            <div>
+                <p>Field: {max_x}x{max_y}</p>
+                <div class="button-container">
+                    <button on:click={() => handleFieldClick(10, 10)} class="custom_button1 field"> 10x10 </button>
+                    <button on:click={() => handleFieldClick(20, 20)} class="custom_button1 field"> 20x20 </button>
+                    <button on:click={() => handleFieldClick(30, 30)} class="custom_button1 field"> 30x30 </button>
+                    <button on:click={() => handleFieldClick(50, 50)} class="custom_button1 field"> 50x50 </button>
+                </div>
             </div>
+            <div>
+                <p>Boosters: {boosters_owned}</p>
+                {#if !booster_used}
+                    <button on:click={() => toggle_booster()} class="custom_button1"> Use Booster</button>
+                {:else}
+                    <button on:click={() => toggle_booster()} class="custom_button1"> Activated</button>
+                {/if}
+            </div>
+            <p> </p>
+            <button on:click={() => start_game()} class="custom_button1"> START THE GAME! </button>
+            
+            <!-- <img src={textures[1]} alt="SVG TEST" /> -->
         </div>
-        <div>
-            <p>Boosters: {boosters_owned}</p>
-            {#if !booster_used}
-                <button on:click={() => toggle_booster()} class="custom_button1"> Use Booster</button>
-            {:else}
-                <button on:click={() => toggle_booster()} class="custom_button1"> Activated</button>
-            {/if}
-        </div>
-        <p> </p>
-        <button on:click={() => start_game()} class="custom_button1"> START THE GAME! </button>
-        
-        <!-- <img src={textures[1]} alt="SVG TEST" /> -->
-        
     {:else if $page.url.hash == "#sapper"}
 
         {#if !gameStarted}

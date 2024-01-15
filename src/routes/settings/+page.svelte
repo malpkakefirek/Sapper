@@ -282,7 +282,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
     {#if $page.url.hash == "#statistics"}
-        <div class="settingsPage">
+        <div class="settingsPage dropbox">
             <div class="profileCard">
                 <div class="left">
                     <div class="avatar">

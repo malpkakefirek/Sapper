@@ -165,11 +165,11 @@
             {/each}
         </div>
     {:else if $page.url.hash == "#battlepass"}
-        <div class="battlepass-container">
+        <div class="battlepass-container dropbox">
             <BattlePass />
         </div>
     {:else if $page.url.hash == "#boosters"}
-        <div class="items-container">
+        <div class="items-container dropbox">
             {#each boosters as item (item.id)}
                 <div class="item">
                     <Item {item} />
@@ -182,7 +182,7 @@
             {/each}
         </div>
     {:else if $page.url.hash == "#currency"}
-        <div class="currency-container">
+        <div class="currency-container dropbox">
             <Currency />
         </div>
     {:else}
@@ -220,18 +220,5 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-    }
-    
-    .dropbox {
-        padding:1.5rem; 
-        border-radius:10px; 
-        background: rgba(0, 0, 0, 0.2); 
-        box-shadow: 
-            0 10px 24px hsla(0, 0%, 0%, 0.1),
-            0 20px 48px hsla(0, 0%, 0%, 0.1),
-            0 1px 4px hsla(0, 0%, 0%, 0.1),
-            0px 0px 48px 10px hsl(0, 0%, 10%),
-            0px 0px 24px 2px hsl(0, 0%, 20%),
-            0px 0px 4px 1px hsl(0, 0%, 0%);
     }
 </style>

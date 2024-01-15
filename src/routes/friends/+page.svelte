@@ -246,7 +246,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="text-column">
     {#if $page.url.hash == "#profile"}
-        <div class="profileCard">
+        <div class="profileCard dropbox">
             <div class="left">
                 <div class="avatar">
                     <img style="width:inherit" src={profile.image} alt="avatar of {profile.name}" />
@@ -275,7 +275,7 @@
     {:else if $page.url.hash == "#list"}
         <div class="friends-container">
             {#each friends_list as friend (friend.id)}
-                <div class="friend">
+                <div class="friend dropbox">
                     <Friend {friend} />
                 </div>
             {/each}
@@ -291,7 +291,7 @@
 
         <div class="friends-container">
             {#each SearchList as friend (friend.id)}
-                <div class="friend">
+                <div class="friend dropbox">
                     <Friend {friend} />
                 </div>
             {/each}
