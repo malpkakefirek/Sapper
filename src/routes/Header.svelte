@@ -260,10 +260,14 @@
     
     .element_left {
         height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     .element_right {
         height: 100%;
+        display: flex;
+        align-items: center;
         padding-left: 1rem;
     }
 
