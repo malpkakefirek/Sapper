@@ -151,7 +151,7 @@
     {#if $page.url.hash == "#skins"}
         <div class="items-container">
             {#each shop_items as item (item.id)}
-                <div class="item">
+                <div class="item dropbox">
                     <Item {item} />
                 </div>
             {/each}
@@ -159,7 +159,7 @@
     {:else if $page.url.hash == "#equip"}
         <div class="items-container">
             {#each owned_items as item (item.id)}
-                <div class="item">
+                <div class="item dropbox">
                     <Item {item} />
                 </div>
             {/each}
