@@ -366,6 +366,28 @@
             booster_used = false;
         }
     }
+
+    function display_time(){
+        let seconds = parseFloat(time);
+
+        let hours = Math.floor(seconds / 3600);
+        let minutes = Math.floor((seconds % 3600) / 60);
+        let remainingSeconds = (seconds % 60);
+        
+        let display = '';
+
+        if (hours > 0) {
+            display += hours + 'h ';
+        }
+        if (minutes > 0) {
+            display += minutes + 'm ';
+        }
+        
+        display += remainingSeconds + 's ';
+
+        console.log(display)
+        return display;
+    }
 </script>
 
 <svelte:head>
@@ -491,7 +513,7 @@
     </h2>
 
     <ol class="definition-list">
-        <p>Time: {time}</p>
+        <p>Time: {display_time()}</p>
         <p>Map Size: {max_x}x{max_y}</p>
         <p>Difficulty: {mines} mines</p>
         <p>XP: +{xp_added}</p>
