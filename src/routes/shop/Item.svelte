@@ -117,8 +117,8 @@
         {/if}
     {:else}
         <div class="button-container">
-            <button on:click={handleClickCoins} class="custom_button1">{item.priceCoins} Coins</button>
-            <button on:click={handleClickGems} class="custom_button1">{item.priceGems} Gems</button>
+            <button on:click={handleClickCoins} class="custom_button_coins">{item.priceCoins} Coins</button>
+            <button on:click={handleClickGems} class="custom_button_gems">{item.priceGems} Gems</button>
         </div>
     {/if}
 </div>
