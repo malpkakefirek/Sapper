@@ -107,9 +107,18 @@
     const form = useForm();
 
     let success=false;
+    let message='';
     
     /** @param {{ currentTarget: EventTarget & HTMLFormElement}} event */
     async function handleChangePassword(event) {
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            // TODO: Check if username in storage and remove it
+            await goto("/login");
+            location.reload();
+            return;
+        }
+        message='';
         console.log("You tried changing the password");
         const data = new FormData(event.currentTarget);
         let old_password;
@@ -123,11 +132,13 @@
         }
         if (new_password != new_password_confirm){
             console.error("Passwords do not match!");
+            message="Passwords do not match!";
             return;
         }
         
         const response = await fetch(event.currentTarget.action, {
             method: "POST",
+            session_id: storedSession,
             old_password: old_password,
             new_password: new_password,
         });
