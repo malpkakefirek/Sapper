@@ -200,6 +200,7 @@
             xp_added = result.added_xp;
             bp_xp_added = result.added_battlepass_xp;
             battlepass_reward = (result.battlepass_reward === 'true');
+            time = result.seconds_played;
             //stopTimer();
             // goto("/game#win");
             return;
@@ -489,6 +490,7 @@
     </h2>
 
     <ol class="definition-list">
+        <p>Time: {time}</p>
         <p>Map Size: {max_x}x{max_y}</p>
         <p>Difficulty: {mines} mines</p>
         <p>XP: +{xp_added}</p>
