@@ -67,7 +67,7 @@
     async function getFriendsList(){
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_friends", {
-                method: "GET",
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
