@@ -144,61 +144,50 @@
     <title>Game</title>
     <meta name="description" content="About this app" />
 </svelte:head>
-<div style="width:100%; display:flex; flex-flow:column; align-items:center; padding-top:2rem;">
-    <div style="padding:1.5rem; border-radius:10px; background: rgba(0, 0, 0, 0.3); box-shadow: 
-        0 10px 24px hsla(0, 0%, 0%, 0.2), 
-        0 20px 48px hsla(0, 0%, 0%, 0.15), 
-        0 1px 4px hsla(0, 0%, 0%, 0.1), 
-        0px 0px 48px 10px hsl(0, 0%, 0%), 
-        0px 0px 24px 2px hsl(0, 0%, 0%), 
-        0px 0px 4px 1px hsl(0, 0%, 0%);">
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div class="text-column">
-            <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
-            
-            {#if $page.url.hash == "#skins"}
-                <div class="items-container">
-                    {#each shop_items as item (item.id)}
-                        <div class="item">
-                            <Item {item} />
-                        </div>
-                    {/each}
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div class="text-column">
+    <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
+    
+    {#if $page.url.hash == "#skins"}
+        <div class="items-container">
+            {#each shop_items as item (item.id)}
+                <div class="item">
+                    <Item {item} />
                 </div>
-            {:else if $page.url.hash == "#equip"}
-                <div class="items-container">
-                    {#each owned_items as item (item.id)}
-                        <div class="item">
-                            <Item {item} />
-                        </div>
-                    {/each}
-                </div>
-            {:else if $page.url.hash == "#battlepass"}
-                <div class="battlepass-container">
-                    <BattlePass />
-                </div>
-            {:else if $page.url.hash == "#boosters"}
-                <div class="items-container">
-                    {#each boosters as item (item.id)}
-                        <div class="item">
-                            <Item {item} />
-                            {#if boosters_owned==-1}
-                                LOADING...
-                            {:else}
-                                You have: {boosters_owned} boosters
-                            {/if}
-                        </div>
-                    {/each}
-                </div>
-            {:else if $page.url.hash == "#currency"}
-                <div class="currency-container">
-                    <Currency />
-                </div>
-            {:else}
-                <div>Loading...</div>
-            {/if}
+            {/each}
         </div>
-        
-    </div>
+    {:else if $page.url.hash == "#equip"}
+        <div class="items-container">
+            {#each owned_items as item (item.id)}
+                <div class="item">
+                    <Item {item} />
+                </div>
+            {/each}
+        </div>
+    {:else if $page.url.hash == "#battlepass"}
+        <div class="battlepass-container">
+            <BattlePass />
+        </div>
+    {:else if $page.url.hash == "#boosters"}
+        <div class="items-container">
+            {#each boosters as item (item.id)}
+                <div class="item">
+                    <Item {item} />
+                    {#if boosters_owned==-1}
+                        LOADING...
+                    {:else}
+                        You have: {boosters_owned} boosters
+                    {/if}
+                </div>
+            {/each}
+        </div>
+    {:else if $page.url.hash == "#currency"}
+        <div class="currency-container">
+            <Currency />
+        </div>
+    {:else}
+        <div>Loading...</div>
+    {/if}
 </div>
 
 <style>
@@ -217,6 +206,8 @@
         justify-content: space-around;
         margin: 10px;
         max-width: 200px;
+        font-weight: bold;
+        color: white;
     }
 
     .currency-container {
@@ -232,26 +223,27 @@
     }
     
     .custom_button1 {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #725AC1;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
+        position: relative;
+        display: inline-block;
+        margin: 15px;
+        padding: 15px 30px;
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #000000;  /* DEQUIP */
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        border: 2px solid #000000;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #000000;
+        font-weight: bold;
     }
 
     .custom_button1:hover {
         color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
+        box-shadow: inset 0 -100px 0 0 #000000;
         transform: scale(1.1);
     }
 
@@ -270,22 +262,36 @@
         font-size: 14px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: #4CAF50;
+        color: #000000;
         background: transparent;
         cursor: pointer;
         transition: ease-out 0.5s;
-        border: 2px solid #4CAF50;
+        border: 2px solid #000000;
         border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #4CAF50;
+        box-shadow: inset 0 0 0 0 #000000;
+        font-weight: bold;
     }
 
     .custom_button2:hover {
         color: white;
-        box-shadow: inset 0 -100px 0 0 #4CAF50;
+        box-shadow: inset 0 -100px 0 0 #000000;
         transform: scale(1.1);
     }
 
     .custom_button2:active {
         transform: scale(0.9);
+    }
+
+    .dropbox {
+        padding:1.5rem; 
+        border-radius:10px; 
+        background: rgba(0, 0, 0, 0.2); 
+        box-shadow: 
+            0 10px 24px hsla(0, 0%, 0%, 0.1),
+            0 20px 48px hsla(0, 0%, 0%, 0.1),
+            0 1px 4px hsla(0, 0%, 0%, 0.1),
+            0px 0px 48px 10px hsl(0, 0%, 10%),
+            0px 0px 24px 2px hsl(0, 0%, 20%),
+            0px 0px 4px 1px hsl(0, 0%, 0%);
     }
 </style>
