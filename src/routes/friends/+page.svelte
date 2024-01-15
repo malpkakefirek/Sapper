@@ -217,9 +217,9 @@
                 </div>
                 <div class="profileName">{profile.name}</div>
                 {#if befriended}
-                    <button on:click={() => toggle_friend()} class="custom_button_remove_friend">Remove Friend</button>
+                    <button on:click={() => toggle_friend()} class="custom_button1">Remove Friend</button>
                 {:else}
-                    <button on:click={() => toggle_friend()} class="custom_button_add_friend">Add Friend</button>
+                    <button on:click={() => toggle_friend()} class="custom_button1">Add Friend</button>
                 {/if}
             </div>
             <div class="right">
@@ -250,7 +250,7 @@
         {#if not_found}
             <p class="not-found-text">No users found!</p>
         {/if}
-        <button on:click={handleSubmit} class="custom_button_remove_friend">Search!</button>
+        <button on:click={handleSubmit} class="custom_button1">Search!</button>
         
 
         <div class="friends-container">
@@ -308,68 +308,6 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
-
-    /* BUTTON FOR UNFRIEND */
-    .custom_button_remove_friend {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #CCAC00;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #CCAC00;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #CCAC00;
-    }
-
-    .custom_button_remove_friend:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #CCAC00;
-        transform: scale(1.1);
-    }
-
-    .custom_button_remove_friend:active {
-        transform: scale(0.9);
-    }
-
-    /* BUTTON FOR ADD FRIEND */
-    .custom_button_add_friend {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #4CAF50;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #4CAF50;
-    }
-
-    .custom_button_add_friend:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #4CAF50;
-        transform: scale(1.1);
-    }
-
-    .custom_button_add_friend:active {
-        transform: scale(0.9);
-    }
-
     .not-found-text {
         color: red;
         margin-top: 10px;

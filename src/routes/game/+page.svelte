@@ -430,9 +430,9 @@
         <div>
             <p>Boosters: {boosters_owned}</p>
             {#if !booster_used}
-                <button on:click={() => toggle_booster()} class="custom_button_booster_activate"> Use Booster</button>
+                <button on:click={() => toggle_booster()} class="custom_button1"> Use Booster</button>
             {:else}
-                <button on:click={() => toggle_booster()} class="custom_button_booster_activated"> Activated</button>
+                <button on:click={() => toggle_booster()} class="custom_button1"> Activated</button>
             {/if}
         </div>
         <p> </p>
@@ -569,101 +569,5 @@
     .sapper_tile_content {
         font-size: 8px;
         /* background-image: url("/images/tile.png"); */
-    }
-
-
-
-    /* TESTS XD */
-    .custom_button1 {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #725AC1;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
-    }
-
-    .custom_button1:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.1);
-    }
-
-    .custom_button1:active {
-        transform: scale(0.9);
-    }
-    
-    :global(.custom_button1.clicked) {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.12);
-    }
-
-
-    .custom_button_booster_activate {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #725AC1;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
-    }
-
-    .custom_button_booster_activate:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.1);
-    }
-
-    .custom_button_booster_activate:active {
-        transform: scale(0.9);
-    }
-
-
-    .custom_button_booster_activated {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #4CAF50;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #4CAF50;
-    }
-
-    .custom_button_booster_activated:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #4CAF50;
-        transform: scale(1.1);
-    }
-
-    .custom_button_booster_activated:active {
-        transform: scale(0.9);
     }
 </style>

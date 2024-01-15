@@ -113,12 +113,12 @@
         {#if item.isEquipped}
             <button on:click={handleUnequipSkin} class="custom_button1">UNEQUIP</button>
         {:else}
-            <button on:click={handleEquipSkin} class="custom_button2">EQUIP</button>
+            <button on:click={handleEquipSkin} class="custom_button1">EQUIP</button>
         {/if}
     {:else}
         <div class="button-container">
             <button on:click={handleClickCoins} class="custom_button1">{item.priceCoins} Coins</button>
-            <button on:click={handleClickGems} class="custom_button2">{item.priceGems} Gems</button>
+            <button on:click={handleClickGems} class="custom_button1">{item.priceGems} Gems</button>
         </div>
     {/if}
 </div>
@@ -135,65 +135,4 @@
         display: flex;
         justify-content: space-between;
     }
-
-    /* BUTTON FOR COINS */
-    .custom_button1 {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #CCAC00;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #CCAC00;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #CCAC00;
-    }
-
-    .custom_button1:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #CCAC00;
-        transform: scale(1.1);
-    }
-
-    .custom_button1:active {
-        transform: scale(0.9);
-    }
-
-    /* BUTTON FOR GEMS */
-    .custom_button2 {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #4CAF50;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #4CAF50;
-    }
-
-    .custom_button2:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #4CAF50;
-        transform: scale(1.1);
-    }
-
-    .custom_button2:active {
-        transform: scale(0.9);
-    }
-    
 </style>

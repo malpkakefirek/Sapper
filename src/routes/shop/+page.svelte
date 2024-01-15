@@ -222,66 +222,6 @@
         justify-content: space-around;
     }
     
-    .custom_button1 {
-        position: relative;
-        display: inline-block;
-        margin: 15px;
-        padding: 15px 30px;
-        text-align: center;
-        font-size: 18px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #000000 !important;  /* DEQUIP */
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #000000 !important;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #000000 !important;
-        font-weight: bold !important;
-    }
-
-    .custom_button1:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #000000 !important;
-        transform: scale(1.1);
-    }
-
-    .custom_button1:active {
-        transform: scale(0.9);
-    }
-
-    
-    .custom_button2 {
-        position: relative;
-        flex: 1;
-        display: inline-block;
-        margin: 5px;
-        padding: 6px;
-        text-align: center;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #000000 !important;
-        background: transparent;
-        cursor: pointer;
-        transition: ease-out 0.5s;
-        border: 2px solid #000000 !important;
-        border-radius: 10px;
-        box-shadow: inset 0 0 0 0 #000000 !important;
-        font-weight: bold !important;
-    }
-
-    .custom_button2:hover {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #000000 !important;
-        transform: scale(1.1);
-    }
-
-    .custom_button2:active {
-        transform: scale(0.9);
-    }
-
     .dropbox {
         padding:1.5rem; 
         border-radius:10px; 

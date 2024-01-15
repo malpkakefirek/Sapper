@@ -32,7 +32,7 @@
         <!-- svelte-ignore a11y-autofocus -->
         <div style="display: flex; justify-content: space-between;">
             <button autofocus on:click={async () => { play_again_button(); }} class="custom_button1">Play Again</button>
-            <button autofocus on:click={() => dialog.close()} class="custom_button2">View Board</button>
+            <button autofocus on:click={() => dialog.close()} class="custom_button1">View Board</button>
         </div>
     </div>
 </dialog>
@@ -80,73 +80,5 @@
         to {
             opacity: 1;
         }
-    }
-    .custom_button1 {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #F3767C;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
-    }
-
-    .custom_button1:hover {
-        color: #F3767C;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.1);
-    }
-
-    .custom_button1:active {
-      transform: scale(0.9);
-    }
-
-    :global(.custom_button1.clicked) {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.12);
-    }
-
-    
-    .custom_button2 {
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: #80FF80;
-      background: transparent;
-      cursor: pointer;
-      transition: ease-out 0.5s;
-      border: 2px solid #725AC1;
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 0 #725AC1;
-    }
-
-    .custom_button2:hover {
-        color: #80FF80;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.1);
-    }
-
-    .custom_button2:active {
-      transform: scale(0.9);
-    }
-
-    :global(.custom_button2.clicked) {
-        color: white;
-        box-shadow: inset 0 -100px 0 0 #725AC1;
-        transform: scale(1.12);
     }
 </style>
