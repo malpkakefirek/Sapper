@@ -198,6 +198,7 @@
     .items-container {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .item {
         display: flex;
@@ -208,7 +209,7 @@
         color: white;
         flex-direction: column;
         align-items: center;
-        width: fit-content;
+        width: 320px;
     }
 
     .currency-container {
