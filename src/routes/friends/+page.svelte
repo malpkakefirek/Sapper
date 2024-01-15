@@ -37,6 +37,28 @@
         }
     });
 
+    function display_time(time){
+        let seconds = parseFloat(time);
+
+        let hours = Math.floor(seconds / 3600);
+        let minutes = Math.floor((seconds % 3600) / 60);
+        let remainingSeconds = (seconds % 60);
+
+        let display = '';
+
+        if (hours > 0) {
+            display += hours + 'h ';
+        }
+        if (minutes > 0) {
+            display += minutes + 'm ';
+        }
+
+        display += remainingSeconds + 's ';
+
+        console.log(display);
+        return display;
+    }
+    
     async function get_user_info(user_id){
         try {
             const response = await fetch("https://sapper-api.onrender.com/user_info", {
@@ -57,6 +79,7 @@
                 profile.name = result.username;
                 profile.image = '/images/avatars/'+result.avatar+'.png';
                 profile.xp = result.xp;
+                profile.statistics = result.statistics;
                 localStorage.setItem('profile_viewed_name', result.username);
             }
         } catch (error) {
@@ -140,11 +163,11 @@
         console.log(SearchList);
     }
 
-    let games_played = Math.floor(Math.random() * 1000) + 1;
-    let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
-    let games_won = Math.floor(Math.random() * games_played) + 1;
-    let games_lost = games_played-games_won;
-    let flags_placed = Math.floor(Math.random() * 5000) + 1;
+    // let games_played = Math.floor(Math.random() * 1000) + 1;
+    // let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
+    // let games_won = Math.floor(Math.random() * games_played) + 1;
+    // let games_lost = games_played-games_won;
+    // let flags_placed = Math.floor(Math.random() * 5000) + 1;
     let befriended = false;
 
     async function toggle_friend(){
@@ -227,11 +250,11 @@
                     Statistics
                 </div>
                 <div class="statistics">
-                    <div>Games Played: <span>{games_played}</span></div>
-                    <div>Tiles Clicked: <span>{tiles_clicked}</span></div>
-                    <div>Games Won: <span>{games_won}</span></div>
-                    <div>Games Lost: <span>{games_lost}</span></div>
-                    <div>Flags Placed: <span>{flags_placed}</span></div>
+                    <div>Time Played: <span>{display_time(profile.statistics.games_played)}</span></div>
+                    <div>Games Played: <span>{profile.statistics.games_played}</span></div>
+                    <div>Tiles Clicked: <span>{profile.statistics.tiles_clicked}</span></div>
+                    <div>Games Won: <span>{profile.statistics.games_won}</span></div>
+                    <div>Games Lost: <span>{profile.statistics.games_played - profile.statistics.games_won}</span></div>
                     <div>xp: <span>{profile.xp}</span></div>
                 </div>
             </div>

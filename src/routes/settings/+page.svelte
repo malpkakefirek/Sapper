@@ -3,11 +3,11 @@
     
     let profile = { id: 1, name: 'Loading...', image: '/images/avatars/1.png' };
     
-    let games_played = Math.floor(Math.random() * 1000) + 1;
-    let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
-    let games_won = Math.floor(Math.random() * games_played) + 1;
-    let games_lost = games_played-games_won;
-    let flags_placed = Math.floor(Math.random() * 5000) + 1;
+    // let games_played = Math.floor(Math.random() * 1000) + 1;
+    // let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
+    // let games_won = Math.floor(Math.random() * games_played) + 1;
+    // let games_lost = games_played-games_won;
+    // let flags_placed = Math.floor(Math.random() * 5000) + 1;
 
 
 
@@ -156,6 +156,28 @@
         applyAction(result);
     }
 
+    function display_time(time){
+        let seconds = parseFloat(time);
+
+        let hours = Math.floor(seconds / 3600);
+        let minutes = Math.floor((seconds % 3600) / 60);
+        let remainingSeconds = (seconds % 60);
+
+        let display = '';
+
+        if (hours > 0) {
+            display += hours + 'h ';
+        }
+        if (minutes > 0) {
+            display += minutes + 'm ';
+        }
+
+        display += remainingSeconds + 's ';
+
+        console.log(display);
+        return display;
+    }
+    
     let sessionID;
     // on mount:
     import { onMount } from "svelte";
@@ -237,11 +259,12 @@
                         Statistics
                     </div>
                     <div class="statistics">
-                        <div>Games Played: <span>{games_played}</span></div>
-                        <div>Tiles Clicked: <span>{tiles_clicked}</span></div>
-                        <div>Games Won: <span>{games_won}</span></div>
-                        <div>Games Lost: <span>{games_lost}</span></div>
-                        <div>Flags Placed: <span>{flags_placed}</span></div>
+                        <div>Time Played: <span>{display_time(profile.statistics.games_played)}</span></div>
+                        <div>Games Played: <span>{profile.statistics.games_played}</span></div>
+                        <div>Tiles Clicked: <span>{profile.statistics.tiles_clicked}</span></div>
+                        <div>Games Won: <span>{profile.statistics.games_won}</span></div>
+                        <div>Games Lost: <span>{profile.statistics.games_played - profile.statistics.games_won}</span></div>
+                        <div>xp: <span>{profile.xp}</span></div>
                         <!-- <div>(debug) avatar_equiped: <span>{avatar_equiped}</span></div>
                         <div>(debug) currentIndex: <span>{currentIndex}</span></div>
                         <div>(debug) owned_skins[currentIndex]: <span>{owned_skins[currentIndex]}</span></div> -->
