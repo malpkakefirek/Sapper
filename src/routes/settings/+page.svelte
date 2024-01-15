@@ -117,9 +117,9 @@
         let new_password_confirm;
         for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
-            if(${key} === 'currentPassword') old_password = ${value};
-            if(${key} === 'newPassword') new_password = ${value};
-            if(${key} === 'confirmNewPassword') new_password_confirm = ${value};
+            if(key === 'currentPassword') old_password = value;
+            if(key === 'newPassword') new_password = value;
+            if(key === 'confirmNewPassword') new_password_confirm = value;
         }
         if (new_password != new_password_confirm){
             console.error("Passwords do not match!");
