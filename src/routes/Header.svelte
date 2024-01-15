@@ -62,29 +62,27 @@
 <header>
 
     <nav>
-        <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-        </svg>
+        <div class="corner">
+            {#if $page.url.pathname == "/shop"}
+                {#if session_id}
+                    {#if coins == -1}
+                        <p class="gold-text">Coins: Loading...</p>
+                    {:else}
+                        <p class="gold-text">Coins: {coins}</p>
+                    {/if}
+                    {#if gems == -1}
+                        <p class="green-text">Coins: Loading...</p>
+                    {:else}
+                        <p class="green-text">Gems: {gems}</p>
+                    {/if}
+                {/if}
+            {:else}
+                Level {level}: {xp}/{max_xp}
+            {/if}
+        </div>
+        
         <ul>
             
-            <div class="corner">
-                {#if $page.url.pathname == "/shop"}
-                    {#if session_id}
-                        {#if coins == -1}
-                            <p class="gold-text">Coins: Loading...</p>
-                        {:else}
-                            <p class="gold-text">Coins: {coins}</p>
-                        {/if}
-                        {#if gems == -1}
-                            <p class="green-text">Coins: Loading...</p>
-                        {:else}
-                            <p class="green-text">Gems: {gems}</p>
-                        {/if}
-                    {/if}
-                {:else}
-                    Level {level}: {xp}/{max_xp}
-                {/if}
-            </div>
             
             {#if $page.url.pathname == "/"}
                 <li aria-current="page">
@@ -185,24 +183,22 @@
                 </li>
             {/if}
 
-            
-            <div class="corner">
-                    {#if !session_id}
-                        <a href="/login">LOGIN</a>
-                        <a href="/register">REGISTER</a>
-                    {:else}
-                        {username ? "Logged in as "+username : "Username not found"}
-                        <a href="/logout">log out</a>
-                    {/if}
-                    <!-- <a href="https://github.com/sveltejs/kit"> -->
-                    <!-- FIX THIS -->
-            </div>
 
             
         </ul>
-        <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-        </svg>
+
+        <div class="corner">
+                {#if !session_id}
+                    <a href="/login">LOGIN</a>
+                    <a href="/register">REGISTER</a>
+                {:else}
+                    {username ? "Logged in as "+username : "Username not found"}
+                    <a href="/logout">log out</a>
+                {/if}
+                <!-- <a href="https://github.com/sveltejs/kit"> -->
+                <!-- FIX THIS -->
+        </div>
+        
     </nav>
 
 </header>
@@ -237,6 +233,7 @@
         display: flex;
         justify-content: center;
         --background: rgba(255, 255, 255, 0.7);
+        width: 100%;
     }
 
     svg {
@@ -261,6 +258,7 @@
         background: var(--background);
         background-size: contain;
         list-style-type: none;
+        width: 100%;
     }
 
     li {
@@ -311,4 +309,5 @@
         color: #57C153;
         text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
     }
+
 </style>
