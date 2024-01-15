@@ -68,27 +68,22 @@
         <ul>
             
             <div class="corner">
-                <li aria-current={$page.url.pathname === "/about" ? "page" : ""}>
-                    <a href="/about">
-                        <!-- <img src={logo} alt="PlayersLogo" /> -->
-                    </a>
-                    {#if $page.url.pathname == "/shop"}
-                        {#if session_id}
-                            {#if coins == -1}
-                                <p class="gold-text">Coins: Loading...</p>
-                            {:else}
-                                <p class="gold-text">Coins: {coins}</p>
-                            {/if}
-                            {#if gems == -1}
-                                <p class="green-text">Coins: Loading...</p>
-                            {:else}
-                                <p class="green-text">Gems: {gems}</p>
-                            {/if}
+                {#if $page.url.pathname == "/shop"}
+                    {#if session_id}
+                        {#if coins == -1}
+                            <p class="gold-text">Coins: Loading...</p>
+                        {:else}
+                            <p class="gold-text">Coins: {coins}</p>
                         {/if}
-                    {:else}
-                        Level {level}: {xp}/{max_xp}
+                        {#if gems == -1}
+                            <p class="green-text">Coins: Loading...</p>
+                        {:else}
+                            <p class="green-text">Gems: {gems}</p>
+                        {/if}
                     {/if}
-                </li>
+                {:else}
+                    Level {level}: {xp}/{max_xp}
+                {/if}
             </div>
             
             {#if $page.url.pathname == "/"}
