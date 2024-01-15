@@ -1,7 +1,18 @@
 <script>
     import { page } from "$app/stores";
     
-    let profile = { id: 1, name: 'Loading...', image: '/images/avatars/1.png' };
+    let profile = {
+        id: 1, 
+        name: 'Loading...', 
+        image: '/images/avatars/1.png', 
+        statistics: {
+            games_played: 0, 
+            games_won: 0, 
+            games_lost: 0, 
+            tiles_clicked: 0
+        },
+        xp: 0
+    };
     
     // let games_played = Math.floor(Math.random() * 1000) + 1;
     // let tiles_clicked = Math.floor(Math.random() * 50000) + 1;
