@@ -215,7 +215,7 @@
 <style>
     header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .corner {
