@@ -211,16 +211,17 @@
 
     .corner {
         width: 10em;
-        height: 3em;
-        margin-top: 0.5em;
+        height: 3.5em;
+        background: var(--background);
+        text-align: center;
+        text-shadow: 1px 1px 2px goldenrod;
     }
 
     .corner a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 50%;
+        height: 35%;
     }
     
     .corner img {
@@ -250,7 +251,7 @@
         position: relative;
         padding: 0;
         margin: 0;
-        height: 3em;
+        height: 3.5em;
         display: flex;
         justify-content: center;
         align-items: center;
