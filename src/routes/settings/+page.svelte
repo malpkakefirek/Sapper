@@ -23,14 +23,6 @@
             console.log("Changing avatar to: ",(owned_skins[currentIndex]));
 
             //handle backend avatar change
-            let storedSession = localStorage.getItem("session_id");
-            if (!storedSession) {
-                // TODO: Check if username in storage and remove it
-                await goto("/");
-                location.reload();
-                return;
-            }
-            let sessionID = storedSession;
             try {
                 const response = await fetch("https://sapper-api.onrender.com/set_avatar", {
                     method: "POST",
@@ -163,7 +155,8 @@
 
         applyAction(result);
     }
-    
+
+    let sessionID;
     // on mount:
     import { onMount } from "svelte";
     onMount(async () => {
@@ -174,9 +167,9 @@
             location.reload();
             return;
         }
+        sessionID = storedSession;
 
         //CHECK USER OWNED AVATARS
-        let sessionID = storedSession;
         try {
             const response = await fetch("https://sapper-api.onrender.com/get_user_avatars", {
                 method: "POST",
