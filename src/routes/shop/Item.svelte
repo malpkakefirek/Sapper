@@ -107,7 +107,7 @@
 </script>
 
 <div class="item-container">
-    <img src={item.image} alt="icon of {item.name}" />
+    <img src={item.image} alt="icon of {item.name}" style="max-width: 200px;"/>
     <h3>{item.name}</h3>
     {#if item.isOwned}
         {#if item.isEquipped}

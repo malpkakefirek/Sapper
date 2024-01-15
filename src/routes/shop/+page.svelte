@@ -205,9 +205,11 @@
         flex-wrap: wrap;
         justify-content: space-around;
         margin: 10px;
-        max-width: 200px;
+        /* max-width: 200px; */
         font-weight: bold;
         color: white;
+        flex-direction: column;
+        align-items: center;
     }
 
     .currency-container {
