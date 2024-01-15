@@ -100,10 +100,18 @@
         HintGroup,
         Hint,
         required,
+        minLength,
+        maxLength
     } from "svelte-use-form";
     import { applyAction, deserialize } from "$app/forms";
     import { invalidateAll, goto } from "$app/navigation";
 
+    function passwordMatch(value, form) {
+        if (value !== form.values.new_password) {
+          return { passwordMatch: true };
+        }
+    }
+    
     const form = useForm();
 
     let success=false;
@@ -129,8 +137,8 @@
             if(key === 'new_password_confirm') new_password_confirm = value;
         }
         if (new_password != new_password_confirm){
-            console.error("Passwords do not match!");
             message="Passwords do not match!";
+            console.error("Passwords do not match!");
             return;
         }
         
@@ -148,8 +156,8 @@
 
             await invalidateAll();
         }else{
-            console.error("Password change failed: ", result);
             message='Password change failed, check password';
+            console.error("Password change failed: ", result);
         }
         // TODO: add login fail logic
 
@@ -333,14 +341,25 @@
             <div style="display: flex; justify-content: center;">
                 <input type="hidden" name="session_id" bind:value={sessionID} />
 
-                <input type="password" name="old_password" use:validators={[required]} />
-                <Hint for="old_password" on="required">This is a mandatory field</Hint>
-
-                <input type="password" name="new_password" use:validators={[required]} />
-                <Hint for="new_password" on="required">This is a mandatory field</Hint>
-
-                <input type="password" name="new_password_confirm" use:validators={[required]} />
-                <Hint for="new_password_confirm" on="required">This is a mandatory field</Hint>
+                <input type="password" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                <HintGroup for="old_password">
+                    <Hint on="required">This is a mandatory field</Hint>
+                    <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                    <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                </HintGroup>
+                
+                <input type="password" name="new_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                <HintGroup for="new_password">
+                    <Hint on="required">This is a mandatory field</Hint>
+                    <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                    <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                </HintGroup>
+                    
+                <input type="password" name="new_password_confirm" use:validators={[required, passwordMatch]} />
+                <HintGroup for="new_password_confirm">
+                    <Hint on="required">This is a mandatory field</Hint>
+                    <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
+                </HintGroup>
 
                 <button disabled={!$form.valid}>Change Password</button>
             </div>
