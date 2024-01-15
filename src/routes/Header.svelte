@@ -211,7 +211,7 @@
 
     .corner {
         width: 10em;
-        height: 3.5em;
+        height: 3em;
         background: var(--background);
         text-align: center;
         text-shadow: 1px 1px 2px goldenrod;
@@ -254,7 +254,7 @@
         position: relative;
         padding: 0;
         margin: 0;
-        height: 3.5em;
+        height: 3em;
         display: flex;
         justify-content: center;
         align-items: center;
