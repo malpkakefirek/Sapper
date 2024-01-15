@@ -112,13 +112,24 @@
     async function handleChangePassword(event) {
         console.log("You tried changing the password");
         const data = new FormData(event.currentTarget);
+        let old_password;
+        let new_password;
+        let new_password_confirm;
         for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
+            if(${key} === 'currentPassword') old_password = ${value};
+            if(${key} === 'newPassword') new_password = ${value};
+            if(${key} === 'confirmNewPassword') new_password_confirm = ${value};
+        }
+        if (new_password != new_password_confirm){
+            console.error("Passwords do not match!");
+            return;
         }
         
         const response = await fetch(event.currentTarget.action, {
             method: "POST",
-            body: data,
+            old_password: old_password,
+            new_password: new_password,
         });
 
         /** @type {import('@sveltejs/kit').ActionResult} */
