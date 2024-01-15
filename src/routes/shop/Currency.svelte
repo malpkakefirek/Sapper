@@ -54,33 +54,33 @@
 </script>
 
 
-<div class="currency-container">
-  <label class="slider-label">Choose the quantity of gems:</label>
-  <input type="range" min={gemsQuantities[0]} max={gemsQuantities[gemsQuantities.length - 1]} step="1" list="gemsList" bind:value={gemsQuantity} />
-
-  <datalist id="gemsList">
-    {#each gemsQuantities as quantity (quantity)}
-      <option value={quantity}></option>
-    {/each}
-  </datalist>
-
-  <p>Selected Gems: {gemsQuantity}</p>
-  <p>Total Cost: ${totalCost.toFixed(2)}</p>
-
-  <button class="custom_button1" on:click={buyGems}>Buy Gems</button>
+<div class="currency-box">
+    <label class="slider-label">Choose the quantity of gems:</label>
+    <input type="range" min={gemsQuantities[0]} max={gemsQuantities[gemsQuantities.length - 1]} step="1" list="gemsList" bind:value={gemsQuantity} />
+    
+    <datalist id="gemsList">
+        {#each gemsQuantities as quantity (quantity)}
+            <option value={quantity}></option>
+        {/each}
+    </datalist>
+    
+    <p>Selected Gems: {gemsQuantity}</p>
+    <p>Total Cost: ${totalCost.toFixed(2)}</p>
+    
+    <button class="custom_button1" on:click={buyGems}>Buy Gems</button>
 </div>
 
 
 <style>
-  .currency-container {
-    padding: 20px;
-    margin: 20px;
-    max-width: 400px;
-      display: flex;
-      flex-direction: column;
-  }
+    .currency-box {
+        padding: 20px;
+        margin: 20px;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .slider-label {
-    margin-bottom: 10px;
-  }
+    .slider-label {
+        margin-bottom: 10px;
+    }
 </style>
