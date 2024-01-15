@@ -218,8 +218,8 @@
     }
 
     .corner {
-        width: 10em;
-        height: 33%;
+        width: 33%;
+        height: 3em;
         background: var(--background);
         text-align: center;
         /* text-shadow: 1px 1px 2px goldenrod; */
