@@ -145,7 +145,13 @@
     <meta name="description" content="About this app" />
 </svelte:head>
 <div style="width:100%; display:flex; flex-flow:column; align-items:center; padding-top:2rem;">
-    <div style="padding:1.5rem; border-radius:10px; background: #00000066; box-shadow: 0 10px 24px hsla(0,0%,0%,0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1); box-shadow: 0px 0px 48px 10px hsl(102.5deg 56.25% 25.1%), 0px 0px 24px 2px hsl(102.77deg 54.02% 34.12%), 0px 0px 4px 1px hsl(103.78deg 50.68% 42.94%);">
+    <div style="padding:1.5rem; border-radius:10px; background: rgba(0, 0, 0, 0.4); box-shadow: 
+        0 10px 24px hsla(120, 100%, 50%, 0.2), 
+        0 20px 48px hsla(120, 100%, 50%, 0.15), 
+        0 1px 4px hsla(120, 100%, 50%, 0.1), 
+        0px 0px 48px 10px hsl(0, 0%, 0%), 
+        0px 0px 24px 2px hsl(0, 0%, 0%), 
+        0px 0px 4px 1px hsl(0, 0%, 0%);">
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div class="text-column">
             <!-- <h1>You are in <bold>Shop{$page.url.hash}</bold> page!</h1> -->
