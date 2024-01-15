@@ -20,7 +20,90 @@
     // let games_lost = games_played-games_won;
     // let flags_placed = Math.floor(Math.random() * 5000) + 1;
 
+    let sessionID;
+    import { onMount } from "svelte";
+    onMount(async () => {
+        let storedSession = localStorage.getItem("session_id");
+        if (!storedSession) {
+            // TODO: Check if username in storage and remove it
+            await goto("/login");
+            location.reload();
+            return;
+        }
+        sessionID = storedSession;
+        message='';
+        //CHECK USER OWNED AVATARS
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_user_avatars", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                owned_skins = result.owned_avatars;
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+        //CHECK USER SET AVATAR
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_avatar", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID,
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                avatar_equiped = result.avatar_id;
+                profile.image = '/images/avatars/' + avatar_equiped + '.png';
+                localStorage.setItem('avatar_equiped', avatar_equiped);
+                currentIndex = owned_skins.indexOf(avatar_equiped);
+            }
 
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+        //CHECK IF SET AVATAR IS IN USER OWNED AVATARS
+
+
+        await get_statistics();
+    });
+    
+    async function get_statistics(){
+        try {
+            const response = await fetch("https://sapper-api.onrender.com/get_statistics", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionID
+                }),
+            });
+            const result = await response.json();
+            console.log(result);
+            if (result.type === "success") {
+                profile.id = user_id;
+                profile.name = result.username;
+                profile.image = '/images/avatars/'+result.avatar+'.png';
+                profile.xp = result.xp;
+                profile.statistics = result.statistics;
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);        
+        }
+    }
 
     // HANDLE CAROUSEL
     let currentIndex = 0; 
@@ -189,64 +272,6 @@
         return display;
     }
     
-    let sessionID;
-    // on mount:
-    import { onMount } from "svelte";
-    onMount(async () => {
-        let storedSession = localStorage.getItem("session_id");
-        if (!storedSession) {
-            // TODO: Check if username in storage and remove it
-            await goto("/login");
-            location.reload();
-            return;
-        }
-        sessionID = storedSession;
-        message='';
-        //CHECK USER OWNED AVATARS
-        try {
-            const response = await fetch("https://sapper-api.onrender.com/get_user_avatars", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    session_id: sessionID,
-                }),
-            });
-            const result = await response.json();
-            console.log(result);
-            if (result.type === "success") {
-                owned_skins = result.owned_avatars;
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);        
-        }
-        //CHECK USER SET AVATAR
-        try {
-            const response = await fetch("https://sapper-api.onrender.com/get_avatar", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    session_id: sessionID,
-                }),
-            });
-            const result = await response.json();
-            console.log(result);
-            if (result.type === "success") {
-                avatar_equiped = result.avatar_id;
-                profile.image = '/images/avatars/' + avatar_equiped + '.png';
-                localStorage.setItem('avatar_equiped', avatar_equiped);
-                currentIndex = owned_skins.indexOf(avatar_equiped);
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);        
-        }
-        //CHECK IF SET AVATAR IS IN USER OWNED AVATARS
-
-        profile.name = localStorage.getItem("username");
-    });
 </script>
 
 <svelte:head>
