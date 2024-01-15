@@ -4,7 +4,18 @@
 
     let friends_list = [];
 
-    let profile = [];
+    let profile = {
+        id: 1, 
+        name: 'Loading...', 
+        image: '/images/avatars/1.png', 
+        statistics: {
+            games_played: 0, 
+            games_won: 0, 
+            games_lost: 0, 
+            tiles_clicked: 0
+        },
+        xp: 0
+    };
     let profile_searched_id;
     
     let sessionID;
