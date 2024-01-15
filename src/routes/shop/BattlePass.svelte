@@ -19,7 +19,7 @@
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/skins/3/preview.png', //ZMIENIC W PRZYSZLOSCI
+        '/images/skins/4/preview.png', //ZMIENIC W PRZYSZLOSCI
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx2.svg',
         '/images/battlepass/boosterx1.svg',
@@ -29,7 +29,7 @@
         '/images/battlepass/boosterx1.svg',
         '/images/battlepass/gemsx50.svg',
         '/images/battlepass/boosterx1.svg',
-        '/images/skins/10/preview.png', //ZMIENIC W PRZYSZLOSCI
+        '/images/skins/8/preview.png', //ZMIENIC W PRZYSZLOSCI
         '/images/battlepass/gemsx100.svg',
         '/images/battlepass/boosterx3.svg',
         '/images/battlepass/boosterx2.svg',
@@ -61,7 +61,7 @@
         'gems x50',
         'booster x1',
         'booster x1',
-        'skinpack Mechanical Knight', //ZMIENIC W PRZYSZLOSCI
+        'skinpack Mystic Mage Skin', //ZMIENIC W PRZYSZLOSCI
         'gems x100',
         'booster x2',
         'booster x1',
@@ -71,7 +71,7 @@
         'booster x1',
         'gems x50',
         'booster x1',
-        'skinpack Elite Warlord', //ZMIENIC W PRZYSZLOSCI
+        'skinpack Neon Enchantress Skin', //ZMIENIC W PRZYSZLOSCI
         'gems x100',
         'booster x3',
         'booster x2',
