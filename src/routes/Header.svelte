@@ -62,7 +62,7 @@
 <header>
 
     <nav>
-        <div class="corner">
+        <div class="corner left-corner">
             {#if $page.url.pathname == "/shop"}
                 {#if session_id}
                     {#if coins == -1}
@@ -187,16 +187,24 @@
             
         </ul>
 
-        <div class="corner">
-                {#if !session_id}
+        <div class="corner right-corner">
+            {#if !session_id}
+                <div class="element_left">
                     <a href="/login">LOGIN</a>
+                </div>
+                <div class="element_right">
                     <a href="/register">REGISTER</a>
-                {:else}
+                </div>
+            {:else}
+                <div class="element_left">
                     {username ? "Logged in as "+username : "Username not found"}
+                </div>
+                <div class="element_right">
                     <a href="/logout">log out</a>
-                {/if}
-                <!-- <a href="https://github.com/sveltejs/kit"> -->
-                <!-- FIX THIS -->
+                </div>
+            {/if}
+            <!-- <a href="https://github.com/sveltejs/kit"> -->
+            <!-- FIX THIS -->
         </div>
         
     </nav>
@@ -211,26 +219,43 @@
 
     .corner {
         width: 10em;
-        height: 3em;
+        height: 33%;
         background: var(--background);
         text-align: center;
-        text-shadow: 1px 1px 2px goldenrod;
+        /* text-shadow: 1px 1px 2px goldenrod; */
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-inline: 1rem;
     }
 
     .corner a {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 35%;
+        height: 99%;
     }
     
     .corner img {
         width: 2em;
         height: 2em;
         object-fit: contain;
+    }
+
+    .left-corner {
+        justify-content: start;
+    }
+
+    .right-corner {
+        justify-content: end;
+    }
+    
+    .element_left {
+        
+    }
+
+    .element_right {
+        padding-left: 1rem;
     }
 
     nav {
