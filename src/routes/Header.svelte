@@ -65,16 +65,20 @@
         <div class="corner left-corner">
             {#if $page.url.pathname == "/shop"}
                 {#if session_id}
-                    {#if coins == -1}
-                        <p class="gold-text">Coins: Loading...</p>
-                    {:else}
-                        <p class="gold-text">Coins: {coins}</p>
-                    {/if}
-                    {#if gems == -1}
-                        <p class="green-text">Coins: Loading...</p>
-                    {:else}
-                        <p class="green-text">Gems: {gems}</p>
-                    {/if}
+                    <div class="currency-coins">
+                        {#if coins == -1}
+                            <p class="gold-text">Coins: Loading...</p>
+                        {:else}
+                            <p class="gold-text">Coins: {coins}</p>
+                        {/if}
+                    </div>
+                    <div class="currency-gems">
+                        {#if gems == -1}
+                            <p class="green-text">Coins: Loading...</p>
+                        {:else}
+                            <p class="green-text">Gems: {gems}</p>
+                        {/if}
+                    </div>
                 {/if}
             {:else}
                 Level {level}: {xp}/{max_xp}
@@ -246,6 +250,10 @@
         justify-content: start;
     }
 
+    .currency-coins {
+        padding-right: 1rem;
+    }
+    
     .right-corner {
         justify-content: end;
     }
