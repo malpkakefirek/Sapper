@@ -256,7 +256,7 @@
     }
 
     function display_time(time){
-        let seconds = parseFloat(time)/100;
+        let seconds = (parseFloat(time)/100).toFixed(2);
 
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor((seconds % 3600) / 60);
