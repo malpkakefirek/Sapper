@@ -50,9 +50,9 @@
     // let max_x = localStorage.getItem('max_x') || 50;
     // let mines = localStorage.getItem('mines') || 20;
     // let gameStarted = localStorage.getItem('gameStarted') || 0;
-    let max_y = 50;
-    let max_x = 50;
-    let mines = 20;
+    let max_y = 10;
+    let max_x = 10;
+    let mines = 10;
     let gameStarted = 0;
     let xp_added = 0;
     let bp_xp_added = 0;
@@ -78,9 +78,9 @@
             goto("/login");
         }
         
-        max_y = parseInt(localStorage.getItem('max_y')) || 50;
-        max_x = parseInt(localStorage.getItem('max_x')) || 50;
-        mines = parseInt(localStorage.getItem('mines')) || 20;
+        max_y = parseInt(localStorage.getItem('max_y')) || 10;
+        max_x = parseInt(localStorage.getItem('max_x')) || 10;
+        mines = parseInt(localStorage.getItem('mines')) || 10;
         gameStarted = parseInt(localStorage.getItem('gameStarted')) || 0;
         is_won = parseInt(localStorage.getItem('is_won')) || 0;
         is_loss = parseInt(localStorage.getItem('is_loss')) || 0;
@@ -274,7 +274,7 @@
         }
         
         // await game creation
-        let difficulty = mines === 10 ? 1 : mines === 20 ? 2 : mines === 30 ? 3 : mines === 50 ? 4 : 1;
+        let difficulty = mines === 10 ? 1 : mines === 15 ? 2 : mines === 20 ? 3 : mines === 35 ? 4 : 1;
         let send_data = {"session_id": session_id, "size_x": max_x, "size_y": max_y, "difficulty": difficulty, "booster_used": (booster_used ? 1 : 0) };
         const response = await fetch("https://sapper-api.onrender.com/create_game", {
             method: "POST",
@@ -414,9 +414,9 @@
                 <p>Mines: {mines} % of the field</p>
                 <div class="button-container">
                     <button on:click={() => handleMinesClick(10)} class="custom_button1 mines"> Easy</button>
-                    <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> Medium</button>
-                    <button on:click={() => handleMinesClick(30)} class="custom_button1 mines"> Hard</button>
-                    <button on:click={() => handleMinesClick(50)} class="custom_button1 mines"> Impossible</button>
+                    <button on:click={() => handleMinesClick(15)} class="custom_button1 mines"> Medium</button>
+                    <button on:click={() => handleMinesClick(20)} class="custom_button1 mines"> Hard</button>
+                    <button on:click={() => handleMinesClick(35)} class="custom_button1 mines"> Impossible</button>
                 </div>
             </div>
             <div>
@@ -520,7 +520,7 @@
     <ol class="definition-list">
         <p>Time: {formatted_time}</p>
         <p>Map Size: {max_x}x{max_y}</p>
-        <p>Difficulty: {mines} mines</p>
+        <p>Difficulty: {(mines*max_x*max_y/100).toFixed(2)} mines</p>
         <p>XP: +{xp_added}</p>
         <p>Battlepass XP: +{bp_xp_added}</p>
         {#if battlepass_reward}
