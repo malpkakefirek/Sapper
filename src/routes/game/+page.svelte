@@ -520,7 +520,7 @@
     <ol class="definition-list">
         <p>Time: {formatted_time}</p>
         <p>Map Size: {max_x}x{max_y}</p>
-        <p>Difficulty: {(mines*max_x*max_y/100).toFixed(2)} mines</p>
+        <p>Difficulty: {Math.round(mines*max_x*max_y/100)} mines</p>
         <p>XP: +{xp_added}</p>
         <p>Battlepass XP: +{bp_xp_added}</p>
         {#if battlepass_reward}
