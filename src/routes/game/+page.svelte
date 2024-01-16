@@ -50,8 +50,8 @@
     // let max_x = localStorage.getItem('max_x') || 50;
     // let mines = localStorage.getItem('mines') || 20;
     // let gameStarted = localStorage.getItem('gameStarted') || 0;
-    let max_y = 10;
-    let max_x = 10;
+    let max_y = 50;
+    let max_x = 50;
     let mines = 10;
     let gameStarted = 0;
     let xp_added = 0;
