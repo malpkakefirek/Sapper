@@ -376,7 +376,7 @@
 
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor((seconds % 3600) / 60);
-        let remainingSeconds = (seconds % 60);
+        let remainingSeconds = (seconds % 60).toFixed(2);
         
         let display = '';
 
