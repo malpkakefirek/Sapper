@@ -68,7 +68,7 @@
         <div class="subtitle">please input current and new password below</div>
         <div style="display: flex; align-content: center; flex-direction: column;">
             <div class="input-container ic1">
-                <input type="email" class="input" name="email" use:validators={[required, email]} />
+                <input type="email" class="input" name="email" use:validators={[required, email]} placeholder=" " />
                 <HintGroup for="email">
                     <Hint on="required">This is a mandatory field</Hint>
                     <Hint on="email" hideWhenRequired>Email is not valid</Hint>
@@ -82,6 +82,7 @@
                     class="input"
                     name="username" 
                     use:validators={[required, pattern("^[a-zA-Z0-9_]+$"), minLength(5), maxLength(24)]} 
+                    placeholder=" " 
                 />
                 <HintGroup for="username">
                     <Hint on="required">This is a mandatory field</Hint>
@@ -98,6 +99,7 @@
                     class="input" 
                     name="password" 
                     use:validators={[required, minLength(8), maxLength(64)]} 
+                    placeholder=" " 
                 />
                 <HintGroup for="password">
                     <Hint for="password" on="required">This is a mandatory field</Hint>
@@ -114,6 +116,7 @@
                     class="input" 
                     name="passwordConfirmation"
                     use:validators={[required, passwordMatch]}
+                    placeholder=" " 
                 />
                 <HintGroup for="password">
                     <Hint for="password" on="required">This is a mandatory field</Hint>
