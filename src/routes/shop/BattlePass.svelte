@@ -141,7 +141,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    session_id: session_id,
+                    session_id: sessionID,
                 }),
             });
             const result = await response.json();
