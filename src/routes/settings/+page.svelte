@@ -196,7 +196,7 @@
     import { invalidateAll, goto } from "$app/navigation";
 
     function passwordMatch(value, form) {
-        if (value !== form.values.new_password || value !== form.values.new_password_confirm) {
+        if (value !== form.values.new_password) {
           return { passwordMatch: true };
         }
     }
