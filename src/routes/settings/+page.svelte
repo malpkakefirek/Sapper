@@ -454,8 +454,7 @@
                             <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
                         </HintGroup>
                         <div class="cut"></div>
-                            <label for="old_password" class="placeholder">Currect Password</label>
-                        </div>
+                        <label for="old_password" class="placeholder">Currect Password</label>
                     </div>
                     <div class="input-container ic2">
                         <input type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
@@ -466,8 +465,7 @@
                             <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
                         </HintGroup>
                         <div class="cut"></div>
-                            <label for="new_password" class="placeholder">New Password</label>
-                        </div>
+                        <label for="new_password" class="placeholder">New Password</label>
                     </div>
                     <div class="input-container ic2">
                         <input type="password" class="input" name="new_password_confirm" use:validators={[required, passwordMatch]} />
@@ -476,8 +474,7 @@
                             <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
                         </HintGroup>
                         <div class="cut"></div>
-                            <label for="new_password_confirm" class="placeholder">New Password</label>
-                        </div>
+                        <label for="new_password_confirm" class="placeholder">New Password</label>
                     </div>
 
                     <button disabled={!$form.valid}>Change Password</button>
