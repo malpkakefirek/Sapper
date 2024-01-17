@@ -223,7 +223,7 @@
         for (const [key, value] of data.entries()) {
             console.log(`${key}: ${value}`);
             if(key === 'new_password') new_password = value;
-            if(key === 'new_password_confirm') new_password_confirm = value;
+            if(key === 'confirm_new_password') new_password_confirm = value;
         }
         if (new_password != new_password_confirm){
             message="Passwords do not match!";
