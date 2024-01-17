@@ -471,13 +471,13 @@
                         <label for="new_password" class="placeholder">New Password</label>
                     </div>
                     <div class="input-container ic2">
-                        <input type="password" class="input" name="new_password_confirm" use:validators={[required, passwordMatch]} placeholder=" " />
-                        <HintGroup for="new_password_confirm">
+                        <input type="password" class="input" name="confirm_new_password" use:validators={[required, passwordMatch]} placeholder=" " />
+                        <HintGroup for="confirm_new_password">
                             <Hint on="required">This is a mandatory field</Hint>
                             <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
                         </HintGroup>
                         <div class="cut"></div>
-                        <label for="new_password_confirm" class="placeholder">New Password</label>
+                        <label for="confirm_new_password" class="placeholder">New Password</label>
                     </div>
 
                     <button disabled={!$form.valid} class="custom_button_gems">Change Password</button>
