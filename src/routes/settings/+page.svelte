@@ -441,8 +441,8 @@
                 use:form
                 action="https://sapper-api.onrender.com/change_password"
             >
-                <div class="title">You are in <bold>Settings{$page.url.hash}</bold> page!</div>
-                <div class="subtitle">This is has not been implemented yet!</div>
+                <div class="title">Password Change</div>
+                <div class="subtitle">please input current and new password below</div>
                 <div style="display: flex; align-content: center; flex-direction: column;">
                     <input type="hidden" name="session_id" bind:value={sessionID} />
 
