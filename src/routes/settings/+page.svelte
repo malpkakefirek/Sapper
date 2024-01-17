@@ -434,7 +434,7 @@
                 <div style="color: red;">{message}</div>
             {/if}
         </div> -->
-        <div class="form">
+        <div class="form dropbox">
             <form
                 method="post"
                 on:submit|preventDefault={handleChangePassword}
@@ -477,7 +477,8 @@
                         <label for="new_password_confirm" class="placeholder">New Password</label>
                     </div>
 
-                    <button disabled={!$form.valid}>Change Password</button>
+                    <button disabled={!$form.valid} class="custom_button1">Change Password</button>
+                    <button disabled={!$form.valid} class="custom_button_gems">Change Password</button>
                 </div>
             </form>
             {#if success}
