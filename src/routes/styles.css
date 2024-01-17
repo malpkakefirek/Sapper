@@ -278,13 +278,13 @@ button:focus:not(:focus-visible) {
 .cut {
     background-color: #15172b;
     border-radius: 10px;
-    height: 20px;
+    height: 20px !important;
     left: 20px;
     position: absolute;
     top: -20px;
     transform: translateY(0);
     transition: transform 200ms;
-    width: 76px;
+    width: 76px !important;
     min-width: 7.25em;  /* dodane */
 }
 
