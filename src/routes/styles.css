@@ -251,7 +251,7 @@ button:focus:not(:focus-visible) {
 
 .input-container {
     position: relative;
-    padding-bottom: 24px;
+    padding-bottom: 12px;
 }
 
 .ic1 {
@@ -319,6 +319,11 @@ button:focus:not(:focus-visible) {
 .input:focus ~ .cut,
 .input:not(:placeholder-shown) ~ .cut {
     display: block;
+}
+
+.input:focus ~ .input-container,
+.input:not(:placeholder-shown) ~ .input-container {
+    padding-bottom: 24px;
 }
 
 .input:not(:placeholder-shown) ~ .placeholder {
