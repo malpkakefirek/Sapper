@@ -45,27 +45,38 @@
     <meta name="description" content="Login to the app" />
 </svelte:head>
 
-<form
-    method="post"
-    on:submit|preventDefault={handleSubmit}
-    use:form
-    action="https://sapper-api.onrender.com/login"
->
-    <h1>Login</h1>
-    <div style="display: flex; justify-content: center;">
-        <input type="email" name="email" use:validators={[required, email]} />
-        <HintGroup for="email">
-            <Hint on="required">This is a mandatory field</Hint>
-            <Hint on="email" hideWhenRequired>Email is not valid</Hint>
-        </HintGroup>
+<div class="form dropbox">
+    <form
+        method="post"
+        on:submit|preventDefault={handleSubmit}
+        use:form
+        action="https://sapper-api.onrender.com/login"
+    >
+        <div class="title">Login</div>
+        <div class="subtitle">please input your email and password below</div>
+        <div style="display: flex; justify-content: center;">
+            <div class="input-container ic1">
+                <input type="email" class="input" name="email" use:validators={[required, email]} placeholder=" " />
+                <HintGroup for="email">
+                    <Hint on="required">This is a mandatory field</Hint>
+                    <Hint on="email" hideWhenRequired>Email is not valid</Hint>
+                </HintGroup>
+                <div class="cut"></div>
+                <label for="email" class="placeholder">Email</label>
+            </div>
 
-        <input type="password" name="password" use:validators={[required]} />
-        <Hint for="password" on="required">This is a mandatory field</Hint>
-
-        <button disabled={!$form.valid}>Login</button>
-        <!-- <button>Login</button> -->
-    </div>
-</form>
+            <div class="input-container ic2">
+                <input type="password" class="input" name="password" use:validators={[required]} placeholder=" " />
+                <Hint for="password" on="required">This is a mandatory field</Hint>
+                <div class="cut"></div>
+                <label for="password" class="placeholder">Password</label>
+            </div>
+    
+            <button disabled={!$form.valid} class="custom_button_gems">Login</button>
+            <!-- <button>Login</button> -->
+        </div>
+    </form>
+</div>
 
 <pre />
 
