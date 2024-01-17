@@ -54,7 +54,7 @@
     >
         <div class="title">Login</div>
         <div class="subtitle">please input your email and password below</div>
-        <div style="display: flex; justify-content: center;">
+        <div style="display: flex; align-content: center; flex-direction: column;">
             <div class="input-container ic1">
                 <input type="email" class="input" name="email" use:validators={[required, email]} placeholder=" " />
                 <HintGroup for="email">
