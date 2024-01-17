@@ -170,6 +170,8 @@ button:focus:not(:focus-visible) {
     transform: scale(0.9);
 }
 
+
+
 /* BUTTON COINS */
 .custom_button_coins {
     position: relative;
@@ -200,6 +202,26 @@ button:focus:not(:focus-visible) {
 .custom_button_coins:active {
     transform: scale(0.9);
 }
+
+
+/* BUTTON DISABLED */
+.custom_button_gems[disabled] {
+    color: darkslategray;
+    border: 2px solid #97b79a;
+    background-color: #97b79a;
+    cursor: not-allowed;
+}
+
+.custom_button_gems[disabled]:hover {
+    color: darkslategray;
+    box-shadow: none;
+    transform: none;
+}
+
+.custom_button_gems[disabled]:active {
+    transform: none;
+}
+
 
 .dropbox {
     padding:1.5rem; 
