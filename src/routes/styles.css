@@ -74,7 +74,8 @@ pre {
 	max-width: 48rem;
 	flex: 0.6;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
+    padding-top: 2rem;
 	margin: 0 auto;
 }
 
