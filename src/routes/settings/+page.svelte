@@ -447,7 +447,7 @@
                     <input type="hidden" name="session_id" bind:value={sessionID} />
 
                     <div class="input-container ic1">
-                        <input type="password" class="input" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                        <input type="password" class="input" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} placeholder=" " />
                         <HintGroup for="old_password">
                             <Hint on="required">This is a mandatory field</Hint>
                             <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
@@ -457,7 +457,7 @@
                         <label for="old_password" class="placeholder">Currect Password</label>
                     </div>
                     <div class="input-container ic2">
-                        <input type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
+                        <input type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} placeholder=" " />
                         <HintGroup for="new_password">
                             <Hint on="required">This is a mandatory field</Hint>
                             <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
@@ -468,7 +468,7 @@
                         <label for="new_password" class="placeholder">New Password</label>
                     </div>
                     <div class="input-container ic2">
-                        <input type="password" class="input" name="new_password_confirm" use:validators={[required, passwordMatch]} />
+                        <input type="password" class="input" name="new_password_confirm" use:validators={[required, passwordMatch]} placeholder=" " />
                         <HintGroup for="new_password_confirm">
                             <Hint on="required">This is a mandatory field</Hint>
                             <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
@@ -477,7 +477,6 @@
                         <label for="new_password_confirm" class="placeholder">New Password</label>
                     </div>
 
-                    <button disabled={!$form.valid} class="custom_button1">Change Password</button>
                     <button disabled={!$form.valid} class="custom_button_gems">Change Password</button>
                 </div>
             </form>
