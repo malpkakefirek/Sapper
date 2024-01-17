@@ -460,12 +460,11 @@
                         <label for="old_password" class="placeholder">Currect Password</label>
                     </div>
                     <div class="input-container ic2">
-                        <input type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} placeholder=" " />
+                        <input type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64)]} placeholder=" " />
                         <HintGroup for="new_password">
                             <Hint on="required">This is a mandatory field</Hint>
                             <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
                             <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
-                            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
                         </HintGroup>
                         <div class="cut"></div>
                         <label for="new_password" class="placeholder">New Password</label>
