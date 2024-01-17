@@ -181,6 +181,11 @@
                     <a href="/">Main Menu</a>
                 </li>
             {/if}
+            {#if $page.url.pathname == "/register"}
+                <li>
+                    <a href="/">Main Menu</a>
+                </li>
+            {/if}
             {#if $page.url.pathname == "/about"}
                 <li>
                     <a href="/">Main Menu</a>
