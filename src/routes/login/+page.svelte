@@ -45,37 +45,39 @@
     <meta name="description" content="Login to the app" />
 </svelte:head>
 
-<div class="form dropbox">
-    <form
-        method="post"
-        on:submit|preventDefault={handleSubmit}
-        use:form
-        action="https://sapper-api.onrender.com/login"
-    >
-        <div class="title">Login</div>
-        <div class="subtitle">please input your email and password below</div>
-        <div style="display: flex; align-content: center; flex-direction: column;">
-            <div class="input-container ic1">
-                <input type="email" class="input" name="email" use:validators={[required, email]} placeholder=" " />
-                <HintGroup for="email">
-                    <Hint on="required">This is a mandatory field</Hint>
-                    <Hint on="email" hideWhenRequired>Email is not valid</Hint>
-                </HintGroup>
-                <div class="cut"></div>
-                <label for="email" class="placeholder">Email</label>
-            </div>
-
-            <div class="input-container ic2">
-                <input type="password" class="input" name="password" use:validators={[required]} placeholder=" " />
-                <Hint for="password" on="required">This is a mandatory field</Hint>
-                <div class="cut"></div>
-                <label for="password" class="placeholder">Password</label>
-            </div>
+<div class="text-column">
+    <div class="form dropbox">
+        <form
+            method="post"
+            on:submit|preventDefault={handleSubmit}
+            use:form
+            action="https://sapper-api.onrender.com/login"
+        >
+            <div class="title">Login</div>
+            <div class="subtitle">please input your email and password below</div>
+            <div style="display: flex; align-content: center; flex-direction: column;">
+                <div class="input-container ic1">
+                    <input type="email" class="input" name="email" use:validators={[required, email]} placeholder=" " />
+                    <HintGroup for="email">
+                        <Hint on="required">This is a mandatory field</Hint>
+                        <Hint on="email" hideWhenRequired>Email is not valid</Hint>
+                    </HintGroup>
+                    <div class="cut"></div>
+                    <label for="email" class="placeholder">Email</label>
+                </div>
     
-            <button disabled={!$form.valid} class="custom_button_gems">Login</button>
-            <!-- <button>Login</button> -->
-        </div>
-    </form>
+                <div class="input-container ic2">
+                    <input type="password" class="input" name="password" use:validators={[required]} placeholder=" " />
+                    <Hint for="password" on="required">This is a mandatory field</Hint>
+                    <div class="cut"></div>
+                    <label for="password" class="placeholder">Password</label>
+                </div>
+        
+                <button disabled={!$form.valid} class="custom_button_gems">Login</button>
+                <!-- <button>Login</button> -->
+            </div>
+        </form>
+    </div>
 </div>
 
 
