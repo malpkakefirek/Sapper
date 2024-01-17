@@ -76,6 +76,9 @@
         }
         //CHECK IF SET AVATAR IS IN USER OWNED AVATARS
 
+        //update avatars owned list
+        images = owned_skins.map(index => all_images[index-1]);
+        names = owned_skins.map(index => all_names[index-1]);
 
         await get_statistics();
         formatted_time = display_time(profile.statistics.miliseconds_played);
