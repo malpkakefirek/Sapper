@@ -386,7 +386,7 @@
             </div>
         </div>
     {:else if $page.url.hash == "#changePassword"}
-        <div class="dropbox">
+        <!-- <div class="dropbox">
             <h1>You are in <bold>Settings{$page.url.hash}</bold> page!</h1>
             <h2>This is not implemented yet!</h2>
             <form
@@ -433,8 +433,63 @@
             {#if message != ''}
                 <div style="color: red;">{message}</div>
             {/if}
+        </div> -->
+        <div class="form">
+            <form
+                method="post"
+                on:submit|preventDefault={handleChangePassword}
+                use:form
+                action="https://sapper-api.onrender.com/change_password"
+            >
+                <div class="title">You are in <bold>Settings{$page.url.hash}</bold> page!</div>
+                <div class="subtitle">This is has not been implemented yet!</div>
+                <div style="display: flex; align-content: center; flex-direction: column;">
+                    <input type="hidden" name="session_id" bind:value={sessionID} />
+
+                    <div class="input-container ic1">
+                        <input id="old_password" type="password" class="input" name="old_password" use:validators={[required, minLength(8), maxLength(64)]} />
+                        <HintGroup for="old_password">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                            <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                        </HintGroup>
+                        <div class="cut"></div>
+                            <label for="old_password" class="placeholder">Currect Password</label>
+                        </div>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="new_password" type="password" class="input" name="new_password" use:validators={[required, minLength(8), maxLength(64), passwordMatch]} />
+                        <HintGroup for="new_password">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="minLength" hideWhenRequired>Password must be at least 8 characters long</Hint>
+                            <Hint on="maxLength" hideWhenRequired>Password must be at most 64 characters long</Hint>
+                            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
+                        </HintGroup>
+                        <div class="cut"></div>
+                            <label for="new_password" class="placeholder">New Password</label>
+                        </div>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="new_passwordMatch" type="password" class="input" name="new_password_confirm" use:validators={[required, passwordMatch]} />
+                        <HintGroup for="new_password_confirm">
+                            <Hint on="required">This is a mandatory field</Hint>
+                            <Hint on="passwordMatch" hideWhenRequired>Passwords do not match</Hint>
+                        </HintGroup>
+                        <div class="cut"></div>
+                            <label for="new_passwordMatch" class="placeholder">New Password</label>
+                        </div>
+                    </div>
+
+                    <button disabled={!$form.valid}>Change Password</button>
+                </div>
+            </form>
+            {#if success}
+                <div style="color: darkgreen;">Successfully changed password!</div>
+            {/if}
+            {#if message != ''}
+                <div style="color: red;">{message}</div>
+            {/if}
         </div>
-            
     {/if}
 </div>
 
