@@ -287,6 +287,7 @@ button:focus:not(:focus-visible) {
     transition: transform 200ms;
     width: 76px !important;
     min-width: 7.25em;  /* dodane */
+    display: none;
 }
 
 .cut-short {
@@ -315,6 +316,11 @@ button:focus:not(:focus-visible) {
     transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+    display: block;
+}
+
 .input:not(:placeholder-shown) ~ .placeholder {
     color: #808097;
 }
@@ -340,4 +346,8 @@ button:focus:not(:focus-visible) {
 
 .submit:active {
     background-color: #06b;
+}
+
+.svelte-use-form-hint {
+    color: #dc2f55;
 }
